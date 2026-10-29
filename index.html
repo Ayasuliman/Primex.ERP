@@ -1140,6 +1140,99 @@ html{scroll-padding-top:16px}
   #why .wy-perm>div.wy-u small{display:none}
   #why .wy-sc .wy-scr{grid-template-columns:1fr 1fr;gap:8px}#why .wy-sc .wy-fl div{padding:6px 7px;font-size:11px}
 }
+
+/* ===== why v2: sticky heading + rich stacking cards ===== */
+#why{--wyHead:220px}
+#why .wy-head{position:sticky;top:0;z-index:5;margin-inline:calc(-1 * clamp(16px,4vw,32px));padding:clamp(14px,2vw,22px) clamp(16px,4vw,32px) 14px;background:linear-gradient(var(--bg) 82%,color-mix(in srgb,var(--bg) 0%,transparent));display:grid;justify-items:center;gap:16px}
+#why .wy-head .sh{margin-bottom:0;transition:gap .35s}
+#why .wy-head .ab-name,#why .wy-head .ab-tag,#why .wy-head .ab-badge{transition:font-size .35s,opacity .3s,margin .35s,max-height .35s}
+#why .wy-head .ab-badge{max-height:40px}
+#why .wy-head.wy-measure,#why .wy-head.wy-measure *{transition:none!important;animation:none!important}
+#why .wy-head.is-stuck .sh{gap:6px}
+#why .wy-head.is-stuck .ab-badge{opacity:0;max-height:0;margin:-6px 0;padding-block:0;overflow:hidden}
+#why .wy-head.is-stuck .ab-name{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+#why .wy-head.is-stuck .ab-tag{font-size:clamp(1rem,1.5vw,1.2rem)}
+#why .wy-rail{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;width:min(100%,900px)}
+#why .wy-rail li{display:grid;gap:6px;justify-items:start;font-size:.8rem;font-weight:600;color:var(--ink3);transition:color .3s}
+#why .wy-rail li::before{content:"";width:100%;height:3px;border-radius:3px;background:var(--line);transition:background .4s;grid-row:1}
+#why .wy-rail li b{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.72rem;display:none}
+#why .wy-rail li.done{color:var(--ink2)}#why .wy-rail li.done::before{background:color-mix(in srgb,var(--accent) 45%,var(--line))}
+#why .wy-rail li.cur{color:var(--accent)}#why .wy-rail li.cur::before{background:var(--accent)}
+
+#why #wyCards{max-width:1120px;margin-inline:auto;padding-top:10px;padding-bottom:36vh}
+#why #wyCards>.wy-card{--pad:clamp(22px,3vw,40px);position:sticky;top:calc(var(--wyHead) + 6px + var(--i) * 12px);margin-bottom:34vh;min-height:min(540px,calc(100svh - var(--wyHead) - 90px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:0;align-items:stretch;padding:0;overflow:hidden;border-radius:26px;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 -18px 50px -34px rgba(19,32,90,.5)}
+#why #wyCards>.wy-card:last-child{margin-bottom:0}
+#why #wyCards .wy-wm{position:absolute;inset-inline-start:calc(var(--pad) - 6px);bottom:-.22em;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:clamp(7rem,13vw,11rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--accent) 14%,transparent);pointer-events:none;letter-spacing:-.04em}
+#why #wyCards .wy-tx{position:relative;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:var(--pad);padding-bottom:calc(var(--pad) + 30px)}
+#why #wyCards .wy-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#why #wyCards .wy-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent);flex:none}
+#why #wyCards .wy-mod{font-size:.8rem;font-weight:600;color:var(--accent);background:var(--soft);padding:4px 12px;border-radius:999px;line-height:1.5}
+#why #wyCards .wy-num{margin-inline-start:auto;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink3)}
+#why #wyCards h3{margin:4px 0 0;font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.3}
+#why #wyCards .wy-tx>p{margin:0;color:var(--ink2);font-size:1rem;line-height:1.85;max-width:46ch}
+#why #wyCards .wy-ul{list-style:none;margin:6px 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:grid;gap:11px}
+#why #wyCards .wy-ul li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;font-weight:500;line-height:1.55;color:var(--ink)}
+#why #wyCards .wy-ul li i{flex:none;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:var(--greenbg);color:var(--green);margin-top:1px}
+#why #wyCards .wy-stage{position:relative;display:grid;align-items:center;padding:var(--pad);background:radial-gradient(70% 60% at 50% 40%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%),radial-gradient(color-mix(in srgb,var(--accent) 16%,transparent) 1px,transparent 1.4px) 0 0/18px 18px,#F5F7FC;border-inline-start:1px solid var(--line)}
+#why #wyCards .wy-stage .wy-sc{width:100%;min-height:0;padding:clamp(16px,1.8vw,22px);font-size:13.5px;background:#fff;border-radius:16px;box-shadow:0 0 0 1px var(--line),0 30px 60px -34px rgba(19,32,90,.45)}
+#why #wyCards .wy-sc .wy-bar{font-size:14.5px;margin-bottom:16px}
+#why #wyCards .wy-sc .wy-bar small{font-size:12px}
+#why #wyCards .wy-sc .wy-pill{font-size:11.5px;padding:3px 10px}
+#why #wyCards .wy-sc .wy-perm{grid-template-columns:1.9fr repeat(4,1fr)}#why #wyCards .wy-sc .wy-perm>div.wy-u small{white-space:nowrap}#why #wyCards .wy-sc .wy-perm>div{padding:11px 8px}
+#why #wyCards .wy-sc .wy-perm>div.wy-h{font-size:12px}
+#why #wyCards .wy-sc .wy-av{width:26px;height:26px;font-size:11px}
+#why #wyCards .wy-sc .wy-tg2{width:30px;height:17px}
+#why #wyCards .wy-sc .wy-tg2::after{width:13px;height:13px}
+#why #wyCards .wy-sc .wy-fl{gap:8px}#why #wyCards .wy-sc .wy-fl div{padding:9px 11px}
+#why #wyCards .wy-sc .wy-pv span{height:30px;font-size:12px}
+#why #wyCards .wy-sc .wy-stk{gap:16px}#why #wyCards .wy-sc .wy-stk .wy-tr{height:12px}
+#why #wyCards .wy-sc .wy-mv-feed{margin-top:18px}
+#why #wyCards .wy-sc .wy-kp b{font-size:26px}#why #wyCards .wy-sc .wy-kp .wy-sp{height:64px}
+#why #wyCards .wy-sc .wy-feed{gap:8px}#why #wyCards .wy-sc .wy-feed div{padding:10px 11px}
+#why #wyCards .wy-sc .wy-je .wy-h,#why #wyCards .wy-sc .wy-je .wy-rw{padding:10px 11px}
+#why #wyCards .wy-sc .wy-doc{gap:9px;padding:14px}#why #wyCards .wy-sc .wy-apv{height:36px;font-size:12.5px}
+#why #wyCards .wy-sc .wy-cmp .wy-r{padding:9px 0}#why #wyCards .wy-sc .wy-fix .wy-big{font-size:32px}
+/* navy cards */
+#why #wyCards>.wy-card:nth-child(even){background:var(--navy);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 -18px 50px -30px rgba(5,12,46,.7)}
+#why #wyCards>.wy-card:nth-child(even) .wy-tx>p{color:#C3CAEE}
+#why #wyCards>.wy-card:nth-child(even) .wy-ul{border-color:rgba(255,255,255,.12)}
+#why #wyCards>.wy-card:nth-child(even) .wy-ul li{color:#fff}
+#why #wyCards>.wy-card:nth-child(even) .wy-ul li i{background:rgba(119,205,151,.16);color:#77CD97}
+#why #wyCards>.wy-card:nth-child(even) .wy-ic{background:rgba(255,255,255,.1);color:#fff}
+#why #wyCards>.wy-card:nth-child(even) .wy-mod{background:rgba(153,181,255,.14);color:#BED0FF}
+#why #wyCards>.wy-card:nth-child(even) .wy-num{color:#8C9AE0}
+#why #wyCards>.wy-card:nth-child(even) .wy-wm{-webkit-text-stroke-color:rgba(153,181,255,.16)}
+#why #wyCards>.wy-card:nth-child(even) .wy-stage{background:radial-gradient(70% 60% at 50% 40%,rgba(99,135,246,.32),transparent 70%),radial-gradient(rgba(153,181,255,.18) 1px,transparent 1.4px) 0 0/18px 18px,#0F1C4E;border-color:rgba(255,255,255,.08)}
+#why #wyCards>.wy-card:nth-child(even) .wy-sc{color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+@media (max-width:980px){
+  #why #wyCards>.wy-card{grid-template-columns:1fr;min-height:0}
+  #why #wyCards .wy-stage{border-inline-start:0;border-top:1px solid var(--line)}
+  #why #wyCards .wy-tx{padding-bottom:var(--pad)}
+}
+@media (max-width:640px){
+  #why .wy-head .ab-badge{display:none}
+  #why .wy-head .ab-name{font-size:1.9rem}#why .wy-head .ab-tag{font-size:1.02rem}
+  #why .wy-head.is-stuck .ab-tag{display:none}#why .wy-head.is-stuck .ab-name{font-size:1.35rem}
+  #why .wy-rail{gap:5px}#why .wy-rail li span{display:none}#why .wy-rail li b{display:block}
+  #why #wyCards>.wy-card{--pad:18px;top:calc(var(--wyHead) + 4px + var(--i) * 8px);margin-bottom:24vh}
+  #why #wyCards .wy-tx{gap:10px}
+  #why #wyCards h3{font-size:1.3rem}
+  #why #wyCards .wy-tx>p{font-size:.92rem;line-height:1.75}
+  #why #wyCards .wy-ul{gap:8px;padding-top:12px}#why #wyCards .wy-ul li{font-size:.86rem}
+  #why #wyCards .wy-ul{display:none}
+  #why #wyCards .wy-sc .wy-feed div:nth-child(4){display:none}
+  #why #wyCards .wy-sc .wy-ln{display:none}#why #wyCards .wy-sc .wy-doc{padding:0;border:0}#why #wyCards .wy-sc .wy-apv{margin:0}
+  #why #wyCards .wy-sc .wy-fix{grid-template-columns:auto auto;justify-content:space-between;align-items:center;text-align:start;padding:10px 12px}#why #wyCards .wy-sc .wy-fix .wy-st{grid-column:1/-1;justify-self:start}#why #wyCards .wy-sc .wy-fix .wy-big{font-size:24px}
+  #why #wyCards .wy-sc .wy-kp{grid-template-columns:1fr auto;align-items:end;gap:6px}#why #wyCards .wy-sc .wy-kp small{grid-column:1/-1}#why #wyCards .wy-sc .wy-kp .wy-sp{height:34px;width:120px}
+  #why #wyCards .wy-sc .wy-mv-feed .wy-pill:nth-child(3){display:none}
+  #why #wyCards>.wy-card{height:min(600px,calc(100svh - var(--wyHead) - 28px));min-height:0;grid-template-rows:auto 1fr}
+  #why #wyCards .wy-stage{align-items:center;overflow:hidden}
+  #why #wyCards .wy-sc .wy-stk{gap:11px}#why #wyCards .wy-sc .wy-mv-feed{margin-top:12px}#why #wyCards .wy-sc .wy-bar{margin-bottom:12px}
+  #why #wyCards .wy-wm{font-size:5.5rem}
+  #why #wyCards .wy-stage .wy-sc{font-size:12px;padding:14px}
+  #why #wyCards .wy-sc .wy-perm>div{padding:8px 4px}
+  #why #wyCards .wy-sc .wy-kp .wy-sp{height:40px}
+}
 </style>
 </head>
 <body>
@@ -1264,9 +1357,12 @@ html{scroll-padding-top:16px}
 <!-- WHY -->
 <section id="why">
   <div class="wrap">
-    <div class="sec-head sh sh-c">
-      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>لماذا برايمكس</span>
-      <h2 class="ab-title"><span class="ab-name">تحكّم كامل</span><span class="ab-tag">ورؤية لحظية لكل حركة في أعمالك</span></h2>
+    <div class="wy-head" id="wyHead">
+      <div class="sec-head sh sh-c">
+        <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>لماذا برايمكس</span>
+        <h2 class="ab-title"><span class="ab-name">تحكّم كامل</span><span class="ab-tag">ورؤية لحظية لكل حركة في أعمالك</span></h2>
+      </div>
+      <ol class="wy-rail" id="wyRail" aria-hidden="true"></ol>
     </div>
     <div class="wy-o2" id="wyCards"></div>
   </div>
@@ -1835,12 +1931,12 @@ html{scroll-padding-top:16px}
 })();
 
 (function(){var F=[
- {t:'صلاحيات دقيقة لكل مستخدم',d:'حدّد لكل مستخدم ما يمكنه عرضه أو إضافته أو تعديله أو اعتماده، على مستوى كل شاشة.',ic:'<path d="M12 2l7 3v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V5l7-3z"/><path d="M9 12l2 2 4-4"/>'},
- {t:'إدارة مرنة للشاشات',d:'خصّص الشاشات وحقولها وترتيبها لتناسب طبيعة عمل كل قسم، دون تعقيد.',ic:'<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 9v9"/>'},
- {t:'أرصدة مخزون لحظية',d:'تابع رصيد كل صنف في كل مخزن وفرع لحظة بلحظة، مع تنبيه عند انخفاضه.',ic:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'},
- {t:'متابعة المبيعات أولًا بأول',d:'كل فاتورة تظهر فور إصدارها، حسب الفرع والكاشير والفترة.',ic:'<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>'},
- {t:'أثر محاسبي فوري',d:'بمجرد اعتماد المستند تُنشأ القيود تلقائيًا وتتحدّث أرصدة الحسابات.',ic:'<path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/>'},
- {t:'ضبط العجز والزيادة',d:'قارن الرصيد الفعلي بالدفتري، واكتشف الفروقات، وعالجها بقيود تسوية مباشرة.',ic:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>'}
+ {m:'الأمان والصلاحيات',s:'الصلاحيات',t:'صلاحيات دقيقة لكل مستخدم',d:'امنح كل موظف ما يحتاجه فقط. حدّد ما يستطيع كل مستخدم عرضه أو إضافته أو تعديله أو اعتماده، على مستوى كل شاشة في النظام.',b:['تحكّم في العرض والإضافة والتعديل والحذف والاعتماد','صلاحيات مختلفة لكل شاشة ولكل مستخدم','بياناتك الحساسة في أمان من أي تعديل غير مقصود'],ic:'<path d="M12 2l7 3v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V5l7-3z"/><path d="M9 12l2 2 4-4"/>'},
+ {m:'تخصيص الواجهة',s:'الشاشات',t:'إدارة مرنة للشاشات',d:'اجعل النظام يشبه طريقة عملك: أظهر الحقول التي تحتاجها، وأخفِ ما لا يلزم، ورتّب كل شاشة بما يناسب كل قسم.',b:['إظهار وإخفاء الحقول حسب الحاجة','ترتيب الحقول والشاشات لكل قسم','واجهة أبسط تعني إدخالًا أسرع وأخطاء أقل'],ic:'<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 9v9"/>'},
+ {m:'المخازن',s:'المخزون',t:'أرصدة مخزون لحظية',d:'اعرف رصيد كل صنف في كل مخزن وفرع في اللحظة نفسها، مع كل عملية بيع أو شراء أو تحويل.',b:['رصيد يتحدّث مع كل حركة وارد وصادر','رؤية موحّدة لكل المخازن والفروع','تنبيه عند انخفاض رصيد أي صنف'],ic:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'},
+ {m:'المبيعات ونقاط البيع',s:'المبيعات',t:'متابعة المبيعات أولًا بأول',d:'تابع مبيعاتك لحظة بلحظة: كل فاتورة تظهر فور إصدارها، مع إجماليات حسب الفرع والكاشير والفترة.',b:['لوحة مبيعات تتحدّث مع كل فاتورة','مقارنة بين الفروع والكاشير والفترات','قرارات أسرع مبنية على أرقام اليوم'],ic:'<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>'},
+ {m:'الحسابات',s:'المحاسبة',t:'أثر محاسبي فوري',d:'لا انتظار لنهاية الشهر: بمجرد اعتماد المستند يُنشأ القيد المحاسبي تلقائيًا وتنعكس آثاره على الحسابات فورًا.',b:['قيود تلقائية عند اعتماد المستندات','أرصدة حسابات محدّثة لحظيًا','أخطاء ترحيل يدوي أقل'],ic:'<path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/>'},
+ {m:'الجرد',s:'الجرد',t:'ضبط العجز والزيادة',d:'قارن الكميات الفعلية بالرصيد الدفتري، واكتشف العجز والزيادة فورًا، وعالج الفروقات بقيود تسوية واضحة.',b:['مقارنة الفعلي بالدفتري لكل صنف','تحديد العجز والزيادة بدقة','معالجة الفروقات بقيود تسوية مباشرة'],ic:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>'}
 ];
 function icon(i){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+F[i].ic+'</svg>'}
 function T(v,d){return '<i class="wy-tg2 '+(v?'wy-y':'')+'" style="--d:'+d+'s"></i>'}
@@ -1862,9 +1958,21 @@ function scene(i){
 function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classList.add('wy-on')}
 
 (function(){var o=document.getElementById('wyCards');if(!o)return;
- F.forEach(function(f,i){o.insertAdjacentHTML('beforeend','<article class="wy-card" style="--i:'+i+'"><div class="wy-tx"><span class="wy-ic">'+icon(i)+'</span><span class="wy-num">0'+(i+1)+' / 06</span><h3>'+f.t+'</h3><p>'+f.d+'</p></div>'+scene(i)+'</article>')});
+ var CK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>';
+ F.forEach(function(f,i){var li='';f.b.forEach(function(x){li+='<li><i>'+CK+'</i>'+x+'</li>'});
+  o.insertAdjacentHTML('beforeend','<article class="wy-card" style="--i:'+i+'"><span class="wy-wm" aria-hidden="true">0'+(i+1)+'</span><div class="wy-tx"><div class="wy-meta"><span class="wy-ic">'+icon(i)+'</span><span class="wy-mod">'+f.m+'</span><span class="wy-num">0'+(i+1)+' / 06</span></div><h3>'+f.t+'</h3><p>'+f.d+'</p><ul class="wy-ul">'+li+'</ul></div><div class="wy-stage">'+scene(i)+'</div></article>')});
+ var rail=document.getElementById('wyRail');
+ if(rail){F.forEach(function(f,i){rail.insertAdjacentHTML('beforeend','<li><b>0'+(i+1)+'</b><span>'+f.s+'</span></li>')})}
+ var head=document.getElementById('wyHead'),cards=[].slice.call(o.children),cur=-1;
+ function setH(){if(!head)return;var had=head.classList.contains('is-stuck');head.classList.add('wy-measure','is-stuck');var hh=head.offsetHeight;head.classList.remove('wy-measure');if(!had)head.classList.remove('is-stuck');document.getElementById('why').style.setProperty('--wyHead',hh+'px')}
+ setH();addEventListener('resize',setH);
+ function tick(){if(!head)return;var hb=head.getBoundingClientRect(),stuck=hb.top<=parseFloat(getComputedStyle(head).top)+1&&o.getBoundingClientRect().bottom>hb.bottom+80;
+  head.classList.toggle('is-stuck',stuck);
+  var a=-1;cards.forEach(function(c,k){if(c.getBoundingClientRect().top<=parseFloat(getComputedStyle(c).top)+innerHeight*.25)a=k});
+  if(a!==cur){cur=a;if(rail)[].forEach.call(rail.children,function(li,k){li.className=k<a?'done':k===a?'cur':''})}}
+ addEventListener('scroll',tick,{passive:true});tick();
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)replay(e.target.querySelector('.wy-sc'))})},{threshold:.55});
- [].forEach.call(o.children,function(c){io.observe(c)});
+ cards.forEach(function(c){io.observe(c)});
 })();})();
 </script>
 
