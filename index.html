@@ -912,6 +912,54 @@ body::before{background:transparent}
 .top .btn-primary:hover{background:var(--accent-hover)}
 @media (max-width:980px){.top-sep{display:none}.top .wrap{margin-inline:12px;padding-left:10px;padding-right:14px}}
 
+
+/* live tablet screen: the dashboard scrolls on its own into tables of sample data; hover or scroll to take over */
+.t-screen .ts-scroll{position:absolute;inset:clamp(16px,1.9vw,22px) 0 0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain;font-size:clamp(6px,.62vw,9px);direction:rtl;cursor:ns-resize}
+.t-screen .ts-scroll::-webkit-scrollbar{display:none}
+.t-screen .ts-scroll:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.t-screen .ts-scroll img{position:static;inset:auto;display:block;width:100%;height:auto;object-fit:initial}
+.ts-more{display:grid;grid-template-columns:13.6% 1fr;background:#F7F8FA;font-family:var(--f-body);color:#212223}
+.ts-side{background:#FFFFFF;border-inline-start:1px solid #ECEDEF}
+.ts-body{display:grid;gap:1.4em;padding:1.4em 1.6em 2.4em}
+.ts-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4em}
+.ts-card{background:#FFFFFF;border:1px solid #ECEDEF;border-radius:.9em;padding:1.1em 1.3em;display:grid;gap:.8em;min-width:0}
+.ts-h{display:flex;align-items:center;gap:.8em}
+.ts-h b{font-size:1.25em;font-weight:700}
+.ts-link{margin-inline-start:auto;color:#283F9C;font-weight:600}
+.ts-live{display:inline-flex;align-items:center;gap:.4em;color:#005A31;background:#E3F8E9;border-radius:99em;padding:.15em .7em;font-weight:700;line-height:1.4}
+.ts-live i{width:.55em;height:.55em;border-radius:50%;background:#007742;animation:tsBlink 1.4s ease-in-out infinite}
+@keyframes tsBlink{50%{opacity:.25}}
+.ts-t{width:100%;border-collapse:collapse;font-size:1em;line-height:1.5}
+.ts-t th{font-weight:600;color:#616367;text-align:start;padding:.4em .5em;border-bottom:1px solid #ECEDEF;background:#FAFAFB;white-space:nowrap}
+.ts-t td{padding:.55em .5em;border-bottom:1px solid #F1F2F3;white-space:nowrap}
+.ts-t tr:last-child td{border-bottom:0}
+.ts-t .m{font-family:var(--f-mono);direction:ltr;text-align:end}
+.ts-t td.m:first-child{text-align:start;color:#283F9C}
+.ts-t .up{color:#007742}.ts-t .dn{color:#B12725}
+.ts-st{font-style:normal;display:inline-flex;align-items:center;font-weight:700;line-height:1.4;padding:.1em .7em;border-radius:99em}
+.ts-st.ts-ok{color:#005A31;background:#E3F8E9}.ts-st.ts-in{color:#283F9C;background:#ECF2FF}.ts-st.ts-wait{color:#674100;background:#FFF1DC}
+.ts-new td{animation:tsNew 6s ease-in-out infinite}
+@keyframes tsNew{0%,8%{background:#ECF2FF}30%,100%{background:transparent}}
+.ts-new td:first-child{position:relative}
+.ts-bars{list-style:none;margin:0;padding:0;display:grid;gap:.75em}
+.ts-bars li{display:grid;grid-template-columns:1fr 2fr auto;align-items:center;gap:.8em}
+.ts-bars span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ts-bars i{display:block;height:.75em;border-radius:99em;background:linear-gradient(90deg,#5365B0,#283F9C);width:var(--w);transform-origin:right;animation:tsGrow 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes tsGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.ts-bars b{font-family:var(--f-mono);direction:ltr;font-weight:500}
+@media (prefers-reduced-motion:reduce){.ts-live i,.ts-new td,.ts-bars i{animation:none}}
+
+
+/* hero, centred: headline, then the CTA as the clear bridge, then the tablet full and wide below */
+.hero .wrap{grid-template-columns:1fr!important;justify-items:center;text-align:center;gap:clamp(30px,4vw,52px)}
+.hero-copy{justify-items:center;text-align:center;max-width:900px;gap:22px}
+.hero h1{font-size:clamp(2.3rem,5.2vw,4.1rem);line-height:1.22}
+.hero .hero-copy .btn{padding:16px 34px;font-size:1.08rem;border-radius:12px;box-shadow:0 18px 34px -14px color-mix(in srgb,var(--accent) 75%,transparent)}
+.hero .trust{grid-template-columns:repeat(4,auto);justify-content:center;gap:10px 26px}
+.hero .devices{width:min(100%,1000px);padding:1% 7% 9% 7%;margin-inline:auto}
+@media (max-width:860px){.hero .trust{grid-template-columns:repeat(2,auto)}.hero .devices{padding:2% 4% 12%}}
+@media (max-width:420px){.hero .trust{grid-template-columns:auto;justify-items:start}}
+
 /* text-in-pill alignment: every chip, badge and button centres its label vertically with a tight line box */
 .btn,.copy,.mtab,.pitem b{line-height:1.3}
 .ic3 .uses,.links,.b-clients ul,.c-info,.v-rep .chips{align-items:center}
@@ -956,7 +1004,7 @@ body::before{background:transparent}
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <h1><span class="hw">أدِر</span> <span class="hw">المبيعات</span> <span class="hw">والمخزون</span> <span class="hw">والمالية</span> <em><span class="hw uline">من نظام واحد</span></em></h1>
+      <h1><span class="hw">أدِر</span> <span class="hw">مؤسستك</span> <span class="hw">بالكامل</span> <em><span class="hw uline">من نظام واحد</span></em></h1>
       <a class="btn btn-primary" href="#contact" data-demo>اطلب عرضًا تجريبيًا<svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       <ul class="trust">
         <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>قاعدة بيانات واحدة لكل الموديولات</li>
@@ -973,7 +1021,28 @@ body::before{background:transparent}
             <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx=".8" fill="currentColor"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8" fill="currentColor"/><rect x="10" y="3" width="3" height="9" rx=".8" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx=".8" fill="currentColor"/></svg>
             <svg viewBox="0 0 16 12"><path d="M8 11.5l2.2-2.6a3.2 3.2 0 00-4.4 0zM3.4 6.6a6.6 6.6 0 019.2 0l1.4-1.6a8.8 8.8 0 00-12 0zM.4 3.3a11 11 0 0115.2 0L17 1.7A13.2 13.2 0 00-1 1.7z" fill="currentColor"/></svg>
             <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="1.8" fill="currentColor"/><path d="M24.5 4v4a2 2 0 000-4z" fill="currentColor" opacity=".4"/></svg></span></div>
-          <img src="hero-dashboard.webp" alt="لوحة مؤشرات موديول الحسابات في نظام برايمكس" width="1860" height="953"><span class="h-off" aria-hidden="true"></span><span class="h-beam" aria-hidden="true"></span><span class="h-scan" aria-hidden="true"></span>
+          <div class="ts-scroll" tabindex="0" aria-label="معاينة شاشة النظام، يمكن التمرير داخلها"><div class="ts-inner">
+          <img src="hero-dashboard.webp" alt="لوحة مؤشرات موديول الحسابات في نظام برايمكس" width="1860" height="953">
+          <div class="ts-more">
+            <span class="ts-side" aria-hidden="true"></span>
+            <div class="ts-body">
+              <div class="ts-card">
+                <div class="ts-h"><b>آخر فواتير البيع</b><span class="ts-live"><i></i>مباشر</span><span class="ts-link">عرض الكل</span></div>
+                <table class="ts-t"><thead><tr><th>رقم الفاتورة</th><th>العميل</th><th>الفرع</th><th>المبلغ (ر.س)</th><th>الحالة</th></tr></thead><tbody><tr class="ts-new"><td class="m">INV-2026-0318</td><td>مؤسسة النور التجارية</td><td>الفرع الرئيسي</td><td class="m n">54.05</td><td><em class="ts-st ts-ok">مدفوعة</em></td></tr><tr><td class="m">INV-2026-0317</td><td>شركة الريان للتوزيع</td><td>فرع جدة</td><td class="m n">12,480.00</td><td><em class="ts-st ts-in">مرحّلة</em></td></tr><tr><td class="m">INV-2026-0316</td><td>مطعم بيت الشاي</td><td>فرع الدمام</td><td class="m n">1,236.50</td><td><em class="ts-st ts-ok">مدفوعة</em></td></tr><tr><td class="m">INV-2026-0315</td><td>سوبرماركت الواحة</td><td>الفرع الرئيسي</td><td class="m n">8,940.75</td><td><em class="ts-st ts-wait">معلّقة</em></td></tr><tr><td class="m">INV-2026-0314</td><td>مؤسسة الأفق</td><td>فرع جدة</td><td class="m n">3,315.00</td><td><em class="ts-st ts-ok">مدفوعة</em></td></tr><tr><td class="m">INV-2026-0313</td><td>شركة المدار التجارية</td><td>فرع الرياض</td><td class="m n">22,100.00</td><td><em class="ts-st ts-in">مرحّلة</em></td></tr></tbody></table>
+              </div>
+              <div class="ts-row">
+                <div class="ts-card">
+                  <div class="ts-h"><b>حركة المخزون اليوم</b></div>
+                  <table class="ts-t"><thead><tr><th>الصنف</th><th>وارد</th><th>صادر</th><th>الرصيد</th></tr></thead><tbody><tr><td>كرواسون زبدة</td><td class="m n up">+120</td><td class="m n dn">−73</td><td class="m n">47</td></tr><tr><td>مياه معدنية</td><td class="m n up">+400</td><td class="m n dn">−171</td><td class="m n">229</td></tr><tr><td>قهوة مختصة 1كجم</td><td class="m n up">+60</td><td class="m n dn">−18</td><td class="m n">42</td></tr><tr><td>أكواب ورقية</td><td class="m n up">+1,000</td><td class="m n dn">−640</td><td class="m n">360</td></tr></tbody></table>
+                </div>
+                <div class="ts-card">
+                  <div class="ts-h"><b>أعلى العملاء هذا الشهر</b></div>
+                  <ul class="ts-bars"><li><span>شركة المدار التجارية</span><i style="--w:92%"></i><b class="m">22.1K</b></li><li><span>شركة الريان للتوزيع</span><i style="--w:64%"></i><b class="m">12.5K</b></li><li><span>سوبرماركت الواحة</span><i style="--w:46%"></i><b class="m">8.9K</b></li><li><span>مؤسسة الأفق</span><i style="--w:22%"></i><b class="m">3.3K</b></li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></div><span class="h-off" aria-hidden="true"></span><span class="h-beam" aria-hidden="true"></span><span class="h-scan" aria-hidden="true"></span>
         </div>
       </div>
 
@@ -1549,6 +1618,31 @@ body::before{background:transparent}
       if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)pick=map[map.length-1][0];
       if(pick===cur)return;cur=pick;links.forEach(function(a){var on=a===pick;a.classList.toggle('cur',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})}
     var raf=0;window.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(spy)},{passive:true});spy();
+  })();
+
+
+  // live tablet screen: glide down into the tables, pause, glide back; any hover, touch, wheel or focus hands control to the visitor
+  (function(){
+    var sc=document.querySelector('.t-screen .ts-scroll');if(!sc)return;
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var held=false,resume=0,dir=1,pauseUntil=performance.now()+5600,last=performance.now(),pos=0;
+    function hold(){held=true;clearTimeout(resume)}
+    function release(){clearTimeout(resume);resume=setTimeout(function(){held=false;pos=sc.scrollTop;last=performance.now();pauseUntil=last+800},2500)}
+    ['pointerenter','touchstart','wheel','focus'].forEach(function(ev){sc.addEventListener(ev,hold,{passive:true})});
+    ['pointerleave','touchend','blur'].forEach(function(ev){sc.addEventListener(ev,release,{passive:true})});
+    sc.addEventListener('wheel',release,{passive:true});
+    (function tick(t){
+      var dt=Math.min(64,t-last);last=t;
+      if(!held&&t>pauseUntil&&document.visibilityState==='visible'){
+        var max=sc.scrollHeight-sc.clientHeight;if(max>4){
+          pos+=dir*dt*(dir>0?0.028:0.09)*sc.clientHeight/100;
+          if(pos>=max){pos=max;dir=-1;pauseUntil=t+2200}
+          else if(pos<=0){pos=0;dir=1;pauseUntil=t+3200}
+          sc.scrollTop=pos;
+        }
+      }
+      requestAnimationFrame(tick);
+    })(last);
   })();
 
   // about bento: play entrance + count-up once it scrolls into view
