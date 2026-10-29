@@ -1319,6 +1319,20 @@ html{scroll-padding-top:16px}
   .products .pshow.pfocus .module .phl,.products .pshow.pfocus .pmore{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.hub-rot,.hub .hub-rot .pitem{transition:none}}
+
+/* products: compact overview so the section fits one screen */
+#modules{padding-block:clamp(32px,6svh,64px)}
+#modules .sh{margin-bottom:clamp(20px,2.6vw,32px);gap:10px}
+#modules .sh p{max-width:46ch}
+@media (min-width:1001px){#modules .sh{max-width:none;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(32px,6vw,96px);align-items:end}#modules .sh>*{grid-column:1}#modules .sh p{grid-column:2;grid-row:1/span 2;justify-self:end;align-self:end;margin:0 0 6px}}
+#modules .pshow:not(.pfocus) .mod-side p:not(.pitch){display:none}
+#modules .pshow:not(.pfocus) .mod-side{row-gap:6px}
+#modules .pshow:not(.pfocus) .hub{max-width:min(400px,calc(100svh - 300px))}
+#modules .pshow:not(.pfocus) .module{padding:clamp(18px,2.4vw,28px);gap:16px}
+#modules .pshow:not(.pfocus) .module .phl{display:none}
+#modules .pshow:not(.pfocus) .module .sc{min-height:0;padding:16px}
+#modules .pshow:not(.pfocus) .mod-side h3{font-size:clamp(1.3rem,2vw,1.6rem)}
+#modules .pshow:not(.pfocus) .mod-side p{font-size:.93rem;line-height:1.7}
 </style>
 </head>
 <body>
