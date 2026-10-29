@@ -995,6 +995,148 @@ html{scroll-padding-top:16px}
 #about{padding-top:clamp(40px,6vw,80px)}
 @media (max-width:640px){.cl-track img{height:28px}.cl-track img.cl-hero{height:36px}.cl-track img.cl-fam{height:40px}.clients{margin-top:18px}}
 @media (prefers-reduced-motion:reduce){.cl-track{animation:none}}
+
+/* unified section headings (same system as تعرّف علينا) */
+.sh{justify-items:start}
+.sh.sh-c{justify-items:center;text-align:center;margin-inline:auto}
+.sh .ab-title{gap:4px}
+.sh p{margin-top:4px}
+.products .sh .ab-badge,.chain .sh .ab-badge{background:rgba(255,255,255,.1);color:#DAE4FF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.products .sh .ab-name,.chain .sh .ab-name{color:#99B5FF}
+.products .sh .ab-tag,.chain .sh .ab-tag{color:#FFFFFF}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  .sh .ab-badge{animation:shUp linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+  .sh .ab-name{display:block;animation:shUp linear both;animation-timeline:view();animation-range:entry 4% cover 29%}
+  .sh .ab-tag{display:block;animation:shUp linear both;animation-timeline:view();animation-range:entry 8% cover 33%}
+  @keyframes shUp{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}
+}}
+/* why — stacking feature cards */
+#why{--ink2:var(--ink-2);--ink3:#6B6F72;--line2:#CFD1D3;--soft:#ECF2FF;--soft2:#DAE4FF;--green:#005A31;--greenbg:#E3F8E9;--red:#A3242B;--redbg:#FDECEC;--goldbg:#FFF1DC;--navy:#13205A;overflow:visible}
+#why .wy-o2{max-width:1080px;margin-inline:auto}
+#why .wy-card h3{margin:0}
+
+@media (prefers-reduced-motion:reduce){#why *{animation-duration:.01s!important;transition-duration:.01s!important}}
+#why /* ===== shared feature scenes ===== */
+.wy-sc{position:relative;background:var(--surface);border-radius:16px;box-shadow:0 0 0 1px var(--line),0 24px 50px -30px rgba(19,32,90,.35);padding:16px;font-size:12.5px;overflow:hidden;min-height:250px}
+#why .wy-sc .wy-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-weight:700;font-size:13px}
+#why .wy-sc .wy-bar small{font-weight:500;color:var(--ink3);font-size:11px}
+#why .wy-pill{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:10.5px;font-weight:600;line-height:1.6}
+#why .wy-pill.wy-g{background:var(--greenbg);color:var(--green)}#why .wy-pill.wy-b{background:var(--soft);color:var(--accent)}#why .wy-pill.wy-r{background:var(--redbg);color:var(--red)}#why .wy-pill.wy-y{background:var(--goldbg);color:#674100}
+#why .wy-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:wypulse 1.4s infinite}
+@keyframes wypulse{50%{opacity:.3}}
+#why /* 1 permissions */
+.wy-perm{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#why .wy-perm>div{padding:8px 6px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+#why .wy-perm>div.wy-u{justify-content:flex-start;gap:8px;font-weight:600}
+#why .wy-perm>div.wy-h{background:#F7F8FA;font-weight:600;color:var(--ink3);font-size:11px}
+#why .wy-av{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700}
+#why .wy-tg2{width:26px;height:15px;border-radius:9px;background:var(--line2);position:relative;transition:background .3s}
+#why .wy-tg2::after{content:"";position:absolute;top:2px;right:2px;width:11px;height:11px;border-radius:50%;background:#fff;transition:transform .3s}
+#why .wy-on .wy-tg2.wy-y{animation:wytgOn .01s forwards;animation-delay:var(--d)}
+#why .wy-on .wy-tg2.wy-y::after{animation:wytgKnob .3s forwards;animation-delay:var(--d)}
+@keyframes wytgOn{to{background:var(--accent)}}
+@keyframes wytgKnob{to{transform:translateX(-11px)}}
+#why /* 2 screens */
+.wy-scr{display:grid;grid-template-columns:1fr 1.2fr;gap:12px}
+#why .wy-fl{display:grid;gap:6px}
+#why .wy-fl div{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;font-weight:500}
+#why .wy-fl div i{width:14px;height:10px;border-radius:2px;background:var(--line2)}
+#why .wy-fl div .wy-eye{font-style:normal;font-size:10px;color:var(--ink3)}
+#why .wy-on .wy-fl .wy-off{animation:wyfOff .4s forwards;animation-delay:var(--d)}
+@keyframes wyfOff{to{opacity:.4;text-decoration:line-through;background:#F7F8FA}}
+#why .wy-on .wy-fl .wy-mv{animation:wyfMv 1s forwards;animation-delay:var(--d)}
+@keyframes wyfMv{40%{transform:translateY(-6px) scale(1.03);box-shadow:0 10px 20px -10px rgba(40,63,156,.5);border-color:var(--accent)}100%{transform:translateY(-37px);border-color:var(--accent)}}
+#why .wy-on .wy-fl .wy-mv2{animation:wyfMv2 1s forwards;animation-delay:var(--d)}
+@keyframes wyfMv2{100%{transform:translateY(37px)}}
+#why .wy-pv{border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:7px;align-content:start;background:#FAFBFC}
+#why .wy-pv b{font-size:11px;color:var(--ink3);font-weight:600}
+#why .wy-pv span{height:24px;border-radius:6px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;padding:0 8px;color:var(--ink3);font-size:10.5px}
+#why .wy-on .wy-pv .wy-gone{animation:wygone .4s forwards;animation-delay:var(--d)}
+@keyframes wygone{to{opacity:0;height:0;padding:0;border-width:0;margin-top:-7px}}
+#why /* 3 stock */
+.wy-stk{display:grid;gap:10px}
+#why .wy-stk .wy-r{display:grid;grid-template-columns:110px 1fr 54px;gap:10px;align-items:center}
+#why .wy-stk .wy-tr{height:10px;border-radius:6px;background:#EEF0F2;overflow:hidden}
+#why .wy-stk .wy-tr i{display:block;height:100%;border-radius:6px;background:var(--accent);width:var(--w0);transition:width 1s}
+#why .wy-on .wy-stk .wy-tr i{animation:wystk 6s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes wystk{0%,100%{width:var(--w0)}40%{width:var(--w1)}70%{width:var(--w2)}}
+#why .wy-stk .wy-r.wy-low .wy-tr i{background:#C2410C}
+#why .wy-stk .wy-r b{font-family:'IBM Plex Mono',monospace;font-weight:500;text-align:left;direction:ltr}
+#why .wy-mv-feed{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+#why /* 4 sales */
+.wy-sl{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+#why .wy-kp{border-radius:12px;background:var(--navy);color:#fff;padding:14px;display:grid;align-content:space-between}
+#why .wy-kp small{color:#C3CAEE}
+#why .wy-kp b{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:22px;direction:ltr;text-align:right}
+#why .wy-kp .wy-sp{display:flex;align-items:flex-end;gap:4px;height:44px}
+#why .wy-kp .wy-sp i{flex:1;background:#5F73CF;border-radius:3px 3px 0 0;height:var(--h)}
+#why .wy-on .wy-kp .wy-sp i{animation:wygrow .8s backwards;animation-delay:var(--d)}
+@keyframes wygrow{from{height:0}}
+#why .wy-feed{display:grid;gap:6px;align-content:start}
+#why .wy-feed div{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:7px 9px;border:1px solid var(--line);border-radius:8px}
+#why .wy-feed .mono{color:var(--accent);font-size:10.5px}
+#why .wy-feed b{font-family:'IBM Plex Mono',monospace;font-weight:500;direction:ltr}
+#why .wy-on .wy-feed div{animation:wyslideIn .5s backwards;animation-delay:var(--d)}
+#why .wy-feed div:first-child{background:var(--soft);border-color:var(--soft2)}
+@keyframes wyslideIn{from{opacity:0;transform:translateY(-14px)}}
+#why /* 5 accounting */
+.wy-acc{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;align-items:start}
+#why .wy-doc{border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:6px}
+#why .wy-doc .wy-ln{height:8px;border-radius:4px;background:#EEF0F2}
+#why .wy-doc .wy-ln.wy-s{width:60%}
+#why .wy-apv{margin-top:6px;display:flex;align-items:center;justify-content:center;gap:6px;height:30px;border-radius:8px;background:var(--accent);color:#fff;font-weight:600;font-size:11.5px}
+#why .wy-on .wy-apv{animation:wypress 3s .4s both}
+@keyframes wypress{0%,30%{background:var(--accent)}35%{transform:scale(.94)}40%,100%{transform:none;background:#007742}}
+#why .wy-apv .wy-t2{display:none}
+#why .wy-je{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#why .wy-je .wy-h,#why .wy-je .wy-rw{display:grid;grid-template-columns:1.6fr 1fr 1fr;padding:7px 9px;gap:6px}
+#why .wy-je .wy-h{background:#F7F8FA;color:var(--ink3);font-weight:600;font-size:11px}
+#why .wy-je .wy-rw{border-top:1px solid var(--line)}
+#why .wy-je .wy-rw b{font-family:'IBM Plex Mono',monospace;font-weight:500;direction:ltr;text-align:right}
+#why .wy-on .wy-je .wy-rw{animation:wyslideIn .5s backwards;animation-delay:var(--d)}
+#why .wy-je .wy-tot{display:flex;justify-content:space-between;padding:7px 9px;border-top:1px solid var(--line);background:var(--greenbg);color:var(--green);font-weight:600}
+#why .wy-on .wy-je .wy-tot{animation:wyfade .5s backwards;animation-delay:2.6s}
+@keyframes wyfade{from{opacity:0}}
+#why /* 6 variance */
+.wy-var{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;align-items:stretch}
+#why .wy-cmp{display:grid;gap:10px}
+#why .wy-cmp .wy-r{display:grid;grid-template-columns:90px 1fr 40px 40px 52px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+#why .wy-cmp .wy-r b{font-family:'IBM Plex Mono',monospace;font-weight:500;text-align:center}
+#why .wy-cmp .wy-h{font-size:10.5px;color:var(--ink3);font-weight:600}
+#why .wy-cmp .wy-df{text-align:center}
+#why .wy-on .wy-cmp .wy-df{animation:wyfade .4s backwards;animation-delay:var(--d)}
+#why .wy-fix{border-radius:12px;background:#F7F8FA;border:1px solid var(--line);padding:12px;display:grid;gap:8px;align-content:center;justify-items:center;text-align:center}
+#why .wy-fix .wy-big{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:500;color:var(--red)}
+#why .wy-on .wy-fix .wy-big{animation:wytoZero 3.4s 1.4s forwards}
+@keyframes wytoZero{60%{color:var(--red)}100%{color:var(--green)}}
+#why .wy-on .wy-fix .wy-st{animation:wyfade .5s 3.2s backwards}
+
+
+/* ===== OPTION 2: stacking cards ===== */
+.wy-o2{display:grid;gap:0}
+#why .wy-o2 .wy-card{position:sticky;top:calc(12vh + var(--i) * 14px);display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:center;background:var(--surface);border-radius:22px;padding:clamp(20px,3vw,34px);box-shadow:0 0 0 1px var(--line),0 -14px 40px -30px rgba(19,32,90,.45);margin-bottom:40vh;transform-origin:top center}
+#why .wy-o2 .wy-card:last-child{margin-bottom:0}
+#why .wy-o2 .wy-card .wy-tx{display:grid;gap:10px}
+#why .wy-o2 .wy-card .wy-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent)}
+#why .wy-o2 .wy-card h3{margin:0;font-size:clamp(1.25rem,2.2vw,1.6rem)}
+#why .wy-o2 .wy-card p{margin:0;color:var(--ink2)}
+#why .wy-o2 .wy-card .wy-num{font-family:'IBM Plex Mono',monospace;color:var(--ink3);font-size:13px}
+#why .wy-o2 .wy-card .wy-sc{box-shadow:0 0 0 1px var(--line);background:#FAFBFC}
+#why .wy-o2 .wy-card:nth-child(even){background:var(--navy);color:#fff}
+#why .wy-o2 .wy-card:nth-child(even) p{color:#C3CAEE}#why .wy-o2 .wy-card:nth-child(even) .wy-num{color:#8C9AE0}
+#why .wy-o2 .wy-card:nth-child(even) .wy-ic{background:rgba(255,255,255,.1);color:#fff}
+#why .wy-o2 .wy-card:nth-child(even) .wy-sc{box-shadow:none;color:var(--ink)}
+
+@media (max-width:860px){.wy-o2 .wy-card{grid-template-columns:1fr;top:calc(70px + var(--i)*10px)}}
+@media (max-width:860px){
+  #why .wy-o2>.wy-card{grid-template-columns:1fr;gap:18px;top:calc(16px + var(--i) * 10px);margin-bottom:28vh;min-height:min(640px,calc(100svh - 90px));align-content:start}
+  #why .wy-sc .wy-sl,#why .wy-sc .wy-acc,#why .wy-sc .wy-var{grid-template-columns:1fr}
+  #why .wy-card .wy-sc{min-height:0;font-size:12px}
+  #why .wy-sc .wy-stk .wy-r{grid-template-columns:90px 1fr 46px}
+  #why .wy-sc .wy-cmp .wy-r{grid-template-columns:80px 0 36px 36px 46px}
+  #why .wy-perm>div.wy-u small{display:none}
+  #why .wy-sc .wy-scr{grid-template-columns:1fr 1fr;gap:8px}#why .wy-sc .wy-fl div{padding:6px 7px;font-size:11px}
+}
 </style>
 </head>
 <body>
@@ -1119,64 +1261,20 @@ html{scroll-padding-top:16px}
 <!-- WHY -->
 <section id="why">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">لماذا برايمكس</span>
-      <h2>أدوات واضحة لفرق تعمل كل يوم</h2>
+    <div class="sec-head sh sh-c">
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>لماذا برايمكس</span>
+      <h2 class="ab-title"><span class="ab-name">تحكّم كامل</span><span class="ab-tag">ورؤية لحظية لكل حركة في أعمالك</span></h2>
     </div>
-    <div class="ba">
-        <article class="wcard w2">
-          <div class="wvig"><div class="v-flow">
-            <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true"><path class="wire" d="M92 70 C 190 70, 210 26, 300 26"/><path class="wire" d="M92 70 L 300 70"/><path class="wire" d="M92 70 C 190 70, 210 114, 300 114"/></svg>
-            <span class="src">فاتورة بيع<small>INV-0318</small></span>
-            <span class="dst d1"><i></i>المخزون</span><span class="dst d2"><i></i>المبيعات</span><span class="dst d3"><i></i>الحسابات</span>
-          </div></div>
-          <h4>إدخال واحد، بلا تكرار</h4>
-          <p>العملية تُسجَّل مرة واحدة وتنعكس على المخزون والمبيعات والحسابات في نفس اللحظة.</p>
-        </article>
-        <article class="wcard">
-          <div class="wvig"><div class="v-dash" style="position:relative"><span class="on"></span><span></span><span class="on"></span><span class="pick"></span><span class="on"></span><span></span>
-            <svg class="cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 8-6 1.5L10 19z" fill="var(--ink)" stroke="var(--surface)" stroke-width="1.5"/></svg></div></div>
-          <h4>شاشة رئيسية على مقاسك</h4>
-          <p>كل مستخدم يختار الملخصات والاختصارات اللي تهمه.</p>
-        </article>
-        <article class="wcard">
-          <div class="wvig"><div class="v-rep"><div class="chips"><b>هذا الشهر</b><b>الفرع</b><b>العملة</b></div>
-            <div class="bars"><i style="--h:40%;--k:0"></i><i style="--h:65%;--k:1"></i><i style="--h:50%;--k:2"></i><i style="--h:90%;--k:3"></i><i style="--h:70%;--k:4"></i></div></div></div>
-          <h4>تقارير تجيب على سؤالك</h4>
-          <p>فلترة على أي حقل، بأي عملة أو وحدة قياس.</p>
-        </article>
-        <article class="wcard">
-          <div class="wvig"><div class="v-ar"><b>ع</b><div class="lines"><i style="--w:90px;--k:0"></i><i style="--w:66px;--k:1"></i><i style="--w:80px;--k:2"></i></div></div></div>
-          <h4>عربي أولًا</h4>
-          <p>واجهات ومستندات مصممة بالعربية من البداية.</p>
-        </article>
-        <article class="wcard">
-          <div class="wvig"><div class="v-grow">
-            <span><i></i><small>اليوم</small></span>
-            <span><i></i><i></i><small>بعد سنة</small></span>
-            <span><i></i><i></i><i></i><i></i><i></i><small>لاحقًا</small></span>
-          </div></div>
-          <h4>يكبر مع نشاطك</h4>
-          <p>ابدأ بنظام واحد، وأضف الأنظمة والفروع لاحقًا.</p>
-        </article>
-        <article class="wcard w2">
-          <div class="wvig"><div class="v-kpi">
-            <div class="ring"><svg viewBox="0 0 88 88" aria-hidden="true"><circle class="tr" cx="44" cy="44" r="36"/><circle class="vl" cx="44" cy="44" r="36"/></svg><b dir="ltr">72%</b></div>
-            <div class="kp"><span>هامش الربح الإجمالي</span><b dir="ltr">+12.5%</b><span>تحقيق الهدف البيعي</span></div>
-          </div></div>
-          <h4>قرارات مبنية على الأرقام</h4>
-          <p>نسب مالية ومؤشرات أداء مالية وتشغيلية وتسويقية جاهزة من أول يوم.</p>
-        </article>
-      </div>
+    <div class="wy-o2" id="wyCards"></div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section id="process">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">آلية العمل</span>
-      <h2>من أول اجتماع حتى التشغيل الكامل</h2>
+    <div class="sec-head sh">
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>آلية العمل</span>
+      <h2 class="ab-title"><span class="ab-name">خطوة بخطوة</span><span class="ab-tag">من أول اجتماع حتى التشغيل الكامل</span></h2>
       <p>نرافقك في كل مرحلة حتى يعمل فريقك على النظام بثقة.</p>
     </div>
     <ol class="proc" style="list-style:none;margin:0;padding:0">
@@ -1192,9 +1290,9 @@ html{scroll-padding-top:16px}
 <!-- MODULES -->
 <section id="modules" class="products">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">منتجاتنا</span>
-      <h2>منظومة واحدة تغطي كل احتياجات عملك</h2>
+    <div class="sec-head sh">
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>منتجاتنا</span>
+      <h2 class="ab-title"><span class="ab-name">منظومة واحدة</span><span class="ab-tag">تغطي كل احتياجات عملك</span></h2>
       <p>كل موديول يعمل بذاته، وكلها تتكامل فيما بينها. يبدأ كل موديول بشاشة رئيسية تعرض ملخص عملك، ويختار كل مستخدم ما يظهر فيها.</p>
     </div>
 
@@ -1321,9 +1419,9 @@ html{scroll-padding-top:16px}
 <!-- CONNECTED -->
 <section class="chain">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">نظام واحد مترابط</span>
-      <h2>كل مستند يقود إلى الخطوة التالية تلقائيًا</h2>
+    <div class="sec-head sh">
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>الدورة المستندية</span>
+      <h2 class="ab-title"><span class="ab-name">مترابط بالكامل</span><span class="ab-tag">كل مستند يقود إلى الخطوة التالية تلقائيًا</span></h2>
       <p>لا حاجة لإعادة إدخال البيانات بين الأقسام. ينتقل المستند من مرحلة إلى أخرى بحالته ومرجعه، وينتهي دائمًا بقيد محاسبي صحيح.</p>
     </div>
     <div class="flows">
@@ -1342,9 +1440,9 @@ html{scroll-padding-top:16px}
 <!-- INDUSTRIES -->
 <section id="industries">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">القطاعات</span>
-      <h2>مصمم لطريقة عمل نشاطك</h2>
+    <div class="sec-head sh">
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>القطاعات</span>
+      <h2 class="ab-title"><span class="ab-name">لكل نشاط</span><span class="ab-tag">نظام مصمم لطريقة عمل نشاطك</span></h2>
     </div>
     <div class="ill">
         <article class="ic3">
@@ -1732,6 +1830,39 @@ html{scroll-padding-top:16px}
     mark(0);
   }
 })();
+
+(function(){var F=[
+ {t:'صلاحيات دقيقة لكل مستخدم',d:'حدّد لكل مستخدم ما يمكنه عرضه أو إضافته أو تعديله أو اعتماده، على مستوى كل شاشة.',ic:'<path d="M12 2l7 3v6c0 5-3 8.5-7 10-4-1.5-7-5-7-10V5l7-3z"/><path d="M9 12l2 2 4-4"/>'},
+ {t:'إدارة مرنة للشاشات',d:'خصّص الشاشات وحقولها وترتيبها لتناسب طبيعة عمل كل قسم، دون تعقيد.',ic:'<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 9v9"/>'},
+ {t:'أرصدة مخزون لحظية',d:'تابع رصيد كل صنف في كل مخزن وفرع لحظة بلحظة، مع تنبيه عند انخفاضه.',ic:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>'},
+ {t:'متابعة المبيعات أولًا بأول',d:'كل فاتورة تظهر فور إصدارها، حسب الفرع والكاشير والفترة.',ic:'<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>'},
+ {t:'أثر محاسبي فوري',d:'بمجرد اعتماد المستند تُنشأ القيود تلقائيًا وتتحدّث أرصدة الحسابات.',ic:'<path d="M6 3h9l4 4v14H6z"/><path d="M9 13l2 2 4-4"/>'},
+ {t:'ضبط العجز والزيادة',d:'قارن الرصيد الفعلي بالدفتري، واكتشف الفروقات، وعالجها بقيود تسوية مباشرة.',ic:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>'}
+];
+function icon(i){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+F[i].ic+'</svg>'}
+function T(v,d){return '<i class="wy-tg2 '+(v?'wy-y':'')+'" style="--d:'+d+'s"></i>'}
+function scene(i){
+ if(i==0){var U=[['أحمد','مدير',  '#283F9C',[1,1,1,1]],['سارة','محاسب','#2C7D3D',[1,1,0,1]],['خالد','كاشير','#DAAC21',[1,1,0,0]],['منى','أمين مخزن','#5365B0',[1,0,0,0]]],h='';
+  U.forEach(function(u,r){h+='<div class="wy-u"><span class="wy-av" style="background:'+u[2]+'">'+u[0][0]+'</span>'+u[0]+' <small style="color:#6B6F72;font-weight:500">· '+u[1]+'</small></div>';u[3].forEach(function(v,c){h+='<div>'+T(v,.3+r*.35+c*.12)+'</div>'})});
+  return '<div class="wy-sc"><div class="wy-bar">صلاحيات شاشة: فواتير البيع<small>4 مستخدمين</small></div><div class="wy-perm"><div class="wy-h wy-u">المستخدم</div><div class="wy-h">عرض</div><div class="wy-h">إضافة</div><div class="wy-h">حذف</div><div class="wy-h">اعتماد</div>'+h+'</div></div>'}
+ if(i==1)return '<div class="wy-sc"><div class="wy-bar">تخصيص شاشة: فاتورة بيع<small>اسحب للترتيب</small></div><div class="wy-scr"><div class="wy-fl"><div><i></i>العميل<span class="wy-eye">ظاهر</span></div><div class="wy-mv2" style="--d:.6s"><i></i>الفرع<span class="wy-eye">ظاهر</span></div><div class="wy-mv" style="--d:.6s"><i></i>طريقة الدفع<span class="wy-eye">ظاهر</span></div><div class="wy-off" style="--d:1.8s"><i></i>مندوب المبيعات<span class="wy-eye">مخفي</span></div><div><i></i>ملاحظات<span class="wy-eye">ظاهر</span></div></div><div class="wy-pv"><b>معاينة الشاشة</b><span>العميل</span><span>طريقة الدفع</span><span>الفرع</span><span class="wy-gone" style="--d:1.8s">مندوب المبيعات</span><span>ملاحظات</span></div></div></div>';
+ if(i==2){var R=[['مخزن الرياض','72%','64%','80%','1,240'],['مخزن جدة','55%','61%','49%','860'],['مخزن الدمام','38%','30%','42%','512'],['فرع الخبر','14%','9%','12%','96','low']],h='';
+  R.forEach(function(r,k){h+='<div class="wy-r '+(r[5]?'wy-'+r[5]:'')+'"><span>'+r[0]+'</span><span class="wy-tr"><i style="--w0:'+r[1]+';--w1:'+r[2]+';--w2:'+r[3]+';--d:'+(k*.3)+'s"></i></span><b>'+r[4]+'</b></div>'});
+  return '<div class="wy-sc"><div class="wy-bar">رصيد صنف: أرز بسمتي 5 كجم<span class="wy-pill wy-g"><i class="wy-dot"></i>مباشر</span></div><div class="wy-stk">'+h+'</div><div class="wy-mv-feed"><span class="wy-pill wy-g">+120 وارد · الرياض</span><span class="wy-pill wy-r">−40 صادر · جدة</span><span class="wy-pill wy-y">تنبيه: رصيد منخفض · الخبر</span></div></div>'}
+ if(i==3){var H=[30,45,38,60,52,74,88],sp='';H.forEach(function(v,k){sp+='<i style="--h:'+v+'%;--d:'+(k*.08)+'s"></i>'});
+  var I=[['0318','مؤسسة النور','54.05'],['0317','شركة الريان','12,480.00'],['0316','مطعم بيت الشاي','1,236.50'],['0315','سوبرماركت الواحة','8,940.75']],f='';
+  I.forEach(function(r,k){f+='<div style="--d:'+(.2+k*.25)+'s"><span class="mono">INV-'+r[0]+'</span><span>'+r[1]+'</span><b>'+r[2]+'</b></div>'});
+  return '<div class="wy-sc"><div class="wy-bar">مبيعات اليوم<span class="wy-pill wy-g"><i class="wy-dot"></i>تحديث لحظي</span></div><div class="wy-sl"><div class="wy-kp"><small>إجمالي اليوم (ر.س)</small><b>48,215.30</b><div class="wy-sp">'+sp+'</div></div><div class="wy-feed">'+f+'</div></div></div>'}
+ if(i==4)return '<div class="wy-sc"><div class="wy-bar">اعتماد مستند<small>فاتورة شراء PUR-0142</small></div><div class="wy-acc"><div class="wy-doc"><div class="wy-ln"></div><div class="wy-ln wy-s"></div><div class="wy-ln"></div><div class="wy-ln wy-s"></div><div class="wy-apv">اعتماد المستند ✓</div></div><div class="wy-je"><div class="wy-h"><span>الحساب</span><span>مدين</span><span>دائن</span></div><div class="wy-rw" style="--d:1.6s"><span>المخزون</span><b>10,000</b><b>—</b></div><div class="wy-rw" style="--d:1.85s"><span>ضريبة القيمة المضافة</span><b>1,500</b><b>—</b></div><div class="wy-rw" style="--d:2.1s"><span>المورّد: شركة الأفق</span><b>—</b><b>11,500</b></div><div class="wy-tot"><span>قيد متوازن · مُرحّل</span><span class="mono">JE-2291</span></div></div></div></div>';
+ if(i==5)return '<div class="wy-sc"><div class="wy-bar">جرد مخزن الرياض<small>3 أصناف بفروقات</small></div><div class="wy-var"><div class="wy-cmp"><div class="wy-r wy-h"><span>الصنف</span><span></span><span style="text-align:center">دفتري</span><span style="text-align:center">فعلي</span><span style="text-align:center">الفرق</span></div><div class="wy-r"><span>سكر 10 كجم</span><span></span><b>240</b><b>236</b><span class="wy-df" style="--d:.5s"><span class="wy-pill wy-r">−4</span></span></div><div class="wy-r"><span>زيت 1.8 لتر</span><span></span><b>118</b><b>121</b><span class="wy-df" style="--d:.8s"><span class="wy-pill wy-g">+3</span></span></div><div class="wy-r"><span>شاي 450 جم</span><span></span><b>75</b><b>73</b><span class="wy-df" style="--d:1.1s"><span class="wy-pill wy-r">−2</span></span></div></div><div class="wy-fix"><small style="color:#6B6F72">صافي الفرق</small><span class="wy-big">−3</span><span class="wy-st wy-pill wy-g">تمت التسوية بقيد JE-2292</span></div></div></div>';
+}
+function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classList.add('wy-on')}
+
+(function(){var o=document.getElementById('wyCards');if(!o)return;
+ F.forEach(function(f,i){o.insertAdjacentHTML('beforeend','<article class="wy-card" style="--i:'+i+'"><div class="wy-tx"><span class="wy-ic">'+icon(i)+'</span><span class="wy-num">0'+(i+1)+' / 06</span><h3>'+f.t+'</h3><p>'+f.d+'</p></div>'+scene(i)+'</article>')});
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)replay(e.target.querySelector('.wy-sc'))})},{threshold:.55});
+ [].forEach.call(o.children,function(c){io.observe(c)});
+})();})();
 </script>
 
 </body>
