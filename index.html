@@ -1278,6 +1278,47 @@ html{scroll-padding-top:16px}
 @media (max-width:900px){#process .pr-grid{grid-template-columns:1fr}}
 @media (max-width:520px){#process .pr-list li{grid-template-columns:24px 1fr;padding:10px}#process .pr-st{width:24px;height:24px}#process .pr-list em{grid-column:2;justify-self:start;margin-top:-4px}#process .pr-tb span{display:none}}
 @media (prefers-reduced-motion:reduce){#process .pr-list li.pr-run .pr-st{animation:none}}
+
+/* ===== products: focus mode — hub spins, shrinks to the top, module runs below ===== */
+.hub-rot{position:absolute;inset:0;--rot:0deg;transform:rotate(var(--rot));transition:transform .95s cubic-bezier(.65,.05,.2,1)}
+.hub .hub-rot .pitem{transform:translate(-50%,-50%) rotate(calc(-1 * var(--rot)));transition:transform .95s cubic-bezier(.65,.05,.2,1)}
+.hub{transform-origin:center top}
+.hub .hub-rot .core{transform:translate(-50%,-50%) rotate(calc(-1 * var(--rot)));transition:transform .95s cubic-bezier(.65,.05,.2,1)}
+.pback{display:none;align-items:center;gap:8px;justify-self:start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#DAE4FF;font:inherit;font-size:.88rem;font-weight:600;padding:8px 14px 8px 16px;border-radius:999px;cursor:pointer;line-height:1.3;transition:background .2s}
+.pback:hover{background:rgba(255,255,255,.16)}
+.pshow.pfocus{grid-template-columns:minmax(0,1fr)!important;align-items:start}
+.pshow.pfocus .pback{display:inline-flex;grid-row:1}
+.pshow.pfocus .hub{position:relative;top:0;max-width:clamp(220px,24vw,300px);margin-top:-46px;grid-row:2}
+.pshow.pfocus .hub .pitem .mi-icon{width:48px;height:48px;border-radius:14px}
+.pshow.pfocus .hub .pitem .mi-icon svg{width:20px;height:20px}
+.pshow.pfocus .hub .pitem b{font-size:.76rem}
+.pshow.pfocus .core::before{inset:-10px}
+.pshow.pfocus .ppanels{grid-row:3;width:100%;position:relative}
+.pshow.pfocus .ppanels::before{content:"";position:absolute;top:-34px;left:50%;width:2px;height:34px;background:linear-gradient(#99B5FF,transparent);transform:translateX(-50%)}
+.products .pshow.pfocus .module{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(22px,3.5vw,44px);animation:pfocusIn .7s cubic-bezier(.2,.8,.2,1) both}
+.products .pshow.pfocus .module .phl{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}
+.products .pshow.pfocus .module .sc{min-height:300px}
+.products .pshow.pfocus .mod-side{grid-template-columns:minmax(0,1fr)}
+.products .pshow.pfocus .mod-side .links{grid-column:1;grid-row:auto;max-width:none;justify-content:flex-start;margin-top:6px}
+.products .pshow.pfocus .mod-side h3{font-size:clamp(1.6rem,2.6vw,2.2rem)}
+@keyframes pfocusIn{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+.pmore{display:none}
+.products .pshow.pfocus .pmore{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;animation:pfocusIn .7s .15s cubic-bezier(.2,.8,.2,1) both}
+.pm-card{display:grid;gap:9px;align-content:start;padding:16px;border-radius:14px;background:rgba(255,255,255,.05);border:1px dashed rgba(153,181,255,.35)}
+.pm-card b{font-size:.95rem;color:#fff}
+.pm-card i{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.12)}
+.pm-card i.s{width:60%}
+.pm-note{grid-column:1/-1;margin:0;font-size:.8rem;color:#99B5FF;text-align:center}
+.pgo-more{display:inline-flex;align-items:center;gap:6px;justify-self:start;margin-top:4px;background:#FFFFFF;color:#283F9C;border:0;font:inherit;font-size:.86rem;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer;line-height:1.3;box-shadow:0 10px 20px -12px rgba(0,0,0,.6);transition:transform .2s}
+.pgo-more:hover{transform:translateY(-2px)}
+.pshow.pfocus .pgo-more{display:none}
+.pshow.pfocus .pitem .pbar{display:none!important}
+@media (max-width:1000px){
+  .pshow.pfocus .hub{max-width:210px;margin-top:0}
+  .products .pshow.pfocus .module{grid-template-columns:1fr}
+  .products .pshow.pfocus .module .phl,.products .pshow.pfocus .pmore{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.hub-rot,.hub .hub-rot .pitem{transition:none}}
 </style>
 </head>
 <body>
@@ -1413,6 +1454,163 @@ html{scroll-padding-top:16px}
 </section>
 
 <!-- PROCESS -->
+<section id="modules" class="products">
+  <div class="wrap">
+    <div class="sec-head sh">
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>منتجاتنا</span>
+      <h2 class="ab-title"><span class="ab-name">منظومة واحدة</span><span class="ab-tag">تغطي كل احتياجات عملك</span></h2>
+      <p>كل موديول يعمل بذاته، وكلها تتكامل فيما بينها. يبدأ كل موديول بشاشة رئيسية تعرض ملخص عملك، ويختار كل مستخدم ما يظهر فيها.</p>
+    </div>
+
+    <div class="pshow">
+      <button class="pback" type="button" aria-label="العودة لكل الموديولات"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>كل الموديولات</button>
+      <div class="hub">
+        <div class="hub-rot" id="hubRot"><svg class="hlines" viewBox="0 0 100 100" aria-hidden="true"><circle class="orbit" cx="50" cy="50" r="37"/><circle class="orbit o2" cx="50" cy="50" r="24"/><path class="ln" d="M50 50 L50 13"/><path class="ln" d="M50 50 L87 50"/><path class="ln" d="M50 50 L50 87"/><path class="ln" d="M50 50 L13 50"/></svg>
+        <div class="core"><svg viewBox="0 0 48 60" aria-label="Primex"><use href="#primex-mark"/></svg></div>
+        <div class="plist" role="tablist" aria-label="منتجاتنا">
+        <button class="pitem" type="button" style="left:50%;top:13%" role="tab" id="tab-accounting" aria-controls="accounting" aria-selected="true" data-i="0">
+          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 13h5M13 16.5h5"/></svg></span><b>الحسابات</b><span class="pd">صورة مالية دقيقة لكل شركة وفرع، لحظة بلحظة.</span><i class="pbar"></i>
+        </button>
+        <button class="pitem" type="button" style="left:87%;top:50%" role="tab" id="tab-sales" aria-controls="sales" aria-selected="false" data-i="1">
+          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></span><b>المبيعات</b><span class="pd">من عرض السعر إلى التحصيل، في مسار واحد واضح.</span><i class="pbar"></i>
+        </button>
+        <button class="pitem" type="button" style="left:50%;top:87%" role="tab" id="tab-pos" aria-controls="pos" aria-selected="false" data-i="2">
+          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><b>نقاط البيع</b><span class="pd">كاشير سريع للمتاجر والمطاعم، متصل بالمخزون والحسابات.</span><i class="pbar"></i>
+        </button>
+        <button class="pitem" type="button" style="left:13%;top:50%" role="tab" id="tab-inventory" aria-controls="inventory" aria-selected="false" data-i="3">
+          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z M3 7.5l9 4.5 9-4.5M12 12v9"/></svg></span><b>المخازن والأصناف</b><span class="pd">اعرف ما لديك، وأين هو، ومتى ينتهي.</span><i class="pbar"></i>
+        </button>
+      </div></div>
+      </div>
+      <div class="ppanels" id="ppanels">
+    <!-- Accounting -->
+    <article class="module ppanel" role="tabpanel"  id="accounting">
+      <div class="mod-side">
+        <span class="mod-num">01 / 04</span>
+        <h3>موديول الحسابات</h3>
+        <p class="pitch">صورة مالية دقيقة لكل شركة وفرع، لحظة بلحظة.</p>
+        <p>يدير الأنشطة المالية للشركة بشكل متكامل: يتتبع المعاملات، ويعدّ التقارير، ويحلل البيانات المالية لتتخذ قراراتك على أرقام دقيقة.</p>
+        <button class="pgo-more" type="button">تعرّف على الموديول<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="links"><small>يستقبل القيود من:</small><span>المبيعات</span><span>نقاط البيع</span><span>المخازن</span></div>
+      </div>
+      <div class="sc sc-acc">
+          <div class="je">
+            <div class="je-h"><b>قيد يومية</b><span class="mono">JV-1042</span></div>
+            <div class="je-r h"><span>الحساب</span><span style="text-align:end">مدين</span><span style="text-align:end">دائن</span></div>
+            <div class="je-r" style="--k:0"><span>الصندوق</span><span class="mono">54.05</span><span class="mono">—</span></div>
+            <div class="je-r" style="--k:1"><span>إيرادات المبيعات</span><span class="mono">—</span><span class="mono">47.00</span></div>
+            <div class="je-r" style="--k:2"><span>ضريبة المخرجات</span><span class="mono">—</span><span class="mono">7.05</span></div>
+            <div class="je-f"><span class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg>متوازن</span><span class="mono">54.05 = 54.05</span></div>
+          </div>
+          <div class="mini">
+            <span class="mini-t">الإيرادات الشهرية</span>
+            <div class="mbars"><i style="--h:38%;--k:0"></i><i style="--h:52%;--k:1"></i><i style="--h:46%;--k:2"></i><i style="--h:70%;--k:3"></i><i style="--h:64%;--k:4"></i><i style="--h:88%;--k:5"></i></div>
+          </div>
+        </div>
+      <ul class="phl"><li>دليل الحسابات ومراكز التكلفة</li><li>القيود والسندات</li><li>التسويات البنكية والنقدية</li><li>القوائم المالية الكاملة</li><li>الإقرار الضريبي</li><li>النسب المالية ومؤشرات الأداء</li></ul>
+      <div class="pmore" aria-label="تفاصيل الموديول">
+        <div class="pm-card"><b>أهم الشاشات</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>التقارير</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>لمن هذا الموديول؟</b><i></i><i></i><i class="s"></i></div>
+        <p class="pm-note">المحتوى التفصيلي لهذا الموديول قيد الإضافة.</p>
+      </div>
+    </article>
+    <!-- Sales -->
+    <article class="module ppanel" role="tabpanel" hidden  id="sales">
+      <div class="mod-side">
+        <span class="mod-num">02 / 04</span>
+        <h3>موديول المبيعات</h3>
+        <p class="pitch">من عرض السعر إلى التحصيل، في مسار واحد واضح.</p>
+        <p>يعرض لك قيمة المبيعات والعروض والأوامر لأي فترة تختارها، وحالة كل عملية: قيد الانتظار، ملغاة، أو متأخرة.</p>
+        <button class="pgo-more" type="button">تعرّف على الموديول<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="links"><small>يتكامل مع:</small><span>نقاط البيع</span><span>المخازن</span><span>الحسابات</span></div>
+      </div>
+      <div class="sc sc-sls">
+          <div class="pipe">
+            <div class="pline"><i></i></div>
+            <span class="st" style="--k:0"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>عرض سعر</span>
+            <span class="st" style="--k:1"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>أمر بيع</span>
+            <span class="st" style="--k:2"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>أمر تسليم</span>
+            <span class="st" style="--k:3"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>فاتورة</span>
+            <span class="st" style="--k:4"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>تحصيل</span>
+          </div>
+          <div class="deal">
+            <div><span class="mono">SO-2291</span><b>طلبية عميل جملة</b></div>
+            <div class="amt"><span class="mono">12,500.00</span><em class="pill">تم التحصيل</em></div>
+          </div>
+        </div>
+      <ul class="phl"><li>عروض الأسعار وأوامر البيع</li><li>الفواتير والمرتجعات</li><li>فرق المبيعات والعمولات</li><li>الجولات الميدانية</li><li>العروض والكوبونات والولاء</li><li>أعمار الذمم</li></ul>
+      <div class="pmore" aria-label="تفاصيل الموديول">
+        <div class="pm-card"><b>أهم الشاشات</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>التقارير</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>لمن هذا الموديول؟</b><i></i><i></i><i class="s"></i></div>
+        <p class="pm-note">المحتوى التفصيلي لهذا الموديول قيد الإضافة.</p>
+      </div>
+    </article>
+    <!-- POS -->
+    <article class="module ppanel" role="tabpanel" hidden  id="pos">
+      <div class="mod-side">
+        <span class="mod-num">03 / 04</span>
+        <h3>موديول نقاط البيع</h3>
+        <p class="pitch">كاشير سريع للمتاجر والمطاعم، متصل بالمخزون والحسابات.</p>
+        <p>ثلاث واجهات لثلاثة أدوار: الإدارة تضبط نقاط البيع وتتابع الجلسات، والكاشير يبيع بسرعة، والعميل يرى فاتورته أثناء إنشائها.</p>
+        <button class="pgo-more" type="button">تعرّف على الموديول<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="links"><small>يتكامل مع:</small><span>المبيعات</span><span>المخازن</span><span>الحسابات</span></div>
+      </div>
+      <div class="sc sc-pos">
+          <div class="keys">
+            <span style="--k:0">قهوة لاتيه</span><span style="--k:1">كرواسون</span><span style="--k:2">مياه معدنية</span>
+            <span style="--k:3">عصير برتقال</span><span style="--k:4">كعكة</span><span style="--k:5">شاي</span>
+          </div>
+          <div class="rcpt">
+            <div class="rl" style="--k:0"><span>قهوة لاتيه × 2</span><span class="mono">30.00</span></div>
+            <div class="rl" style="--k:1"><span>كرواسون × 1</span><span class="mono">12.00</span></div>
+            <div class="rl" style="--k:2"><span>مياه معدنية × 1</span><span class="mono">5.00</span></div>
+            <div class="rt"><span>الإجمالي</span><span class="mono">54.05</span></div>
+            <span class="pay">دفع</span>
+          </div>
+        </div>
+      <ul class="phl"><li>جلسات الكاشير وعدّ النقد</li><li>الطلبات والفواتير والمرتجعات</li><li>الحجوزات والعربون</li><li>إعدادات المطاعم والتحضير</li><li>أجهزة الدفع المتصلة</li><li>شاشة العميل</li></ul>
+      <div class="pmore" aria-label="تفاصيل الموديول">
+        <div class="pm-card"><b>أهم الشاشات</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>التقارير</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>لمن هذا الموديول؟</b><i></i><i></i><i class="s"></i></div>
+        <p class="pm-note">المحتوى التفصيلي لهذا الموديول قيد الإضافة.</p>
+      </div>
+    </article>
+    <!-- Inventory -->
+    <article class="module ppanel" role="tabpanel" hidden  id="inventory">
+      <div class="mod-side">
+        <span class="mod-num">04 / 04</span>
+        <h3>موديول المخازن والأصناف</h3>
+        <p class="pitch">اعرف ما لديك، وأين هو، ومتى ينتهي.</p>
+        <p>تقارير مرنة تفلتر على أي بيانات في كرت الصنف، لمستودع أو أكثر، وبأي عملة أو وحدة قياس.</p>
+        <button class="pgo-more" type="button">تعرّف على الموديول<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="links"><small>يتكامل مع:</small><span>المبيعات</span><span>نقاط البيع</span><span>الحسابات</span></div>
+      </div>
+      <div class="sc sc-inv">
+          <div class="whs">
+            <div class="wh"><span>المستودع الرئيسي</span><div class="lv"><i class="a" style="--w:78%"></i></div><span class="mono">78%</span></div>
+            <div class="wh low"><span>مستودع الفرع الأول</span><div class="lv"><i class="b" style="--w:24%"></i></div><span class="mono">24%</span></div>
+            <div class="wh"><span>مستودع الفرع الثاني</span><div class="lv"><i class="c" style="--w:61%"></i></div><span class="mono">61%</span></div>
+            <span class="xfer"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v12M4 10l4 4 4-4"/></svg>تحويل مخزني مقترح</span>
+          </div>
+          <div class="alert"><b>تنبيه صلاحية</b><span>3 أصناف تنتهي خلال 7 أيام</span></div>
+        </div>
+      <ul class="phl"><li>أرصدة عدة مستودعات</li><li>المقارنة وإعادة التزويد</li><li>التحويل المخزني والتجميع</li><li>الصلاحية وتواريخ الانتهاء</li><li>الراكد والأكثر حركة</li><li>أوامر الإصلاح الخارجي</li></ul>
+      <div class="pmore" aria-label="تفاصيل الموديول">
+        <div class="pm-card"><b>أهم الشاشات</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>التقارير</b><i></i><i></i><i class="s"></i></div>
+        <div class="pm-card"><b>لمن هذا الموديول؟</b><i></i><i></i><i class="s"></i></div>
+        <p class="pm-note">المحتوى التفصيلي لهذا الموديول قيد الإضافة.</p>
+      </div>
+    </article>
+      </div>
+    </div>
+    <p class="s-hint">اسحب يمينًا أو يسارًا للتنقل بين المنتجات</p>
+  </div>
+</section>
+
 <section id="process">
   <div class="wrap">
     <div class="pr-box">
@@ -1441,133 +1639,7 @@ html{scroll-padding-top:16px}
 </section>
 
 <!-- MODULES -->
-<section id="modules" class="products">
-  <div class="wrap">
-    <div class="sec-head sh">
-      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>منتجاتنا</span>
-      <h2 class="ab-title"><span class="ab-name">منظومة واحدة</span><span class="ab-tag">تغطي كل احتياجات عملك</span></h2>
-      <p>كل موديول يعمل بذاته، وكلها تتكامل فيما بينها. يبدأ كل موديول بشاشة رئيسية تعرض ملخص عملك، ويختار كل مستخدم ما يظهر فيها.</p>
-    </div>
 
-    <div class="pshow">
-      <div class="hub">
-        <svg class="hlines" viewBox="0 0 100 100" aria-hidden="true"><circle class="orbit" cx="50" cy="50" r="37"/><circle class="orbit o2" cx="50" cy="50" r="24"/><path class="ln" d="M50 50 L50 13"/><path class="ln" d="M50 50 L87 50"/><path class="ln" d="M50 50 L50 87"/><path class="ln" d="M50 50 L13 50"/></svg>
-        <div class="core"><svg viewBox="0 0 48 60" aria-label="Primex"><use href="#primex-mark"/></svg></div>
-        <div class="plist" role="tablist" aria-label="منتجاتنا">
-        <button class="pitem" type="button" style="left:50%;top:13%" role="tab" id="tab-accounting" aria-controls="accounting" aria-selected="true" data-i="0">
-          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 13h5M13 16.5h5"/></svg></span><b>الحسابات</b><span class="pd">صورة مالية دقيقة لكل شركة وفرع، لحظة بلحظة.</span><i class="pbar"></i>
-        </button>
-        <button class="pitem" type="button" style="left:87%;top:50%" role="tab" id="tab-sales" aria-controls="sales" aria-selected="false" data-i="1">
-          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></span><b>المبيعات</b><span class="pd">من عرض السعر إلى التحصيل، في مسار واحد واضح.</span><i class="pbar"></i>
-        </button>
-        <button class="pitem" type="button" style="left:50%;top:87%" role="tab" id="tab-pos" aria-controls="pos" aria-selected="false" data-i="2">
-          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><b>نقاط البيع</b><span class="pd">كاشير سريع للمتاجر والمطاعم، متصل بالمخزون والحسابات.</span><i class="pbar"></i>
-        </button>
-        <button class="pitem" type="button" style="left:13%;top:50%" role="tab" id="tab-inventory" aria-controls="inventory" aria-selected="false" data-i="3">
-          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z M3 7.5l9 4.5 9-4.5M12 12v9"/></svg></span><b>المخازن والأصناف</b><span class="pd">اعرف ما لديك، وأين هو، ومتى ينتهي.</span><i class="pbar"></i>
-        </button>
-      </div>
-      </div>
-      <div class="ppanels" id="ppanels">
-    <!-- Accounting -->
-    <article class="module ppanel" role="tabpanel"  id="accounting">
-      <div class="mod-side">
-        <span class="mod-num">01 / 04</span>
-        <h3>موديول الحسابات</h3>
-        <p class="pitch">صورة مالية دقيقة لكل شركة وفرع، لحظة بلحظة.</p>
-        <p>يدير الأنشطة المالية للشركة بشكل متكامل: يتتبع المعاملات، ويعدّ التقارير، ويحلل البيانات المالية لتتخذ قراراتك على أرقام دقيقة.</p>
-        <div class="links"><small>يستقبل القيود من:</small><span>المبيعات</span><span>نقاط البيع</span><span>المخازن</span></div>
-      </div>
-      <div class="sc sc-acc">
-          <div class="je">
-            <div class="je-h"><b>قيد يومية</b><span class="mono">JV-1042</span></div>
-            <div class="je-r h"><span>الحساب</span><span style="text-align:end">مدين</span><span style="text-align:end">دائن</span></div>
-            <div class="je-r" style="--k:0"><span>الصندوق</span><span class="mono">54.05</span><span class="mono">—</span></div>
-            <div class="je-r" style="--k:1"><span>إيرادات المبيعات</span><span class="mono">—</span><span class="mono">47.00</span></div>
-            <div class="je-r" style="--k:2"><span>ضريبة المخرجات</span><span class="mono">—</span><span class="mono">7.05</span></div>
-            <div class="je-f"><span class="ok"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg>متوازن</span><span class="mono">54.05 = 54.05</span></div>
-          </div>
-          <div class="mini">
-            <span class="mini-t">الإيرادات الشهرية</span>
-            <div class="mbars"><i style="--h:38%;--k:0"></i><i style="--h:52%;--k:1"></i><i style="--h:46%;--k:2"></i><i style="--h:70%;--k:3"></i><i style="--h:64%;--k:4"></i><i style="--h:88%;--k:5"></i></div>
-          </div>
-        </div>
-      <ul class="phl"><li>دليل الحسابات ومراكز التكلفة</li><li>القيود والسندات</li><li>التسويات البنكية والنقدية</li><li>القوائم المالية الكاملة</li><li>الإقرار الضريبي</li><li>النسب المالية ومؤشرات الأداء</li></ul>
-    </article>
-    <!-- Sales -->
-    <article class="module ppanel" role="tabpanel" hidden  id="sales">
-      <div class="mod-side">
-        <span class="mod-num">02 / 04</span>
-        <h3>موديول المبيعات</h3>
-        <p class="pitch">من عرض السعر إلى التحصيل، في مسار واحد واضح.</p>
-        <p>يعرض لك قيمة المبيعات والعروض والأوامر لأي فترة تختارها، وحالة كل عملية: قيد الانتظار، ملغاة، أو متأخرة.</p>
-        <div class="links"><small>يتكامل مع:</small><span>نقاط البيع</span><span>المخازن</span><span>الحسابات</span></div>
-      </div>
-      <div class="sc sc-sls">
-          <div class="pipe">
-            <div class="pline"><i></i></div>
-            <span class="st" style="--k:0"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>عرض سعر</span>
-            <span class="st" style="--k:1"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>أمر بيع</span>
-            <span class="st" style="--k:2"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>أمر تسليم</span>
-            <span class="st" style="--k:3"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>فاتورة</span>
-            <span class="st" style="--k:4"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i>تحصيل</span>
-          </div>
-          <div class="deal">
-            <div><span class="mono">SO-2291</span><b>طلبية عميل جملة</b></div>
-            <div class="amt"><span class="mono">12,500.00</span><em class="pill">تم التحصيل</em></div>
-          </div>
-        </div>
-      <ul class="phl"><li>عروض الأسعار وأوامر البيع</li><li>الفواتير والمرتجعات</li><li>فرق المبيعات والعمولات</li><li>الجولات الميدانية</li><li>العروض والكوبونات والولاء</li><li>أعمار الذمم</li></ul>
-    </article>
-    <!-- POS -->
-    <article class="module ppanel" role="tabpanel" hidden  id="pos">
-      <div class="mod-side">
-        <span class="mod-num">03 / 04</span>
-        <h3>موديول نقاط البيع</h3>
-        <p class="pitch">كاشير سريع للمتاجر والمطاعم، متصل بالمخزون والحسابات.</p>
-        <p>ثلاث واجهات لثلاثة أدوار: الإدارة تضبط نقاط البيع وتتابع الجلسات، والكاشير يبيع بسرعة، والعميل يرى فاتورته أثناء إنشائها.</p>
-        <div class="links"><small>يتكامل مع:</small><span>المبيعات</span><span>المخازن</span><span>الحسابات</span></div>
-      </div>
-      <div class="sc sc-pos">
-          <div class="keys">
-            <span style="--k:0">قهوة لاتيه</span><span style="--k:1">كرواسون</span><span style="--k:2">مياه معدنية</span>
-            <span style="--k:3">عصير برتقال</span><span style="--k:4">كعكة</span><span style="--k:5">شاي</span>
-          </div>
-          <div class="rcpt">
-            <div class="rl" style="--k:0"><span>قهوة لاتيه × 2</span><span class="mono">30.00</span></div>
-            <div class="rl" style="--k:1"><span>كرواسون × 1</span><span class="mono">12.00</span></div>
-            <div class="rl" style="--k:2"><span>مياه معدنية × 1</span><span class="mono">5.00</span></div>
-            <div class="rt"><span>الإجمالي</span><span class="mono">54.05</span></div>
-            <span class="pay">دفع</span>
-          </div>
-        </div>
-      <ul class="phl"><li>جلسات الكاشير وعدّ النقد</li><li>الطلبات والفواتير والمرتجعات</li><li>الحجوزات والعربون</li><li>إعدادات المطاعم والتحضير</li><li>أجهزة الدفع المتصلة</li><li>شاشة العميل</li></ul>
-    </article>
-    <!-- Inventory -->
-    <article class="module ppanel" role="tabpanel" hidden  id="inventory">
-      <div class="mod-side">
-        <span class="mod-num">04 / 04</span>
-        <h3>موديول المخازن والأصناف</h3>
-        <p class="pitch">اعرف ما لديك، وأين هو، ومتى ينتهي.</p>
-        <p>تقارير مرنة تفلتر على أي بيانات في كرت الصنف، لمستودع أو أكثر، وبأي عملة أو وحدة قياس.</p>
-        <div class="links"><small>يتكامل مع:</small><span>المبيعات</span><span>نقاط البيع</span><span>الحسابات</span></div>
-      </div>
-      <div class="sc sc-inv">
-          <div class="whs">
-            <div class="wh"><span>المستودع الرئيسي</span><div class="lv"><i class="a" style="--w:78%"></i></div><span class="mono">78%</span></div>
-            <div class="wh low"><span>مستودع الفرع الأول</span><div class="lv"><i class="b" style="--w:24%"></i></div><span class="mono">24%</span></div>
-            <div class="wh"><span>مستودع الفرع الثاني</span><div class="lv"><i class="c" style="--w:61%"></i></div><span class="mono">61%</span></div>
-            <span class="xfer"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v12M4 10l4 4 4-4"/></svg>تحويل مخزني مقترح</span>
-          </div>
-          <div class="alert"><b>تنبيه صلاحية</b><span>3 أصناف تنتهي خلال 7 أيام</span></div>
-        </div>
-      <ul class="phl"><li>أرصدة عدة مستودعات</li><li>المقارنة وإعادة التزويد</li><li>التحويل المخزني والتجميع</li><li>الصلاحية وتواريخ الانتهاء</li><li>الراكد والأكثر حركة</li><li>أوامر الإصلاح الخارجي</li></ul>
-    </article>
-      </div>
-    </div>
-    <p class="s-hint">اسحب يمينًا أو يسارًا للتنقل بين المنتجات</p>
-  </div>
-</section>
 
 <!-- CONNECTED -->
 <section class="chain">
@@ -1763,7 +1835,7 @@ html{scroll-padding-top:16px}
   var plist=document.querySelector('.plist');
   if(plist){
     var pbtn=[].slice.call(plist.querySelectorAll('.pitem')),pp=[].slice.call(document.querySelectorAll('.ppanel')),pshow=document.querySelector('.pshow');
-    var pcur=0,pt=0,PD=8000,pstill=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,phover=false,pvis=false;
+    var pfoc=false,prot=0,hubEl=pshow.querySelector('.hub'),hubRot=document.getElementById('hubRot'),pcur=0,pt=0,PD=8000,pstill=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,phover=false,pvis=false;
     function pgo(i,focus){
       pcur=(i+pp.length)%pp.length;
       pbtn.forEach(function(b,k){b.setAttribute('aria-selected',k===pcur?'true':'false');b.tabIndex=k===pcur?0:-1;var bar=b.querySelector('.pbar');bar.style.animation='none';void bar.offsetWidth;bar.style.animation=''});
@@ -1773,8 +1845,22 @@ html{scroll-padding-top:16px}
       var b=pbtn[pcur];if(plist.scrollWidth>plist.clientWidth)plist.scrollTo({left:b.offsetLeft-plist.offsetLeft-16,behavior:'smooth'});
       arm();
     }
-    function arm(){clearTimeout(pt);if(!pstill&&!phover&&pvis)pt=setTimeout(function(){pgo(pcur+1)},PD)}
-    pbtn.forEach(function(b,k){b.addEventListener('click',function(){pgo(k)});
+    function arm(){clearTimeout(pt);if(!pstill&&!phover&&pvis&&!pfoc)pt=setTimeout(function(){pgo(pcur+1)},PD)}
+    function spin(){var target=pfoc?-90*pcur:0,d=((target-prot)%360+540)%360-180;prot+=d;if(hubRot)hubRot.style.setProperty('--rot',prot+'deg')}
+    function flip(fn){var a=hubEl.getBoundingClientRect();fn();var b=hubEl.getBoundingClientRect();if(pstill)return;
+      hubEl.style.transition='none';hubEl.style.transform='translate('+(a.left-b.left+(a.width-b.width)/2)+'px,'+(a.top-b.top)+'px) scale('+(a.width/b.width)+')';hubEl.style.transformOrigin='center top';
+      void hubEl.offsetWidth;hubEl.style.transition='transform .9s cubic-bezier(.65,.05,.2,1)';hubEl.style.transform='';
+      setTimeout(function(){hubEl.style.transition='';hubEl.style.transformOrigin=''},950)}
+    function replayPanel(){var x=pp[pcur];x.hidden=true;void x.offsetWidth;x.hidden=false}
+    function focusOn(k){var was=pfoc;clearTimeout(pt);
+      if(!was){flip(function(){pfoc=true;pshow.classList.add('pfocus');pgo(k)});var top=pshow.getBoundingClientRect().top+scrollY-24;window.scrollTo({top:top,behavior:pstill?'auto':'smooth'})}
+      else{pgo(k)}
+      replayPanel();spin()}
+    function unfocus(){if(!pfoc)return;flip(function(){pfoc=false;pshow.classList.remove('pfocus');spin()});replayPanel();arm()}
+    var pbk=pshow.querySelector('.pback');if(pbk)pbk.addEventListener('click',unfocus);
+    [].forEach.call(document.querySelectorAll('.pgo-more'),function(b){b.addEventListener('click',function(){focusOn(pcur)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&pfoc)unfocus()});
+    pbtn.forEach(function(b,k){b.addEventListener('click',function(){focusOn(k)});
       b.addEventListener('keydown',function(e){var r=getComputedStyle(plist).direction==='rtl';var v=window.innerWidth<=1000;
         var nx=v?(r?'ArrowLeft':'ArrowRight'):'ArrowDown',pv=v?(r?'ArrowRight':'ArrowLeft'):'ArrowUp';
         if(e.key===nx){e.preventDefault();pgo(pcur+1,true)}else if(e.key===pv){e.preventDefault();pgo(pcur-1,true)}})});
