@@ -974,9 +974,29 @@ body::before{background:transparent}
 .copy{padding:5px 12px}
 .phl li{line-height:1.45}
 .links small{display:block;width:100%}
+
+/* top bar scrolls away with the page (not sticky) */
+.top{position:relative!important}
+html{scroll-padding-top:16px}
+/* clients marquee strip */
+.clients{padding:18px 0 20px;background:var(--surface,#fff);border-block:1px solid var(--line)}
+.clients .cl-lbl{margin:0 0 12px;text-align:center;font-size:.88rem;font-weight:500;color:var(--ink-2,#484B4D)}
+.clients .cl-lbl b{color:var(--ink,#212223);font-weight:600}
+.cl-mq{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.cl-track{display:flex;align-items:center;gap:clamp(44px,6vw,80px);width:max-content;animation:clmq 30s linear infinite}
+.cl-mq:hover .cl-track{animation-play-state:paused}
+.cl-track img{display:block;height:40px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6;transition:filter .3s,opacity .3s,transform .3s}
+.cl-track img.cl-hero{height:48px}
+.cl-track img.cl-fam{height:56px}
+.cl-track img:hover{filter:none;opacity:1;transform:scale(1.06)}
+@keyframes clmq{to{transform:translateX(50%)}}
+@media (max-width:640px){.clients{padding:14px 0 16px}.cl-track img{height:32px}.cl-track img.cl-hero{height:40px}.cl-track img.cl-fam{height:46px}}
+@media (prefers-reduced-motion:reduce){.cl-track{animation:none}}
 </style>
 </head>
 <body>
+
+
 <div id="site" dir="rtl" lang="ar">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="px-logo" viewBox="222 94 1003 300"><path d="M1106.2 338.51H1112.56V383.89H1106.2V338.51ZM1109.29 338.51H1135.35V344.56H1109.29V338.51ZM1109.29 358.33H1131.91V364.38H1109.29V358.33ZM1109.29 377.84H1135.35V383.89H1109.29V377.84Z" fill="var(--lg-gold)"/><path d="M1144.4 338.48H1150.76V383.89H1144.4V338.48ZM1147.17 358.64H1162.65C1163.86 358.64 1164.93 358.347 1165.87 357.76C1166.8 357.18 1167.53 356.353 1168.04 355.28C1168.55 354.213 1168.8 352.98 1168.8 351.58C1168.8 350.193 1168.55 348.963 1168.04 347.89C1167.53 346.817 1166.81 345.99 1165.88 345.41C1164.95 344.823 1163.88 344.53 1162.65 344.53H1147.17V338.48H1162.4C1165.03 338.48 1167.33 339.02 1169.32 340.1C1171.31 341.18 1172.84 342.717 1173.93 344.71C1175.02 346.69 1175.57 348.98 1175.57 351.58C1175.57 354.187 1175.02 356.483 1173.92 358.47C1172.81 360.457 1171.27 361.99 1169.28 363.07C1167.29 364.15 1165 364.69 1162.4 364.69H1147.17V358.64ZM1159.53 363.29L1165.87 361.86L1177.48 383.89H1169.93L1159.53 363.29Z" fill="var(--lg-gold)"/><path d="M1186.06 338.51H1192.43V383.89H1186.06V338.51ZM1189.34 360.23H1203.85C1205.22 360.23 1206.43 359.907 1207.47 359.26C1208.51 358.613 1209.32 357.7 1209.89 356.52C1210.46 355.333 1210.74 353.97 1210.75 352.43C1210.74 350.87 1210.46 349.497 1209.89 348.31C1209.32 347.123 1208.51 346.2 1207.47 345.54C1206.43 344.887 1205.22 344.56 1203.85 344.56H1189.34V338.51H1203.63C1206.34 338.51 1208.72 339.087 1210.78 340.24C1212.84 341.393 1214.44 343.023 1215.57 345.13C1216.7 347.23 1217.27 349.663 1217.27 352.43C1217.27 355.197 1216.7 357.627 1215.57 359.72C1214.44 361.807 1212.84 363.423 1210.78 364.57C1208.72 365.71 1206.34 366.28 1203.63 366.28H1189.34V360.23Z" fill="var(--lg-gold)"/><path d="M369.75 311.61H299.87V241.74H369.75V311.61Z" fill="var(--lg-b4)"/><path d="M299.87 241.74H230V171.87H299.87V241.74Z" fill="var(--lg-g)"/><path d="M264.94 385.49C245.64 385.49 230 369.84 230 350.55C230 331.25 245.64 315.61 264.94 315.61C284.23 315.61 299.87 331.25 299.87 350.55C299.87 369.84 284.23 385.49 264.94 385.49Z" fill="var(--lg-gold)"/><path d="M439.62 241.74H369.75V171.87H439.62V241.74Z" fill="var(--lg-b3)"/><path d="M369.75 171.87H299.87V102H369.75V171.87Z" fill="var(--lg-b1)"/><path d="M439.62 171.87H369.75V102H439.62V171.87Z" fill="var(--lg-b2)"/><path d="M482.09 147.85H539.33C554.71 147.85 567.117 152.333 576.55 161.3C585.983 170.267 590.7 182.057 590.7 196.67C590.7 206.277 588.383 215.393 583.75 224.02C579.123 232.647 572.136 239.083 562.79 243.33C553.436 247.577 545.446 249.787 538.82 249.96L517.91 250.47V315.22H482.09V147.85ZM517.4 177.94V220.77H531.43C537.463 220.77 542.626 218.603 546.92 214.27C551.206 209.937 553.35 204.793 553.35 198.84C553.35 192.047 550.93 186.78 546.09 183.04C541.243 179.3 534.36 177.43 525.44 177.43L517.4 177.94Z" fill-rule="evenodd" clip-rule="evenodd" fill="var(--lg-word)"/><path d="M649.47 205.6V221.79H649.98C653.207 216.35 656.967 212.037 661.26 208.85C665.547 205.663 669.52 204.07 673.18 204.07C675.387 204.07 677.383 204.24 679.17 204.58V240.27C676.45 239.757 673.773 239.5 671.14 239.5C664.427 239.5 659.22 241.86 655.52 246.58C651.827 251.3 649.98 257.907 649.98 266.4V315.22H616.83V205.6H649.47Z" fill="var(--lg-word)"/><path d="M701.6 205.6H734.24V315.22H701.6V205.6Z" fill="var(--lg-word)"/><path d="M697.399 165C697.399 159.46 699.396 154.683 703.389 150.67C707.383 146.663 712.183 144.66 717.789 144.66C723.396 144.66 728.199 146.663 732.199 150.67C736.193 154.683 738.189 159.46 738.189 165C738.189 170.62 736.193 175.437 732.199 179.45C728.199 183.457 723.396 185.457 717.789 185.45C712.183 185.457 707.383 183.457 703.389 179.45C699.396 175.437 697.399 170.62 697.399 165Z" fill="var(--lg-gold)"/><path d="M802.31 205.6V223.06C803.837 222.04 806.087 220.087 809.06 217.2C812.033 214.307 814.903 211.863 817.67 209.87C820.43 207.87 823.743 206.253 827.61 205.02C831.477 203.793 834.983 203.177 838.13 203.17C843.143 203.17 848.58 204.933 854.44 208.46C860.307 211.993 865.193 218.263 869.1 227.27C875.9 218.597 882.55 212.413 889.05 208.72C895.55 205.02 901.607 203.17 907.22 203.17C917.16 203.177 925.573 207.28 932.46 215.48C939.34 223.68 942.78 233.77 942.78 245.75V315.22H910.15V254.42C910.15 248.387 908.493 243.31 905.18 239.19C901.867 235.063 897.873 233 893.2 233C887.587 233 882.74 235.337 878.66 240.01C874.587 244.69 872.55 250.257 872.55 256.71V315.22H840.17V255.95C840.17 249.577 838.49 244.2 835.13 239.82C831.77 235.447 827.713 233.26 822.96 233.26C817.347 233.26 812.503 235.66 808.43 240.46C804.35 245.26 802.31 251.017 802.31 257.73V315.22H769.42V205.6H802.31Z" fill="var(--lg-word)"/><path d="M1077.27 268.19H999.129C999.549 275.243 1001.86 280.977 1006.07 285.39C1010.28 289.81 1015.19 292.02 1020.8 292.02C1030.83 292.027 1038.69 287.48 1044.38 278.38L1074.34 288.33C1063.21 307.79 1045.91 317.52 1022.45 317.52C1005.2 317.52 991.479 312.293 981.279 301.84C971.079 291.387 965.979 277.32 965.979 259.64C965.979 243.753 971.356 230.413 982.109 219.62C992.856 208.827 1006.09 203.43 1021.82 203.43C1037.63 203.43 1050.82 209.103 1061.4 220.45C1071.98 231.79 1077.27 245.96 1077.27 262.96V268.19ZM999.379 246.26H1043.49C1040.43 232.58 1033.42 225.74 1022.45 225.74C1016.16 225.74 1010.96 227.523 1006.84 231.09C1002.71 234.663 1000.23 239.72 999.379 246.26Z" fill-rule="evenodd" clip-rule="evenodd" fill="var(--lg-word)"/><path d="M1086.32 205.6H1126.31L1148.39 233.11L1170.47 205.6H1210.35L1168.41 258.04L1214.3 315.22H1174.15L1148.38 283.1L1122.7 315.22H1082.49L1128.2 257.87L1086.32 205.6Z" fill="var(--lg-word)"/></symbol><symbol id="primex-mark" viewBox="226 98 218 292"><path d="M369.75 311.61H299.87V241.74H369.75V311.61Z" fill="var(--lg-b4)"/><path d="M299.87 241.74H230V171.87H299.87V241.74Z" fill="var(--lg-g)"/><path d="M264.94 385.49C245.64 385.49 230 369.84 230 350.55C230 331.25 245.64 315.61 264.94 315.61C284.23 315.61 299.87 331.25 299.87 350.55C299.87 369.84 284.23 385.49 264.94 385.49Z" fill="var(--lg-gold)"/><path d="M439.62 241.74H369.75V171.87H439.62V241.74Z" fill="var(--lg-b3)"/><path d="M369.75 171.87H299.87V102H369.75V171.87Z" fill="var(--lg-b1)"/><path d="M439.62 171.87H369.75V102H439.62V171.87Z" fill="var(--lg-b2)"/></symbol></svg>
 
@@ -1051,6 +1071,13 @@ body::before{background:transparent}
       <div class="chip"><i></i>هامش الربح <b>+12.5%</b></div>
     </div>
   </div>
+</section>
+
+
+<!-- CLIENTS -->
+<section class="clients" aria-label="عملاؤنا">
+  <p class="cl-lbl">شركات <b>بتدير أعمالها</b> على برايمكس</p>
+  <div class="cl-mq"><div class="cl-track"><img class="cl-fam" src="client-family.webp" alt="تخفيضات العائلة" width="520" height="215"><img class="cl-hero" src="client-herocup.webp" alt="هيرو كب" width="520" height="484"><img src="client-tmoon.svg" alt="تموون" width="666" height="300"><img class="cl-fam" src="client-family.webp" alt="" width="520" height="215"><img class="cl-hero" src="client-herocup.webp" alt="" width="520" height="484"><img src="client-tmoon.svg" alt="" width="666" height="300"><img class="cl-fam" src="client-family.webp" alt="" width="520" height="215"><img class="cl-hero" src="client-herocup.webp" alt="" width="520" height="484"><img src="client-tmoon.svg" alt="" width="666" height="300"><img class="cl-fam" src="client-family.webp" alt="" width="520" height="215"><img class="cl-hero" src="client-herocup.webp" alt="" width="520" height="484"><img src="client-tmoon.svg" alt="" width="666" height="300"></div></div>
 </section>
 
 <!-- ABOUT -->
@@ -1705,5 +1732,6 @@ body::before{background:transparent}
   }
 })();
 </script>
+
 </body>
 </html>
