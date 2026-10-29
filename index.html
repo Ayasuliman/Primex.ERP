@@ -1233,6 +1233,50 @@ html{scroll-padding-top:16px}
   #why #wyCards .wy-sc .wy-perm>div{padding:8px 4px}
   #why #wyCards .wy-sc .wy-kp .wy-sp{height:40px}
 }
+
+/* ===== process: "setting up your system" installer ===== */
+#process .pr-box{position:relative;overflow:hidden;border-radius:28px;padding:clamp(28px,4.5vw,64px) clamp(18px,4vw,56px);color:#fff;background:radial-gradient(55% 70% at 85% 20%,rgba(99,135,246,.28),transparent 70%),linear-gradient(160deg,#192A70 0%,#0F1C4E 60%,#050C2E 100%);box-shadow:0 40px 80px -50px rgba(15,28,78,.7)}
+#process .pr-box::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(153,181,255,.16) 1px,transparent 1.4px);background-size:22px 22px;-webkit-mask:linear-gradient(90deg,transparent,#000 70%);mask:linear-gradient(90deg,transparent,#000 70%);pointer-events:none}
+#process .pr-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(24px,4.5vw,64px);align-items:center}
+#process .sh{margin:0}
+#process .sh .ab-badge{background:rgba(255,255,255,.1);color:#DAE4FF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+#process .sh .ab-name{color:#99B5FF}#process .sh .ab-tag{color:#fff}#process .sh p{color:#BED0FF}
+#process .pr-inst{background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.65)}
+#process .pr-tb{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:#F7F8FA;font-size:.85rem}
+#process .pr-tb i{width:10px;height:10px;border-radius:50%;background:var(--line-strong,#CFD1D3)}
+#process .pr-tb b{margin-inline-start:6px;font-weight:600}
+#process .pr-tb span{margin-inline-start:auto;color:#6B6F72;font-size:.78rem}
+#process .pr-bd{padding:clamp(16px,2vw,24px);display:grid;gap:16px}
+#process .pr-top{display:flex;align-items:center;gap:14px}
+#process .pr-top h3{margin:0;font-size:1.08rem}#process .pr-top small{color:#6B6F72}
+#process .pr-ring{width:74px;height:74px;flex:none;position:relative}
+#process .pr-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+#process .pr-ring circle{fill:none;stroke-width:7}
+#process .pr-ring .t{stroke:#EEF0F2}#process .pr-ring .f{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:201;stroke-dashoffset:201;transition:stroke-dashoffset .8s,stroke .4s}
+#process .pr-inst.pr-done .pr-ring .f{stroke:#007742}
+#process .pr-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:16px;font-weight:500}
+#process .pr-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+#process .pr-list li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 12px;border-radius:12px;border:1px solid var(--line);transition:background .4s,border-color .4s}
+#process .pr-list h4{margin:0;font-size:.97rem;line-height:1.45}
+#process .pr-list p{margin:0;color:#6B6F72;font-size:.82rem;line-height:1.55}
+#process .pr-st{width:28px;height:28px;border-radius:50%;border:2px solid var(--line-strong,#CFD1D3);display:grid;place-items:center;transition:.4s}
+#process .pr-st::after{content:"";width:10px;height:6px;border:solid transparent;border-width:0 0 2.5px 2.5px;transform:rotate(-45deg) translate(1px,-1px)}
+#process .pr-list em{font-style:normal;font-size:.75rem;font-weight:600;color:#6B6F72;white-space:nowrap}
+#process .pr-list li.pr-run{border-color:var(--accent-200,#DAE4FF);background:var(--accent-soft,#ECF2FF)}
+#process .pr-list li.pr-run .pr-st{border-color:var(--accent);border-top-color:transparent;animation:prSpin .8s linear infinite}
+#process .pr-list li.pr-run em{color:var(--accent)}
+#process .pr-list li.pr-ok .pr-st{background:#E3F8E9;border-color:#E3F8E9}
+#process .pr-list li.pr-ok .pr-st::after{border-color:#005A31}
+#process .pr-list li.pr-ok em{color:#005A31}
+@keyframes prSpin{to{transform:rotate(360deg)}}
+#process .pr-files{display:none;flex-wrap:wrap;gap:6px;margin-top:8px}
+#process li.pr-run .pr-files,#process li.pr-ok .pr-files{display:flex}
+#process .pr-files span{font-size:.72rem;font-weight:600;line-height:1.6;padding:2px 9px;border-radius:999px;background:#fff;border:1px solid var(--accent-200,#DAE4FF);color:var(--accent);animation:prPop .4s backwards}
+#process .pr-files span:nth-child(2){animation-delay:.25s}#process .pr-files span:nth-child(3){animation-delay:.5s}#process .pr-files span:nth-child(4){animation-delay:.75s}
+@keyframes prPop{from{opacity:0;transform:scale(.7)}}
+@media (max-width:900px){#process .pr-grid{grid-template-columns:1fr}}
+@media (max-width:520px){#process .pr-list li{grid-template-columns:24px 1fr;padding:10px}#process .pr-st{width:24px;height:24px}#process .pr-list em{grid-column:2;justify-self:start;margin-top:-4px}#process .pr-tb span{display:none}}
+@media (prefers-reduced-motion:reduce){#process .pr-list li.pr-run .pr-st{animation:none}}
 </style>
 </head>
 <body>
@@ -1371,18 +1415,28 @@ html{scroll-padding-top:16px}
 <!-- PROCESS -->
 <section id="process">
   <div class="wrap">
-    <div class="sec-head sh">
-      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>آلية العمل</span>
-      <h2 class="ab-title"><span class="ab-name">خطوة بخطوة</span><span class="ab-tag">من أول اجتماع حتى التشغيل الكامل</span></h2>
-      <p>نرافقك في كل مرحلة حتى يعمل فريقك على النظام بثقة.</p>
+    <div class="pr-box">
+      <div class="pr-grid">
+        <div class="sec-head sh">
+          <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>آلية العمل</span>
+          <h2 class="ab-title"><span class="ab-name">خطوة بخطوة</span><span class="ab-tag">من أول اجتماع حتى التشغيل الكامل</span></h2>
+          <p>نرافقك في كل مرحلة حتى يعمل فريقك على النظام بثقة، ونتولّى نحن التفاصيل التقنية.</p>
+        </div>
+        <div class="pr-inst" id="prInst">
+          <div class="pr-tb"><i></i><i></i><i></i><b>برايمكس — تجهيز نظامك</b><span>مؤسستك</span></div>
+          <div class="pr-bd">
+            <div class="pr-top"><div class="pr-ring"><svg viewBox="0 0 74 74" aria-hidden="true"><circle class="t" cx="37" cy="37" r="32"/><circle class="f" cx="37" cy="37" r="32"/></svg><b class="mono">0%</b></div><div><h3 class="pr-h">جاري تجهيز نظامك…</h3><small>نتولّى كل خطوة معك حتى التشغيل</small></div></div>
+            <ol class="pr-list">
+              <li><span class="pr-st"></span><div><h4>التحليل وجمع المتطلبات</h4><p>نفهم دورة عملك ونوثّق ما تحتاجه من كل موديول.</p></div><em>بالانتظار</em></li>
+              <li><span class="pr-st"></span><div><h4>التهيئة والإعداد</h4><p>نضبط الشركات والفروع والضرائب والصلاحيات حسب نشاطك.</p></div><em>بالانتظار</em></li>
+              <li><span class="pr-st"></span><div><h4>نقل البيانات</h4><p>ننقل جميع بياناتك الأساسية إلى النظام.</p><div class="pr-files"><span>دليل الحسابات</span><span>الأصناف</span><span>العملاء</span><span>الأرصدة الافتتاحية</span></div></div><em>بالانتظار</em></li>
+              <li><span class="pr-st"></span><div><h4>التدريب</h4><p>ندرّب المحاسبين والكاشير وفريق المبيعات كلٌّ على شاشاته.</p></div><em>بالانتظار</em></li>
+              <li><span class="pr-st"></span><div><h4>التشغيل والدعم</h4><p>نتابع التشغيل الفعلي ونبقى معك بعد الإطلاق.</p></div><em>بالانتظار</em></li>
+            </ol>
+          </div>
+        </div>
+      </div>
     </div>
-    <ol class="proc" style="list-style:none;margin:0;padding:0">
-      <li><h3>التحليل وجمع المتطلبات</h3><p>نفهم دورة عملك ونوثّق ما تحتاجه من كل موديول.</p></li>
-      <li><h3>التهيئة والإعداد</h3><p>نضبط الشركات والفروع والضرائب والصلاحيات حسب نشاطك.</p></li>
-      <li><h3>نقل البيانات</h3><p>ننقل دليل الحسابات والأصناف والعملاء والأرصدة الافتتاحية.</p></li>
-      <li><h3>التدريب</h3><p>ندرّب المحاسبين والكاشير وفريق المبيعات كلٌّ على شاشاته.</p></li>
-      <li><h3>التشغيل والدعم</h3><p>نتابع التشغيل الفعلي ونبقى معك بعد الإطلاق.</p></li>
-    </ol>
   </div>
 </section>
 
@@ -1974,6 +2028,16 @@ function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classLis
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)replay(e.target.querySelector('.wy-sc'))})},{threshold:.55});
  cards.forEach(function(c){io.observe(c)});
 })();})();
+
+(function(){var o=document.getElementById('prInst');if(!o)return;
+ var L=o.querySelectorAll('.pr-list li'),f=o.querySelector('.pr-ring .f'),pct=o.querySelector('.pr-ring b'),h=o.querySelector('.pr-h'),step=0,tm=null;
+ function set(n){L.forEach(function(x,i){x.className=i<n?'pr-ok':i==n?'pr-run':'';x.querySelector('em').textContent=i<n?'تم':i==n?'جارٍ…':'بالانتظار'});
+  f.style.strokeDashoffset=201*(1-n/5);pct.textContent=Math.round(n/5*100)+'%';o.classList.toggle('pr-done',n>=5);h.textContent=n>=5?'نظامك جاهز للتشغيل':'جاري تجهيز نظامك…'}
+ function tick(){step=step>=7?0:step+1;set(Math.min(step,5))}
+ set(0);
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){set(5);return}
+ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!tm)tm=setInterval(tick,1900)}else if(tm){clearInterval(tm);tm=null}})},{threshold:.3}).observe(o);
+})();
 </script>
 
 </body>
