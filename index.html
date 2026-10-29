@@ -831,6 +831,32 @@ html.dm-lock{overflow:hidden}
 .core{--lg-word:#283F9C;--lg-b1:#1B2B6A;--lg-b2:#283F9C;--lg-b3:#5365B0;--lg-b4:#A9B2D7;--lg-g:#2C7D3D;--lg-gold:#DAAC21;}
 .core svg{width:46%}
 
+
+/* hero intro (idea 3): the screen powers on, the cards fly out of it, the headline resolves word by word.
+   Every hidden state lives under .hero.intro, which only JS adds and removes, so without JS the hero is simply static. */
+.hero h1 .hw{display:inline-block}
+.hero h1 .uline{position:relative}
+.hero h1 .uline::after{content:"";position:absolute;inset-inline:0;bottom:.04em;height:.12em;border-radius:4px;background:color-mix(in srgb,var(--accent) 28%,transparent);transform-origin:right}
+.h-off,.h-beam,.h-scan{display:none}
+.hero.intro .h-off{display:block;position:absolute;inset:0;z-index:6;background:#0B0D14;transition:opacity .45s ease .1s}
+.hero.intro.boot .h-off{opacity:0}
+.hero.intro .h-beam{display:block;position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;z-index:7;background:#DAE4FF;box-shadow:0 0 20px 6px rgba(153,181,255,.8);transform:scaleX(0);opacity:0}
+.hero.intro.boot .h-beam{animation:hbeam .9s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes hbeam{0%{transform:scaleX(0);opacity:1}45%{transform:scaleX(1);opacity:1;height:2px;top:50%}100%{transform:scaleX(1);height:100%;top:0;margin-top:0;opacity:0}}
+.hero.intro .h-scan{display:block;position:absolute;inset-inline:0;top:6%;height:14%;z-index:5;background:linear-gradient(180deg,transparent,rgba(99,135,246,.25),transparent);opacity:0}
+.hero.intro.boot .h-scan{animation:hscan 1.2s ease .8s forwards}
+@keyframes hscan{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(520%)}}
+.hero.intro .tablet{opacity:0;transform:scale(.62);transition:opacity .6s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.hero.intro .tablet.in{opacity:1;transform:none}
+.hero.intro .float,.hero.intro .chip{opacity:0;transform:translate(var(--fx,0),var(--fy,0)) scale(.3);transition:opacity .5s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.hero.intro .float.in,.hero.intro .chip.in{opacity:1;transform:none}
+.hero.intro h1 .hw{opacity:0;filter:blur(8px);transform:translateY(10px);transition:opacity .5s ease,filter .5s ease,transform .5s ease}
+.hero.intro h1 .hw.in{opacity:1;filter:none;transform:none}
+.hero.intro h1 .uline::after{transform:scaleX(0);transition:transform .7s cubic-bezier(.6,0,.2,1)}
+.hero.intro h1 .uline.lined::after{transform:scaleX(1)}
+.hero.intro .hero-copy .btn,.hero.intro .trust li{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.hero.intro .hero-copy .btn.in,.hero.intro .trust li.in{opacity:1;transform:none}
+
 /* text-in-pill alignment: every chip, badge and button centres its label vertically with a tight line box */
 .btn,.copy,.mtab,.pitem b{line-height:1.3}
 .ic3 .uses,.links,.b-clients ul,.c-info,.v-rep .chips{align-items:center}
@@ -874,7 +900,7 @@ html.dm-lock{overflow:hidden}
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <h1>أدِر المبيعات والمخزون والمالية <em>من نظام واحد</em></h1>
+      <h1><span class="hw">أدِر</span> <span class="hw">المبيعات</span> <span class="hw">والمخزون</span> <span class="hw">والمالية</span> <em><span class="hw uline">من نظام واحد</span></em></h1>
       <a class="btn btn-primary" href="#contact" data-demo>اطلب عرضًا تجريبيًا<svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       <ul class="trust">
         <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>قاعدة بيانات واحدة لكل الموديولات</li>
@@ -891,7 +917,7 @@ html.dm-lock{overflow:hidden}
             <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx=".8" fill="currentColor"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8" fill="currentColor"/><rect x="10" y="3" width="3" height="9" rx=".8" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx=".8" fill="currentColor"/></svg>
             <svg viewBox="0 0 16 12"><path d="M8 11.5l2.2-2.6a3.2 3.2 0 00-4.4 0zM3.4 6.6a6.6 6.6 0 019.2 0l1.4-1.6a8.8 8.8 0 00-12 0zM.4 3.3a11 11 0 0115.2 0L17 1.7A13.2 13.2 0 00-1 1.7z" fill="currentColor"/></svg>
             <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="1.8" fill="currentColor"/><path d="M24.5 4v4a2 2 0 000-4z" fill="currentColor" opacity=".4"/></svg></span></div>
-          <img src="hero-dashboard.webp" alt="لوحة مؤشرات موديول الحسابات في نظام برايمكس" width="1860" height="953">
+          <img src="hero-dashboard.webp" alt="لوحة مؤشرات موديول الحسابات في نظام برايمكس" width="1860" height="953"><span class="h-off" aria-hidden="true"></span><span class="h-beam" aria-hidden="true"></span><span class="h-scan" aria-hidden="true"></span>
         </div>
       </div>
 
@@ -1434,6 +1460,28 @@ html.dm-lock{overflow:hidden}
         var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
     });
   }
+
+
+  // hero intro: screen boots, cards fly out of it, headline resolves word by word, then CTA and trust points
+  (function(){
+    var hero=document.querySelector('.hero');if(!hero)return;
+    if((window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)||window.scrollY>window.innerHeight*.5)return;
+    var $=function(s){return hero.querySelector(s)},$$=function(s){return [].slice.call(hero.querySelectorAll(s))};
+    var tab=$('.tablet'),flies=$$('.float,.chip'),words=$$('h1 .hw'),line=$('h1 .uline'),btn=$('.hero-copy .btn'),lis=$$('.trust li');
+    var dev=$('.devices').getBoundingClientRect(),cx=dev.left+dev.width*.55,cy=dev.top+dev.height*.42;
+    flies.forEach(function(el){var r=el.getBoundingClientRect();el.style.setProperty('--fx',(cx-(r.left+r.width/2))+'px');el.style.setProperty('--fy',(cy-(r.top+r.height/2))+'px')});
+    hero.classList.add('intro');
+    var t=0,at=function(ms,fn){t+=ms;setTimeout(fn,t)};
+    at(250,function(){tab.classList.add('in')});
+    at(500,function(){hero.classList.add('boot')});
+    at(1300,function(){});
+    flies.forEach(function(el){at(200,function(){el.classList.add('in')})});
+    words.forEach(function(w){at(170,function(){w.classList.add('in')})});
+    at(300,function(){line.classList.add('lined')});
+    at(250,function(){btn.classList.add('in')});
+    lis.forEach(function(li){at(110,function(){li.classList.add('in')})});
+    at(1200,function(){hero.classList.remove('intro','boot');[tab,btn,line].concat(flies,words,lis).forEach(function(el){el.classList.remove('in','lined')})});
+  })();
 
   // about bento: play entrance + count-up once it scrolls into view
   var bento=document.querySelector('.bento');
