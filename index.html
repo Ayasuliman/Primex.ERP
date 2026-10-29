@@ -615,9 +615,45 @@ section{padding-block:clamp(56px,8vw,104px)}
 @media (max-width:480px){.proc{grid-template-columns:1fr}}
 
 /* about + contact */
-.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
-.about-copy{display:grid;gap:16px}
-.about-copy p{color:var(--ink-2);font-size:1.02rem}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.about-copy{display:grid;gap:18px;justify-items:start;align-content:center}
+.about-copy p{color:var(--ink-2);font-size:1.02rem;line-height:1.9;max-width:52ch;margin:0}
+.about-copy .ab-title + p{margin-top:4px}
+.ab-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.88rem;font-weight:600;line-height:1.35;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 18%,transparent)}
+.ab-badge svg{flex:none;--logo-navy:#1B2B6A}
+.ab-title{margin:0;display:flex;flex-direction:column;gap:4px;line-height:1.25}
+.ab-name{font-size:clamp(2.4rem,4.2vw,3.3rem);font-weight:700;color:var(--accent);letter-spacing:0}
+.ab-tag{font-size:clamp(1.35rem,2.3vw,1.85rem);font-weight:600;color:var(--ink);line-height:1.45}
+@media (max-width:900px){.about{align-items:start}}
+/* about: the section assembles like the logo's blocks. Tied to scroll (scroll-driven animation), so the pieces
+   fly in from scattered spots and snap together as the section enters, and come apart again scrolling back up.
+   Browsers without scroll timelines simply show the finished layout. */
+#about{overflow-x:clip}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion:no-preference){
+    #about .bento > .bx{animation:var(--asm) linear both;animation-timeline:view();animation-range:var(--asm-r)}
+    #about .b-year{--asm:asmYear;--asm-r:entry 0% cover 34%;transform-origin:left bottom}
+    #about .b-seven{--asm:asmSeven;--asm-r:entry 8% cover 40%}
+    #about .b-clients{--asm:asmClients;--asm-r:entry 14% cover 44%}
+    #about .b-zatca{--asm:asmZatca;--asm-r:entry 20% cover 48%}
+    @keyframes asmYear{from{opacity:0;translate:180px 60px;rotate:9deg;scale:.55;border-radius:60px}60%{opacity:1}85%{translate:-6px 0;rotate:-.6deg;scale:1.01}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
+    @keyframes asmSeven{from{opacity:0;translate:-200px -120px;rotate:-12deg;scale:.5;border-radius:60px}60%{opacity:1}85%{translate:5px 3px;rotate:.6deg;scale:1.01}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
+    @keyframes asmClients{from{opacity:0;translate:-220px 140px;rotate:10deg;scale:.5;border-radius:60px}60%{opacity:1}85%{translate:4px -4px;rotate:-.5deg;scale:1.01}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
+    @keyframes asmZatca{from{opacity:0;translate:40px 220px;rotate:-6deg;scale:.6;border-radius:60px}60%{opacity:1}85%{translate:0 -5px;rotate:.3deg;scale:1.01}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
+    #about .bx > *{animation:asmIn linear both;animation-timeline:view();animation-range:entry 30% cover 52%}
+    #about .b-year > .bx-mark{animation:none}
+    @keyframes asmIn{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+    #about .blocks i{animation:asmBlock linear both;animation-timeline:view();animation-range:entry calc(30% + var(--k) * 3%) cover calc(46% + var(--k) * 2%)}
+    @keyframes asmBlock{from{opacity:0;scale:0;rotate:45deg}70%{scale:1.15}to{opacity:1;scale:1;rotate:0deg}}
+    #about .ab-badge{animation:asmDrop linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+    #about .ab-name{display:block;animation:asmFromR linear both;animation-timeline:view();animation-range:entry 4% cover 32%}
+    #about .ab-tag{display:block;animation:asmFromL linear both;animation-timeline:view();animation-range:entry 8% cover 36%}
+    #about .about-copy p{animation:asmIn linear both;animation-timeline:view();animation-range:entry 14% cover 42%}
+    @keyframes asmDrop{from{opacity:0;translate:0 -36px;scale:.8}to{opacity:1;translate:0 0;scale:1}}
+    @keyframes asmFromR{from{opacity:0;translate:90px 0;filter:blur(6px)}to{opacity:1;translate:0 0;filter:none}}
+    @keyframes asmFromL{from{opacity:0;translate:-90px 0;filter:blur(6px)}to{opacity:1;translate:0 0;filter:none}}
+  }
+}
 .ph{border:1.5px dashed var(--warn-line);background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:2px 8px;font-size:.88em}
 /* about — bento: each fact told in its own form */
 .bento{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"year seven" "year clients" "zatca zatca";gap:14px}
@@ -857,6 +893,25 @@ html.dm-lock{overflow:hidden}
 .hero.intro .hero-copy .btn,.hero.intro .trust li{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
 .hero.intro .hero-copy .btn.in,.hero.intro .trust li.in{opacity:1;transform:none}
 
+/* top bar B: white floating bar; the current page is a soft brand pill with a gold dot, the CTA stays the only solid button */
+.top{background:transparent;border-bottom:0;padding-top:14px;-webkit-backdrop-filter:none;backdrop-filter:none;margin-bottom:-90px}
+.hero{padding-top:calc(clamp(36px,5vw,64px) + 90px)}
+body::before{background:transparent}
+.top .wrap{height:74px;background:#FFFFFF;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 40px -24px rgba(15,28,78,.35);padding-left:14px;padding-right:22px;gap:22px}
+.top .plogo{height:40px}
+.nav{gap:6px}
+.nav a{position:relative;display:inline-flex;align-items:center;gap:7px;padding:10px 16px;border-radius:12px;font-size:.95rem;line-height:1.3;color:var(--ink-2)}
+.nav a:hover{background:transparent;color:var(--ink)}
+.nav a:not(.cur)::after{content:"";position:absolute;inset-inline:16px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:right;transition:transform .25s}
+.nav a:not(.cur):hover::after{transform:scaleX(1)}
+.nav a.cur{background:#ECF2FF;color:#283F9C;font-weight:700;box-shadow:inset 0 0 0 1px #DAE4FF;padding-inline:18px}
+.nav a.cur::before{content:"";position:absolute;left:50%;bottom:-11px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#DAAC21}
+.top-sep{width:1px;height:32px;background:var(--line)}
+.top .btn{padding:12px 20px;font-size:.95rem;border-radius:12px}
+.top .btn-primary{background:var(--accent);color:var(--accent-ink)}
+.top .btn-primary:hover{background:var(--accent-hover)}
+@media (max-width:980px){.top-sep{display:none}.top .wrap{margin-inline:12px;padding-left:10px;padding-right:14px}}
+
 /* text-in-pill alignment: every chip, badge and button centres its label vertically with a tight line box */
 .btn,.copy,.mtab,.pitem b{line-height:1.3}
 .ic3 .uses,.links,.b-clients ul,.c-info,.v-rep .chips{align-items:center}
@@ -881,14 +936,15 @@ html.dm-lock{overflow:hidden}
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Primex ERP — الرئيسية"><svg class="plogo" viewBox="0 0 1003 300" aria-hidden="true"><use href="#px-logo"/></svg></a>
     <nav class="nav" id="nav">
-      <a href="#top">الرئيسية</a>
+      <a href="#top" class="cur" aria-current="page"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l8-6.5 8 6.5V20H4z"></path><path d="M10 20v-5h4v5"></path></svg>الرئيسية</a>
       <a href="#about">من نحن</a>
       <a href="#why">لماذا برايمكس</a>
       <a href="#modules">منتجاتنا</a>
       <a href="#contact">تواصل معنا</a>
     </nav>
     <div class="top-actions">
-      <a class="btn btn-primary" href="#contact" data-demo>اطلب عرضًا تجريبيًا</a>
+      <span class="top-sep" aria-hidden="true"></span>
+      <a class="btn btn-primary" href="#contact" data-demo>اطلب عرضًا تجريبيًا<svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a>
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg></button>
     </div>
   </div>
@@ -932,8 +988,8 @@ html.dm-lock{overflow:hidden}
 <section id="about">
   <div class="wrap about">
     <div class="about-copy">
-      <span class="eyebrow">من نحن</span>
-      <h2 style="font-size:clamp(1.65rem,3.4vw,2.45rem)"><span style="color:var(--accent)">برايمكس.</span> نظام صُمّم لينمو مع أعمالك</h2>
+      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>تعرّف علينا</span>
+      <h2 class="ab-title"><span class="ab-name">برايمكس</span><span class="ab-tag">نظام صُمّم لينمو مع أعمالك</span></h2>
       <p>منذ عام 2024 تطوّر شركة مسبار الكون، المالكة لنظام برايمكس، هذا النظام لتخطيط موارد المؤسسات، ليجمع إدارة المبيعات والمشتريات والمخازن ونقاط البيع والحسابات في منصة واحدة مترابطة.</p>
       <p>يضم برايمكس اليوم 7 أنظمة متكاملة تخدم أنواعًا مختلفة من العملاء، من المتاجر والمطاعم إلى شركات التوزيع والمجموعات متعددة الفروع. نبني كل نظام بعد تحليل دقيق لاحتياجات العمل الفعلية، ونرتبط ارتباطًا مباشرًا بهيئة الزكاة والضريبة والجمارك ليبقى عملاؤنا ملتزمين بالمتطلبات الضريبية دون عناء.</p>
     </div>
@@ -1481,6 +1537,18 @@ html.dm-lock{overflow:hidden}
     at(250,function(){btn.classList.add('in')});
     lis.forEach(function(li){at(110,function(){li.classList.add('in')})});
     at(1200,function(){hero.classList.remove('intro','boot');[tab,btn,line].concat(flies,words,lis).forEach(function(el){el.classList.remove('in','lined')})});
+  })();
+
+
+  // top bar: highlight the tab of the section in view
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('#nav a[href^="#"]'));if(!links.length)return;
+    var map=links.map(function(a){var id=a.getAttribute('href').slice(1);var el=id==='top'?document.querySelector('.hero'):document.getElementById(id);return [a,el]}).filter(function(x){return x[1]});
+    var cur=null;
+    function spy(){var y=150,pick=map[0][0];map.forEach(function(m){if(m[1].getBoundingClientRect().top<=y)pick=m[0]});
+      if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)pick=map[map.length-1][0];
+      if(pick===cur)return;cur=pick;links.forEach(function(a){var on=a===pick;a.classList.toggle('cur',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})}
+    var raf=0;window.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(spy)},{passive:true});spy();
   })();
 
   // about bento: play entrance + count-up once it scrolls into view
