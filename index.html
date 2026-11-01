@@ -1464,6 +1464,58 @@ html{scroll-padding-top:16px}
 .p4-col{display:flex;flex-direction:column;gap:40px}
 .p4-logo{width:240px;height:322px;overflow:visible}
 @media (max-width:900px){.p4-grid{grid-template-columns:1fr;gap:32px}.p4-logo{order:-1;justify-self:center;width:170px;height:228px}.p4-col{gap:28px}}
+
+/* document cycle: torn invoice */
+.k1-s0{animation:k1s0 14s cubic-bezier(.3,.9,.3,1) infinite;transform-origin:center 60%;backface-visibility:hidden}
+@keyframes k1s0{0%,15.170000000000002%{opacity:1;transform:none}16.67%,99%{opacity:0;transform:rotateX(90deg)}100%{opacity:1;transform:none}}
+.k1-s1{animation:k1s1 14s cubic-bezier(.3,.9,.3,1) infinite;transform-origin:center 60%;backface-visibility:hidden}
+@keyframes k1s1{0%,16.67%{opacity:0;transform:rotateX(-90deg)}18.17%,31.83%{opacity:1;transform:none}33.33%,100%{opacity:0;transform:rotateX(90deg)}}
+.k1-s2{animation:k1s2 14s cubic-bezier(.3,.9,.3,1) infinite;transform-origin:center 60%;backface-visibility:hidden}
+@keyframes k1s2{0%,33.33%{opacity:0;transform:rotateX(-90deg)}34.83%,48.5%{opacity:1;transform:none}50.0%,100%{opacity:0;transform:rotateX(90deg)}}
+.k1-s3{animation:k1s3 14s cubic-bezier(.3,.9,.3,1) infinite;transform-origin:center 60%;backface-visibility:hidden}
+@keyframes k1s3{0%,50.0%{opacity:0;transform:rotateX(-90deg)}51.5%,65.17%{opacity:1;transform:none}66.67%,100%{opacity:0;transform:rotateX(90deg)}}
+.k1-s4{animation:k1s4 14s cubic-bezier(.3,.9,.3,1) infinite;transform-origin:center 60%;backface-visibility:hidden}
+@keyframes k1s4{0%,66.67%{opacity:0;transform:rotateX(-90deg)}68.17%,81.83%{opacity:1;transform:none}83.33%,100%{opacity:0;transform:rotateX(90deg)}}
+.k1-s5{animation:k1s5 14s cubic-bezier(.3,.9,.3,1) infinite;transform-origin:center 60%;backface-visibility:hidden}
+@keyframes k1s5{0%,83.33%{opacity:0;transform:rotateX(-90deg)}84.83%,97%{opacity:1;transform:none}100%{opacity:0}}
+.k1-strip{animation:k1strip 14s ease infinite}
+@keyframes k1strip{0.0%,15.670000000000002%{background:#A9B2D7}16.67%,32.33%{background:#283F9C}33.33%,49.0%{background:#5365B0}50.0%,65.67%{background:#1B2B6A}66.67%,82.33%{background:#2C7D3D}83.33%,99.0%{background:#2C7D3D}100%{background:#A9B2D7}}
+.k1-band{animation:k1band 14s cubic-bezier(.7,0,.3,1) infinite}
+@keyframes k1band{0.0%,14.670000000000002%{transform:translateY(0px)}16.67%,31.33%{transform:translateY(58px)}33.33%,48.0%{transform:translateY(116px)}50.0%,64.67%{transform:translateY(174px)}66.67%,81.33%{transform:translateY(232px)}83.33%,98.0%{transform:translateY(290px)}100%{transform:translateY(0)}}
+.k1-paper{animation:k1paper 14s ease infinite}
+@keyframes k1paper{0.0%{transform:translateY(-6px) rotate(-2.6deg)}2.5%{transform:translateY(0) rotate(-1.5deg)}16.67%{transform:translateY(-6px) rotate(-2.6deg)}19.17%{transform:translateY(0) rotate(-1.5deg)}33.33%{transform:translateY(-6px) rotate(-2.6deg)}35.83%{transform:translateY(0) rotate(-1.5deg)}50.0%{transform:translateY(-6px) rotate(-2.6deg)}52.5%{transform:translateY(0) rotate(-1.5deg)}66.67%{transform:translateY(-6px) rotate(-2.6deg)}69.17%{transform:translateY(0) rotate(-1.5deg)}83.33%{transform:rotate(-1.5deg)}88.33%{transform:translateY(5px) rotate(-1.1deg) scale(.985)}90.33%{transform:rotate(-1.5deg)}100%{transform:rotate(-1.5deg)}}
+.k1-stamp{animation:k1stamp 14s cubic-bezier(.2,1.6,.4,1) infinite}
+@keyframes k1stamp{0%,86.33%{opacity:0;transform:rotate(-14deg) scale(2.2)}88.33%,97%{opacity:1;transform:rotate(-14deg) scale(1)}100%{opacity:0}}
+.k1-sign{stroke-dasharray:1;stroke-dashoffset:1;animation:k1sign 14s ease infinite}
+@keyframes k1sign{0%,52.0%{stroke-dashoffset:1}59.0%,97%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+.k1-paid{animation:k1paid 14s ease infinite}
+@keyframes k1paid{0%,66.67%{width:0%}72.67%,97%{width:100%}100%{width:0%}}
+.k1-r0{animation:k1r0 14s ease infinite}
+@keyframes k1r0{0%,1%{opacity:0;transform:translateX(-10px)}4%,98%{opacity:1;transform:none}100%{opacity:0}}
+.k1-r1{animation:k1r1 14s ease infinite}
+@keyframes k1r1{0%,3%{opacity:0;transform:translateX(-10px)}6%,98%{opacity:1;transform:none}100%{opacity:0}}
+.k1-r2{animation:k1r2 14s ease infinite}
+@keyframes k1r2{0%,5%{opacity:0;transform:translateX(-10px)}8%,98%{opacity:1;transform:none}100%{opacity:0}}
+.k1-xX{animation:k1toast 14s ease infinite}
+@keyframes k1toast{0%{opacity:0}16.67%{opacity:0;transform:translateY(8px)}18.17%,23.67%{opacity:1;transform:none}25.67%{opacity:0;transform:translateY(-6px)}33.33%{opacity:0;transform:translateY(8px)}34.83%,40.33%{opacity:1;transform:none}42.33%{opacity:0;transform:translateY(-6px)}50.0%{opacity:0;transform:translateY(8px)}51.5%,57.0%{opacity:1;transform:none}59.0%{opacity:0;transform:translateY(-6px)}66.67%{opacity:0;transform:translateY(8px)}68.17%,73.67%{opacity:1;transform:none}75.67%{opacity:0;transform:translateY(-6px)}83.33%{opacity:0;transform:translateY(8px)}84.83%,90.33%{opacity:1;transform:none}92.33%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}
+.k1-zz{-webkit-mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/18px 51% repeat-x,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 51% repeat-x;mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/18px 51% repeat-x,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 51% repeat-x}
+.k1-shadow{filter:drop-shadow(0 1px 0 #E3E5E6) drop-shadow(0 26px 30px rgba(19,32,90,.22))}
+.k1-x1{animation:k1x1 14s ease infinite}
+@keyframes k1x1{0%,16.67%{opacity:0;transform:translateY(8px)}18.17%,24.67%{opacity:1;transform:none}26.67%,100%{opacity:0;transform:translateY(-6px)}}
+.k1-x2{animation:k1x2 14s ease infinite}
+@keyframes k1x2{0%,33.33%{opacity:0;transform:translateY(8px)}34.83%,41.33%{opacity:1;transform:none}43.33%,100%{opacity:0;transform:translateY(-6px)}}
+.k1-x3{animation:k1x3 14s ease infinite}
+@keyframes k1x3{0%,50.0%{opacity:0;transform:translateY(8px)}51.5%,58.0%{opacity:1;transform:none}60.0%,100%{opacity:0;transform:translateY(-6px)}}
+.k1-x4{animation:k1x4 14s ease infinite}
+@keyframes k1x4{0%,66.67%{opacity:0;transform:translateY(8px)}68.17%,74.67%{opacity:1;transform:none}76.67%,100%{opacity:0;transform:translateY(-6px)}}
+.k1-x5{animation:k1x5 14s ease infinite}
+@keyframes k1x5{0%,83.33%{opacity:0;transform:translateY(8px)}84.83%,91.33%{opacity:1;transform:none}93.33%,100%{opacity:0;transform:translateY(-6px)}}
+.k1-x0{opacity:0}
+
+@media (max-width:980px){.k1-grid{grid-template-columns:1fr!important;gap:64px!important}}
+section.chain{overflow-x:clip}
+@media (max-width:520px){.k1-stamp{left:16px!important;font-size:18px!important}}
+@media (prefers-reduced-motion:reduce){[class*="k1-"]{animation:none!important}}
 </style>
 </head>
 <body>
@@ -1829,23 +1881,41 @@ html{scroll-padding-top:16px}
 
 
 <!-- CONNECTED -->
-<section class="chain">
+<section class="chain" style="background: #FBFAF9; padding: 96px 0 120px">
   <div class="wrap">
-    <div class="sec-head sh">
-      <span class="ab-badge"><svg width="14" height="18" viewBox="0 0 48 60" aria-hidden="true"><use href="#primex-mark"></use></svg>الدورة المستندية</span>
-      <h2 class="ab-title"><span class="ab-name">مترابط بالكامل</span><span class="ab-tag">كل مستند يقود إلى الخطوة التالية تلقائيًا</span></h2>
-      <p>لا حاجة لإعادة إدخال البيانات بين الأقسام. ينتقل المستند من مرحلة إلى أخرى بحالته ومرجعه، وينتهي دائمًا بقيد محاسبي صحيح.</p>
-    </div>
-    <div class="flows">
-      <div class="fl-card">
-        <div class="fl-head"><span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></span><b>دورة المبيعات</b><span class="fl-n">6 خطوات</span></div>
-        <ol class="tl" style="--n:6"><li style="--k:0"><i class="dot"><span class="mono">1</span></i><b>عرض سعر</b><small>من قالب جاهز</small></li><li style="--k:1"><i class="dot"><span class="mono">2</span></i><b>أمر بيع</b><small>بقائمة الأسعار المعتمدة</small></li><li style="--k:2"><i class="dot"><span class="mono">3</span></i><b>أمر تسليم</b><small>يخصم من المخزون</small></li><li style="--k:3"><i class="dot"><span class="mono">4</span></i><b>فاتورة بيع</b><small>مع الضريبة والخصومات</small></li><li style="--k:4"><i class="dot"><span class="mono">5</span></i><b>سند قبض</b><small>يغلق ذمة العميل</small></li><li class="end" style="--k:5"><i class="dot"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i><b>قيد محاسبي</b><small>مُرحّل تلقائيًا</small></li></ol>
-      </div>
-      <div class="fl-card">
-        <div class="fl-head"><span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><b>دورة نقطة البيع</b><span class="fl-n">5 خطوات</span></div>
-        <ol class="tl" style="--n:5"><li style="--k:0"><i class="dot"><span class="mono">1</span></i><b>فتح الجلسة</b><small>بعدّ النقد الافتتاحي</small></li><li style="--k:1"><i class="dot"><span class="mono">2</span></i><b>طلب وفاتورة</b><small>أو حجز بعربون</small></li><li style="--k:2"><i class="dot"><span class="mono">3</span></i><b>التحضير</b><small>يصل الطلب إلى المطبخ</small></li><li style="--k:3"><i class="dot"><span class="mono">4</span></i><b>إغلاق الجلسة</b><small>ومطابقة المدفوعات</small></li><li class="end" style="--k:4"><i class="dot"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.3 2.2L9.5 3.5"/></svg></i><b>الترحيل</b><small>إلى المخازن والحسابات</small></li></ol>
-      </div>
-    </div>
+<div class="k1-grid" style="display: grid; grid-template-columns: minmax(0, 1fr) 480px; gap: 80px; align-items: center; ">
+<div style="display: flex; flex-direction: column; gap: 32px"><div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; text-align: right">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: 999px; background: #ECF2FF; color: #283F9C; font-size: 14px; font-weight: 600; line-height: 1.35; box-shadow: inset 0 0 0 1px #DAE4FF"><svg width="14" height="18" viewBox="226 98 218 292" aria-hidden="true"><path d="M369.75 311.61H299.87V241.74H369.75V311.61Z" fill="#A9B2D7"></path><path d="M299.87 241.74H230V171.87H299.87V241.74Z" fill="#2C7D3D"></path><path d="M264.94 385.49C245.64 385.49 230 369.84 230 350.55C230 331.25 245.64 315.61 264.94 315.61C284.23 315.61 299.87 331.25 299.87 350.55C299.87 369.84 284.23 385.49 264.94 385.49Z" fill="#DAAC21"></path><path d="M439.62 241.74H369.75V171.87H439.62V241.74Z" fill="#5365B0"></path><path d="M369.75 171.87H299.87V102H369.75V171.87Z" fill="#1B2B6A"></path><path d="M439.62 171.87H369.75V102H439.62V171.87Z" fill="#283F9C"></path></svg>الدورة المستندية</span>
+<h2 style="margin: 0; display: flex; flex-direction: column; gap: 4px; line-height: 1.25"><span style="font-size: 50px; font-weight: 700; color: #283F9C">مترابط بالكامل</span><span style="font-size: 26px; font-weight: 600; color: #212223">كل مستند يقود إلى الخطوة التالية تلقائيًا</span></h2>
+<p style="margin: 0; max-width: 560px; font-size: 17px; line-height: 1.8; color: #484B4D">لا حاجة لإعادة إدخال البيانات بين الأقسام: ينتقل المستند من مرحلة إلى أخرى بحالته ومرجعه، وينتهي دائمًا بقيد محاسبي صحيح.</p></div>
+<div style="position: relative; display: flex; flex-direction: column; border-right: 2px solid #E3E5E6">
+<span class="k1-band" style="position: absolute; top: 0; right: -2px; width: 4px; height: 58px; background: #283F9C; border-radius: 4px"></span>
+<div style="height: 58px; display: flex; align-items: center; gap: 16px; padding-right: 22px"><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 13px; color: #6B6F72; width: 64px; text-align: left">QT-0412</span><b style="font-size: 20px">عرض سعر</b></div>
+<div style="height: 58px; display: flex; align-items: center; gap: 16px; padding-right: 22px"><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 13px; color: #6B6F72; width: 64px; text-align: left">SO-0412</span><b style="font-size: 20px">أمر بيع</b></div>
+<div style="height: 58px; display: flex; align-items: center; gap: 16px; padding-right: 22px"><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 13px; color: #6B6F72; width: 64px; text-align: left">DN-0412</span><b style="font-size: 20px">أمر تسليم</b></div>
+<div style="height: 58px; display: flex; align-items: center; gap: 16px; padding-right: 22px"><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 13px; color: #6B6F72; width: 64px; text-align: left">INV-0412</span><b style="font-size: 20px">فاتورة بيع</b></div>
+<div style="height: 58px; display: flex; align-items: center; gap: 16px; padding-right: 22px"><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 13px; color: #6B6F72; width: 64px; text-align: left">RV-0412</span><b style="font-size: 20px">سند قبض</b></div>
+<div style="height: 58px; display: flex; align-items: center; gap: 16px; padding-right: 22px"><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 13px; color: #6B6F72; width: 64px; text-align: left">JE-0412</span><b style="font-size: 20px">قيد محاسبي</b></div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #6B6F72">ونفس الترابط في دورة نقاط البيع: فتح الجلسة ← طلب وفاتورة ← التحضير ← إغلاق الجلسة ← الترحيل</p>
+</div>
+<div style="position: relative">
+<div class="k1-shadow" style="position: absolute; inset: 14px -10px -12px 14px; transform: rotate(2.5deg)"><div class="k1-zz" style="background: #FFFFFF; height: 100%; background: #F4F5F7"></div></div>
+<div class="k1-shadow" style="position: absolute; inset: 8px -4px -6px 6px; transform: rotate(1deg)"><div class="k1-zz" style="background: #FFFFFF; height: 100%; background: #FAFAFB"></div></div>
+<div class="k1-paper k1-shadow" style="position: relative; transform: rotate(-1.5deg)"><div class="k1-zz" style="background: #FFFFFF; "><div style="position: relative; padding: 30px 30px 34px; display: flex; flex-direction: column; gap: 16px">
+<span class="k1-strip" style="position: absolute; top: 9px; left: 0; right: 0; height: 6px; background: #A9B2D7"></span>
+<div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px; font-size: 11px; color: #9AA0A6; border-bottom: 2px dotted #DADDE1; padding-bottom: 10px"><span>برايمكس · دفتر المستندات</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr">No. 0412</span></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start"><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 12px; color: #6B6F72">نوع المستند</span><b style="font-size: 26px; color: #283F9C"><span style="display: grid; perspective: 400px"><span class="k1-s0" style="grid-area: 1 / 1; ">عرض سعر</span><span class="k1-s1" style="grid-area: 1 / 1; ">أمر بيع</span><span class="k1-s2" style="grid-area: 1 / 1; ">أمر تسليم</span><span class="k1-s3" style="grid-area: 1 / 1; ">فاتورة بيع</span><span class="k1-s4" style="grid-area: 1 / 1; ">سند قبض</span><span class="k1-s5" style="grid-area: 1 / 1; ">قيد محاسبي</span></span></b></div><div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end"><span style="font-size: 12px; color: #6B6F72">المرجع</span><b style="font-size: 16px; font-weight: 500"><span style="display: grid; perspective: 400px"><span class="k1-s0" style="grid-area: 1 / 1; font-family: 'IBM Plex Mono', monospace; direction: ltr">QT-0412</span><span class="k1-s1" style="grid-area: 1 / 1; font-family: 'IBM Plex Mono', monospace; direction: ltr">SO-0412</span><span class="k1-s2" style="grid-area: 1 / 1; font-family: 'IBM Plex Mono', monospace; direction: ltr">DN-0412</span><span class="k1-s3" style="grid-area: 1 / 1; font-family: 'IBM Plex Mono', monospace; direction: ltr">INV-0412</span><span class="k1-s4" style="grid-area: 1 / 1; font-family: 'IBM Plex Mono', monospace; direction: ltr">RV-0412</span><span class="k1-s5" style="grid-area: 1 / 1; font-family: 'IBM Plex Mono', monospace; direction: ltr">JE-0412</span></span></b><span style="display: grid; perspective: 400px"><span class="k1-s0" style="grid-area: 1 / 1; justify-self: end"><span style="display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #6B6F72; background: #F1F2F4">مسودة</span></span><span class="k1-s1" style="grid-area: 1 / 1; justify-self: end"><span style="display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #283F9C; background: #ECF2FF">مؤكَّد</span></span><span class="k1-s2" style="grid-area: 1 / 1; justify-self: end"><span style="display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #5365B0; background: #EEF0FB">تم التسليم</span></span><span class="k1-s3" style="grid-area: 1 / 1; justify-self: end"><span style="display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #8A5A00; background: #FFF1DC">مستحقة الدفع</span></span><span class="k1-s4" style="grid-area: 1 / 1; justify-self: end"><span style="display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #005A31; background: #E3F8E9">مدفوعة</span></span><span class="k1-s5" style="grid-area: 1 / 1; justify-self: end"><span style="display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #005A31; background: #E3F8E9">مُرحّل</span></span></span></div></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; padding: 12px 0; border-block: 1px solid #E3E5E6"><span>العميل: <b>مؤسسة النور التجارية</b></span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; color: #6B6F72">2026-11-01</span></div>
+<div><div class="k1-r0" style="display: grid; grid-template-columns: minmax(0, 1fr) 50px 110px; gap: 10px; padding: 10px 0; border-bottom: 1px dashed #E3E5E6; font-size: 14px"><span>قهوة مختصة 1 كجم</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; text-align: center">4</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; text-align: left">2,400.00</span></div><div class="k1-r1" style="display: grid; grid-template-columns: minmax(0, 1fr) 50px 110px; gap: 10px; padding: 10px 0; border-bottom: 1px dashed #E3E5E6; font-size: 14px"><span>أكواب ورقية · كرتونة</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; text-align: center">10</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; text-align: left">3,600.00</span></div><div class="k1-r2" style="display: grid; grid-template-columns: minmax(0, 1fr) 50px 110px; gap: 10px; padding: 10px 0; border-bottom: 1px dashed #E3E5E6; font-size: 14px"><span>ماكينة تحضير</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; text-align: center">1</span><span style="font-family: 'IBM Plex Mono', monospace; direction: ltr; text-align: left">6,500.00</span></div></div>
+<div style="display: flex; justify-content: space-between; align-items: center"><b style="font-size: 16px">الإجمالي</b><b style="font-family: 'IBM Plex Mono', monospace; direction: ltr; font-size: 22px; font-weight: 500">12,500.00 ر.س</b></div>
+<div style="height: 6px; border-radius: 3px; background: #EEF0F2; overflow: hidden"><span class="k1-paid" style="display: block; height: 100%; width: 0; background: #2C7D3D"></span></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-end"><span style="font-size: 12px; color: #2C7D3D; font-weight: 600">● نفس البيانات تنتقل كما هي</span><span style="display: flex; flex-direction: column; align-items: center; gap: 2px"><svg width="120" height="34" viewBox="0 0 120 34" aria-hidden="true"><path class="k1-sign" pathLength="1" d="M4 24 C14 6 22 6 24 20 S34 30 42 14 S56 4 58 22 S70 28 78 16 S92 10 96 22 S108 24 116 12" fill="none" stroke="#1B2B6A" stroke-width="2" stroke-linecap="round"></path></svg><span style="width: 120px; border-top: 1px solid #CFD1D3; font-size: 10px; color: #9AA0A6; text-align: center">التوقيع</span></span></div>
+<span class="k1-stamp" style="position: absolute; left: 40px; top: 210px; padding: 8px 18px; border: 3px solid #2C7D3D; border-radius: 10px; color: #2C7D3D; font-size: 24px; font-weight: 700; background: rgba(227,248,233,.6)">مُرحّل ✓</span>
+</div></div></div>
+<div style="position: absolute; left: 50%; bottom: -54px; transform: translateX(-50%); white-space: nowrap; font-size: 13px; font-weight: 600; color: #283F9C"><span style="display: grid; perspective: 400px"><span class="k1-x0" style="grid-area: 1 / 1; "></span><span class="k1-x1" style="grid-area: 1 / 1; ">⚡ تحوّل تلقائيًا من «عرض سعر»</span><span class="k1-x2" style="grid-area: 1 / 1; ">⚡ تحوّل تلقائيًا من «أمر بيع»</span><span class="k1-x3" style="grid-area: 1 / 1; ">⚡ تحوّل تلقائيًا من «أمر تسليم»</span><span class="k1-x4" style="grid-area: 1 / 1; ">⚡ تحوّل تلقائيًا من «فاتورة بيع»</span><span class="k1-x5" style="grid-area: 1 / 1; ">⚡ تحوّل تلقائيًا من «سند قبض»</span></span></div>
+</div>
+</div>
   </div>
 </section>
 
