@@ -976,8 +976,8 @@ body::before{background:transparent}
 .links small{display:block;width:100%}
 
 /* top bar scrolls away with the page (not sticky) */
-.top{position:relative!important}
-html{scroll-padding-top:16px}
+.top{position:sticky!important;top:0}
+html{scroll-padding-top:104px}
 /* clients marquee: part of the hero, no own background */
 .hero{padding-bottom:clamp(28px,4vw,48px)}
 .clients{max-width:1000px;margin:clamp(14px,2.4vw,34px) auto 0;padding:0 16px;position:relative;z-index:1}
@@ -1143,7 +1143,7 @@ html{scroll-padding-top:16px}
 
 /* ===== why v2: sticky heading + rich stacking cards ===== */
 #why{--wyHead:220px}
-#why .wy-head{position:sticky;top:0;z-index:5;margin-inline:calc(-1 * clamp(16px,4vw,32px));padding:clamp(14px,2vw,22px) clamp(16px,4vw,32px) 14px;background:linear-gradient(var(--bg) 82%,color-mix(in srgb,var(--bg) 0%,transparent));display:grid;justify-items:center;gap:16px}
+#why .wy-head{position:sticky;top:var(--hdrH,96px);z-index:5;margin-inline:calc(-1 * clamp(16px,4vw,32px));padding:clamp(14px,2vw,22px) clamp(16px,4vw,32px) 14px;background:linear-gradient(var(--bg) 82%,color-mix(in srgb,var(--bg) 0%,transparent));display:grid;justify-items:center;gap:16px}
 #why .wy-head .sh{margin-bottom:0;transition:gap .35s}
 #why .wy-head .ab-name,#why .wy-head .ab-tag,#why .wy-head .ab-badge{transition:font-size .35s,opacity .3s,margin .35s,max-height .35s}
 #why .wy-head .ab-badge{max-height:40px}
@@ -1162,7 +1162,7 @@ html{scroll-padding-top:16px}
 #why #wyCards{max-width:1120px;margin-inline:auto;padding-top:10px;padding-bottom:0;display:flow-root}
 #process{overflow-x:clip;padding-top:clamp(40px,5vw,64px)}
 #why{padding-bottom:clamp(24px,3vw,40px)}
-#why #wyCards>.wy-card{--pad:clamp(22px,3vw,40px);position:sticky;top:calc(var(--wyHead) + 6px + var(--i) * 12px);margin-bottom:34vh;min-height:min(540px,calc(100svh - var(--wyHead) - 90px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:0;align-items:stretch;padding:0;overflow:hidden;border-radius:26px;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 -18px 50px -34px rgba(19,32,90,.5)}
+#why #wyCards>.wy-card{--pad:clamp(22px,3vw,40px);position:sticky;top:calc(var(--hdrH,96px) + var(--wyHead) + 6px + var(--i) * 12px);margin-bottom:34vh;min-height:min(540px,calc(100svh - var(--hdrH,96px) - var(--wyHead) - 40px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:0;align-items:stretch;padding:0;overflow:hidden;border-radius:26px;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 -18px 50px -34px rgba(19,32,90,.5)}
 #why #wyCards>.wy-card:last-child{margin-bottom:22vh}
 #why #wyCards .wy-wm{position:absolute;inset-inline-start:calc(var(--pad) - 6px);bottom:-.22em;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:clamp(7rem,13vw,11rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--accent) 14%,transparent);pointer-events:none;letter-spacing:-.04em}
 #why #wyCards .wy-tx{position:relative;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:var(--pad);padding-bottom:calc(var(--pad) + 30px)}
@@ -1216,7 +1216,7 @@ html{scroll-padding-top:16px}
   #why .wy-head .ab-name{font-size:1.9rem}#why .wy-head .ab-tag{font-size:1.02rem}
   #why .wy-head.is-stuck .ab-tag{display:none}#why .wy-head.is-stuck .ab-name{font-size:1.35rem}
   #why .wy-rail{gap:5px}#why .wy-rail li span{display:none}#why .wy-rail li b{display:block}
-  #why #wyCards>.wy-card{--pad:18px;top:calc(var(--wyHead) + 4px + var(--i) * 8px);margin-bottom:24vh}
+  #why #wyCards>.wy-card{--pad:18px;top:calc(var(--hdrH,96px) + var(--wyHead) + 4px + var(--i) * 8px);margin-bottom:24vh}
   #why #wyCards .wy-tx{gap:10px}
   #why #wyCards h3{font-size:1.3rem}
   #why #wyCards .wy-tx>p{font-size:.92rem;line-height:1.75}
@@ -1227,7 +1227,7 @@ html{scroll-padding-top:16px}
   #why #wyCards .wy-sc .wy-fix{grid-template-columns:auto auto;justify-content:space-between;align-items:center;text-align:start;padding:10px 12px}#why #wyCards .wy-sc .wy-fix .wy-st{grid-column:1/-1;justify-self:start}#why #wyCards .wy-sc .wy-fix .wy-big{font-size:24px}
   #why #wyCards .wy-sc .wy-kp{grid-template-columns:1fr auto;align-items:end;gap:6px}#why #wyCards .wy-sc .wy-kp small{grid-column:1/-1}#why #wyCards .wy-sc .wy-kp .wy-sp{height:34px;width:120px}
   #why #wyCards .wy-sc .wy-mv-feed .wy-pill:nth-child(3){display:none}
-  #why #wyCards>.wy-card{height:min(600px,calc(100svh - var(--wyHead) - 28px));min-height:0;grid-template-rows:auto 1fr}
+  #why #wyCards>.wy-card{height:min(600px,calc(100svh - var(--hdrH,96px) - var(--wyHead) - 16px));min-height:0;grid-template-rows:auto 1fr}
   #why #wyCards .wy-stage{align-items:center;overflow:hidden}
   #why #wyCards .wy-sc .wy-stk{gap:11px}#why #wyCards .wy-sc .wy-mv-feed{margin-top:12px}#why #wyCards .wy-sc .wy-bar{margin-bottom:12px}
   #why #wyCards .wy-wm{font-size:5.5rem}
@@ -1602,6 +1602,26 @@ section.chain{overflow-x:clip}
 @media (max-width:900px){.ct-top{grid-template-columns:1fr}.ct-foot{grid-template-columns:1fr 1fr}.ct-foot .ct-col:first-child{grid-column:1/-1}.ct-fl{display:none}}
 @media (max-width:560px){.ct-foot{grid-template-columns:1fr}.ct-ctas{flex-direction:column;align-items:stretch}.ct-btn,.ct-btn2{justify-content:center}}
 @media (prefers-reduced-motion:reduce){.ct-fl{animation:none}}
+
+/* sticky top bar + back-to-top + products first-view hint */
+.top{z-index:60}
+.to-top{position:fixed;left:24px;bottom:24px;z-index:70;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--accent,#283F9C);color:#FFFFFF;box-shadow:0 0 0 4px rgba(218,228,255,.6),0 16px 30px -12px rgba(25,42,112,.7);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .35s,transform .35s cubic-bezier(.3,1.4,.5,1),background .2s}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--accent-hover,#192A70);color:#FFFFFF}
+.to-top:hover svg{animation:ttUp .6s ease}
+@keyframes ttUp{50%{transform:translateY(-4px)}}
+@media (max-width:560px){.to-top{left:16px;bottom:16px;width:46px;height:46px;border-radius:14px}}
+.pdock{position:relative}
+.p-hint{position:absolute;left:50%;top:calc(100% + 14px);transform:translate(-50%,-8px);display:flex;align-items:center;gap:10px;white-space:nowrap;padding:9px 16px 9px 12px;border-radius:999px;background:#212223;color:#FFFFFF;font-size:.85rem;font-weight:600;box-shadow:0 16px 30px -14px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;z-index:3}
+.p-hint::after{content:"";position:absolute;left:50%;bottom:100%;margin-left:-7px;border:7px solid transparent;border-bottom-color:#212223}
+.ph-hand{display:grid;place-items:center;animation:phTap 1.2s ease-in-out infinite}
+@keyframes phTap{50%{transform:translateY(-3px) rotate(-8deg)}}
+.pshow.p-hinting .p-hint{opacity:1;transform:translate(-50%,0)}
+.pshow.p-hinting .pdock .pitem .mi-icon{animation:phWave 2.4s ease-in-out 1;animation-delay:calc(var(--wi) * .14s)}
+@keyframes phWave{0%,30%,100%{transform:none}12%{transform:translateY(-12px) scale(1.12)}22%{transform:translateY(0) scale(.97)}}
+.pshow.p-hinting .pdock .plist{box-shadow:0 0 0 4px rgba(40,63,156,.18),0 24px 50px -32px rgba(19,32,90,.35);transition:box-shadow .4s}
+@media (max-width:560px){.p-hint{white-space:normal;width:min(300px,86vw);text-align:center;justify-content:center;border-radius:16px}}
+@media (prefers-reduced-motion:reduce){.pshow.p-hinting .pdock .pitem .mi-icon,.ph-hand{animation:none}}
 </style>
 </head>
 <body>
@@ -1688,6 +1708,7 @@ section.chain{overflow-x:clip}
 </section>
 
 
+<a class="to-top" href="#top" aria-label="العودة لأعلى الصفحة"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about">
@@ -1747,6 +1768,7 @@ section.chain{overflow-x:clip}
 
     <div class="pshow pdock-mode">
       <div class="pdock">
+        <div class="p-hint" aria-hidden="true"><span class="ph-hand"><svg viewBox="0 0 24 24" width="22" height="22" fill="#FFFFFF" stroke="#212223" stroke-width="1.4" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 013 0V10l.1-1a1.5 1.5 0 013 .3V11l.1-.6a1.5 1.5 0 013 .4V15c0 3-2 6-5.5 6h-1.3c-2 0-3.2-.9-4.4-2.5L4.6 15a1.5 1.5 0 012.3-1.9L9 15z"/></svg></span><span class="ph-txt">6 موديولات تتبدّل تلقائيًا · اضغط على أي واحد لتستكشفه</span></div>
         <div class="plist" role="tablist" aria-label="منتجاتنا">
         <button class="pitem" type="button" role="tab" id="tab-inventory" aria-controls="inventory" aria-selected="true" data-i="0">
           <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z M3 7.5l9 4.5 9-4.5M12 12v9"/></svg></span><b>المخازن</b><span class="pd">اعرف ما لديك، وأين هو، ومتى ينتهي.</span><i class="pbar"></i>
@@ -2435,6 +2457,22 @@ function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classLis
  set(0);
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){set(5);return}
  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!tm)tm=setInterval(tick,1900)}else if(tm){clearInterval(tm);tm=null}})},{threshold:.3}).observe(o);
+})();
+
+(function(){
+ var hdr=document.querySelector('.top');
+ function hh(){if(hdr)document.documentElement.style.setProperty('--hdrH',Math.round(hdr.getBoundingClientRect().height+8)+'px')}
+ hh();addEventListener('resize',hh);
+ var tt=document.querySelector('.to-top');
+ function tick(){if(!tt)return;var y=scrollY,max=document.documentElement.scrollHeight-innerHeight;tt.classList.toggle('show',y>innerHeight*1.2&&(y>max*.55||y>2400))}
+ addEventListener('scroll',tick,{passive:true});tick();
+ if(tt)tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+ var ps=document.querySelector('.pshow.pdock-mode');if(!ps)return;
+ [].forEach.call(ps.querySelectorAll('.pdock .pitem'),function(b,i){b.style.setProperty('--wi',i)});
+ var done=false,off;
+ function stop(){ps.classList.remove('p-hinting')}
+ new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;o.disconnect();setTimeout(function(){ps.classList.add('p-hinting');off=setTimeout(stop,5200)},350)}})},{threshold:.45}).observe(ps);
+ ps.addEventListener('click',function(){clearTimeout(off);stop()});
 })();
 </script>
 
