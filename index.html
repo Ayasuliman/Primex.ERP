@@ -1552,6 +1552,23 @@ section.chain{overflow-x:clip}
 @media (max-width:1000px){.mb-grid{grid-template-columns:1fr}.mb-phones{height:600px!important;max-width:560px;width:100%;justify-self:center}}
 @media (max-width:560px){.mobile-sec h2>span:first-child{font-size:2.3rem!important}.mobile-sec h2>span:last-child{font-size:1.3rem!important}.mb-phones{transform:scale(.72);transform-origin:top center;height:470px!important;margin-inline:-60px}}
 @media (prefers-reduced-motion:reduce){.mobile-sec *{animation:none!important}}
+
+/* contact: organised two-column card, same width as the page content */
+.contact-wrap{padding-block:clamp(40px,5vw,72px) clamp(32px,4vw,56px)!important}
+.contact-wrap .cbox{max-width:none!important;width:100%;margin:0!important;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(32px,4vw,56px) clamp(24px,4vw,56px) 0!important;border-radius:28px}
+.contact-wrap .floaty{display:none!important}
+.contact-wrap .cbox-in{justify-items:start!important;text-align:start;max-width:none!important;margin:0!important;gap:14px}
+.contact-wrap .cbox .eyebrow{display:inline-flex;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);font-size:.85rem}
+.contact-wrap .cbox .eyebrow::before{display:none}
+.contact-wrap .cbox h2{font-size:clamp(1.8rem,3vw,2.5rem)!important;line-height:1.35;margin:0}
+.contact-wrap .cbox-in p{max-width:52ch;margin:0;font-size:1rem;line-height:1.8}
+.contact-wrap .c-ctas{justify-content:flex-start!important;margin-top:10px}
+.contact-wrap .c-info{flex-direction:column;align-items:stretch!important;justify-content:center;gap:10px;margin:0!important;padding:22px;border-radius:20px;background:rgba(5,12,46,.22);border:1px solid rgba(255,255,255,.14)}
+.contact-wrap .c-info::before{content:"تواصل مباشر";text-align:start;font-size:.82rem;font-weight:600;color:#BED0FF;margin-bottom:4px}
+.contact-wrap .c-info>span{border-radius:14px!important;padding:12px 14px!important;font-size:.98rem!important;justify-content:flex-start;background:rgba(255,255,255,.08)}
+.contact-wrap .c-info .ci{width:34px;height:34px;border-radius:10px}
+.contact-wrap .cbox-bot{grid-column:1/-1;margin:clamp(32px,4vw,48px) calc(-1 * clamp(24px,4vw,56px)) 0!important;padding:16px clamp(24px,4vw,56px)!important}
+@media (max-width:900px){.contact-wrap .cbox{grid-template-columns:1fr;row-gap:28px}.contact-wrap .cbox-in{justify-items:center!important;text-align:center}.contact-wrap .c-ctas{justify-content:center!important}}
 </style>
 </head>
 <body>
