@@ -1569,6 +1569,38 @@ section.chain{overflow-x:clip}
 .contact-wrap .c-info .ci{width:34px;height:34px;border-radius:10px}
 .contact-wrap .cbox-bot{grid-column:1/-1;margin:clamp(32px,4vw,48px) calc(-1 * clamp(24px,4vw,56px)) 0!important;padding:16px clamp(24px,4vw,56px)!important}
 @media (max-width:900px){.contact-wrap .cbox{grid-template-columns:1fr;row-gap:28px}.contact-wrap .cbox-in{justify-items:center!important;text-align:center}.contact-wrap .c-ctas{justify-content:center!important}}
+
+/* contact v3: headline band + 3-column footer inside the card */
+.contact-wrap{padding-block:clamp(40px,5vw,72px) clamp(32px,4vw,56px)!important}
+.ct-card{position:relative;overflow:hidden;border-radius:28px;background:radial-gradient(55% 70% at 50% 0%, rgba(99,135,246,.45), rgba(99,135,246,0) 70%), linear-gradient(165deg, #3A58C3 0%, #283F9C 40%, #192A70 100%);color:#FFFFFF;box-shadow:0 40px 80px -40px rgba(15,28,78,.6)}
+.ct-card::before{content:"";position:absolute;inset:0;background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 34px 34px;pointer-events:none}
+.ct-fl{position:absolute;z-index:0;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#FFFFFF;display:grid;place-items:center;box-shadow:0 18px 36px -18px rgba(0,0,0,.5);animation:ctfl 6s ease-in-out infinite}
+@keyframes ctfl{50%{transform:translateY(-12px) rotate(4deg)}}
+.ct-top{position:relative;display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:40px;align-items:end;padding:clamp(36px,4.5vw,64px) clamp(24px,4.5vw,64px) clamp(28px,3vw,44px);border-bottom:1px solid rgba(255,255,255,.16)}
+.ct-copy{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.ct-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);color:#DAE4FF;font-size:14px;font-weight:600}
+.ct-badge i{width:7px;height:7px;border-radius:2px;background:#DAAC21}
+.ct-copy h2{margin:0;font-size:clamp(1.9rem,3.3vw,2.9rem);line-height:1.25;font-weight:700;color:#FFFFFF}
+.ct-copy h2 em{font-style:normal;color:#99B5FF}
+.ct-copy p{margin:0;max-width:560px;font-size:1.06rem;line-height:1.8;color:#DAE4FF}
+.ct-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.ct-btn,.ct-btn2{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;line-height:1.3}
+.ct-btn{background:#FFFFFF;color:#283F9C;box-shadow:0 16px 30px -14px rgba(0,0,0,.45);transition:transform .2s}
+.ct-btn:hover{transform:translateY(-2px);color:#192A70}
+.ct-btn2{border:1px solid rgba(255,255,255,.4);color:#FFFFFF}.ct-btn2:hover{background:rgba(255,255,255,.08);color:#FFFFFF}
+.ct-wa{width:24px;height:24px;border-radius:50%;background:#E3F8E9;color:#128C4A;display:grid;place-items:center}
+.ct-foot{position:relative;display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:40px;padding:clamp(28px,3vw,36px) clamp(24px,4.5vw,64px) 28px;background:rgba(5,12,46,.18)}
+.ct-col{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.ct-col>b{font-size:14px;color:#99B5FF}
+.ct-about{font-size:15px;line-height:1.7;color:#BED0FF;max-width:300px}
+.ct-copyr{font-size:13px;color:#BED0FF}
+.ct-nav{gap:10px}.ct-nav a{display:inline-flex;align-items:center;gap:10px;color:#DAE4FF;text-decoration:none;font-size:15px}
+.ct-nav a i{width:6px;height:6px;border-radius:50%;background:#99B5FF}.ct-nav a:hover{color:#FFFFFF}
+.ct-chip{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#FFFFFF;font-size:15px;font-weight:500}
+.ct-ci{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.16);color:#DAE4FF;display:grid;place-items:center}
+@media (max-width:900px){.ct-top{grid-template-columns:1fr}.ct-foot{grid-template-columns:1fr 1fr}.ct-foot .ct-col:first-child{grid-column:1/-1}.ct-fl{display:none}}
+@media (max-width:560px){.ct-foot{grid-template-columns:1fr}.ct-ctas{flex-direction:column;align-items:stretch}.ct-btn,.ct-btn2{justify-content:center}}
+@media (prefers-reduced-motion:reduce){.ct-fl{animation:none}}
 </style>
 </head>
 <body>
@@ -1997,29 +2029,23 @@ section.chain{overflow-x:clip}
 <!-- CONTACT -->
 <section class="contact-wrap" id="contact">
   <div class="wrap">
-    <div class="cbox">
-      <span class="floaty f1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 13h5M13 16.5h5"/></svg></span><span class="floaty f2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></span>
-      <span class="floaty f3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><span class="floaty f4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z M3 7.5l9 4.5 9-4.5M12 12v9"/></svg></span>
-      <div class="cbox-in">
-        <span class="eyebrow">تواصل معنا</span>
-        <h2>شركاتك وفروعك وأنشطتك <em>في نظام واحد</em></h2>
-        <p>أدِر أكثر من شركة وفرع ونشاط من حساب واحد، بتقارير موحّدة أو منفصلة كما تحتاج. احجز عرضًا تجريبيًا وشاهد ذلك بنفسك.</p>
-        <div class="c-ctas">
-          <a class="btn cbtn" href="#c-list" data-demo>اطلب عرضًا تجريبيًا<svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <a class="btn cbtn2" href="#c-list"><span class="wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/><path d="M9 9.5c0 2.5 2 4.5 4.5 4.5l1-1.2-1.6-.8-.7.7a3 3 0 01-1.6-1.6l.7-.7-.8-1.6z"/></svg></span>كلّمنا واتساب</a>
+    <div class="ct-card">
+      <span class="ct-fl" style="top: 50px; left: 90px; width: 52px; height: 52px; border-radius: 15px; animation-delay: 0s" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><span class="ct-fl" style="top: 40px; left: 280px; width: 44px; height: 44px; border-radius: 13px; animation-delay: -2s" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z M3 7.5l9 4.5 9-4.5M12 12v9"/></svg></span><span class="ct-fl" style="top: 150px; left: 190px; width: 40px; height: 40px; border-radius: 12px; animation-delay: -3s" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></span>
+      <div class="ct-top">
+        <div class="ct-copy">
+          <span class="ct-badge"><i></i>تواصل معنا</span>
+          <h2>شركاتك وفروعك وأنشطتك<br><em>في نظام واحد</em></h2>
+          <p>أدِر أكثر من شركة وفرع ونشاط من حساب واحد، بتقارير موحّدة أو منفصلة كما تحتاج. احجز عرضًا تجريبيًا وشاهد ذلك بنفسك.</p>
+        </div>
+        <div class="ct-ctas">
+          <a class="ct-btn" href="#contact" data-demo>اطلب عرضًا تجريبيًا<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="ct-btn2" href="#ct-info"><span class="ct-wa"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-4.1-1.1z"/><path d="M9 9.5c0 2.5 2 4.5 4.5 4.5l1-1.2-1.6-.8-.7.7a3 3 0 01-1.6-1.6l.7-.7-.8-1.6z"/></svg></span>كلّمنا واتساب</a>
         </div>
       </div>
-      <div class="c-info" id="c-list">
-        <span><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><bdi>info@primex.example</bdi></span>
-        <span><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg></span><bdi dir="ltr">+000 000 000 000</bdi></span>
-        <span><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>[المدينة، الدولة]</span>
-      </div>
-      <div class="cbox-bot">
-        <span class="logo lg-dark" role="img" aria-label="Primex ERP"><svg class="plogo" viewBox="0 0 1003 300" aria-hidden="true"><use href="#px-logo"/></svg></span>
-        <nav class="cnav" aria-label="روابط الموقع">
-          <a href="#top">الرئيسية</a><a href="#about">من نحن</a><a href="#why">لماذا برايمكس</a><a href="#modules">منتجاتنا</a><a href="#contact">تواصل معنا</a>
-        </nav>
-        <span class="copyr">© <span id="yr">2026</span> مسبار الكون · جميع الحقوق محفوظة</span>
+      <div class="ct-foot">
+        <div class="ct-col"><span class="logo" style="display: inline-flex; align-items: center; gap: 8px"><svg width="26" height="35" viewBox="226 98 218 292" aria-hidden="true"><path d="M369.75 311.61H299.87V241.74H369.75V311.61Z" fill="#A9B2D7"></path><path d="M299.87 241.74H230V171.87H299.87V241.74Z" fill="#2C7D3D"></path><path d="M264.94 385.49C245.64 385.49 230 369.84 230 350.55C230 331.25 245.64 315.61 264.94 315.61C284.23 315.61 299.87 331.25 299.87 350.55C299.87 369.84 284.23 385.49 264.94 385.49Z" fill="#DAAC21"></path><path d="M439.62 241.74H369.75V171.87H439.62V241.74Z" fill="#5365B0"></path><path d="M369.75 171.87H299.87V102H369.75V171.87Z" fill="#99B5FF"></path><path d="M439.62 171.87H369.75V102H439.62V171.87Z" fill="#C3CAEE"></path></svg><b style="font-size: 24px; color: #FFFFFF; direction: ltr">Primex</b></span><span class="ct-about">نظام متكامل لتخطيط موارد المؤسسات، من تطوير شركة مسبار الكون.</span><span class="ct-copyr">© <span id="yr">2026</span> مسبار الكون · جميع الحقوق محفوظة</span></div>
+        <nav class="ct-col ct-nav" aria-label="روابط الموقع"><b>روابط</b><a href="#top"><i></i>الرئيسية</a><a href="#about"><i></i>من نحن</a><a href="#why"><i></i>لماذا برايمكس</a><a href="#modules"><i></i>منتجاتنا</a><a href="#contact"><i></i>تواصل معنا</a></nav>
+        <div class="ct-col" id="ct-info"><b>تواصل مباشر</b><span class="ct-chip"><span class="ct-ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><bdi>info@primex.example</bdi></span><span class="ct-chip"><span class="ct-ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg></span><bdi dir="ltr">+000 000 000 000</bdi></span><span class="ct-chip"><span class="ct-ci"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6-7-12a7 7 0 0114 0c0 6-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><bdi>[المدينة، الدولة]</bdi></span></div>
       </div>
     </div>
   </div>
