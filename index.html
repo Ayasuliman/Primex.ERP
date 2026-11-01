@@ -1409,6 +1409,21 @@ html{scroll-padding-top:16px}
 .ast-f{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding:8px 10px;border-radius:10px;background:#E3F8E9;color:#005A31;font-size:.8rem;font-weight:600}
 @keyframes astIn{from{opacity:0;transform:translateY(6px)}}
 @keyframes depGrow{from{transform:scaleX(0)}}
+
+/* POS offline highlight */
+.pos-off{display:flex;align-items:flex-start;gap:12px;margin-top:6px;padding:12px 14px;border-radius:14px;background:#FFF6E3;border:1px solid #F3D9A0}
+.pos-off .po-ic{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#DAAC21;color:#fff}
+.pos-off .po-ic svg{width:20px;height:20px}
+.pos-off b{display:block;font-size:.95rem;color:#674100;line-height:1.4}
+.pos-off span:not(.po-ic){display:block;font-size:.84rem;line-height:1.65;color:#7A5A12}
+.products .pdock-mode .mod-side .pos-off p{display:block}
+.net{position:relative;height:24px;margin-bottom:4px}
+.net span{position:absolute;top:0;bottom:0;inset-inline-start:0;display:inline-flex;align-items:center;gap:6px;padding:0 10px;border-radius:999px;font-size:.72rem;font-weight:600;white-space:nowrap;animation:netSwap 6s infinite}
+.net span i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.net .n-off{background:#FFF1DC;color:#8A5A00}
+.net .n-on{background:#E3F8E9;color:#005A31;animation-delay:-3s}
+@keyframes netSwap{0%,45%{opacity:1;transform:none}50%,95%{opacity:0;transform:translateY(-4px)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.net .n-on{display:none}.net span{animation:none}}
 </style>
 </head>
 <body>
@@ -1568,7 +1583,7 @@ html{scroll-padding-top:16px}
           <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11L21 7H6.2"/></svg></span><b>المشتريات</b><span class="pd">من طلب الشراء إلى سداد المورّد.</span><i class="pbar"></i>
         </button>
         <button class="pitem" type="button" role="tab" id="tab-pos" aria-controls="pos" aria-selected="false" data-i="4">
-          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><b>نقاط البيع</b><span class="pd">كاشير سريع للمتاجر والمطاعم، متصل بالمخزون والحسابات.</span><i class="pbar"></i>
+          <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="11" rx="2"/><path d="M8 7h8M2 20h20M6 14l-1 6M18 14l1 6"/></svg></span><b>نقاط البيع</b><span class="pd">كاشير سريع يعمل حتى بدون إنترنت.</span><i class="pbar"></i>
         </button>
         <button class="pitem" type="button" role="tab" id="tab-assets" aria-controls="assets" aria-selected="false" data-i="5">
           <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span><b>الأصول</b><span class="pd">سجلّ الأصول والإهلاك التلقائي.</span><i class="pbar"></i>
@@ -1699,8 +1714,9 @@ html{scroll-padding-top:16px}
       <div class="mod-side">
         <span class="mod-num">05 / 06</span>
         <h3>موديول نقاط البيع</h3>
-        <p class="pitch">كاشير سريع للمتاجر والمطاعم، متصل بالمخزون والحسابات.</p>
+        <p class="pitch">كاشير سريع يعمل حتى بدون إنترنت، ومتصل بالمخزون والحسابات.</p>
         <p>ثلاث واجهات لثلاثة أدوار: الإدارة تضبط نقاط البيع وتتابع الجلسات، والكاشير يبيع بسرعة، والعميل يرى فاتورته أثناء إنشائها.</p>
+        <div class="pos-off"><span class="po-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2l20 20M8.5 16.5a5 5 0 017 0M5 12.9a10 10 0 015.2-2.8M16.7 10.4A10 10 0 0119 12.9M1.5 9a15 15 0 014.4-2.8M10.7 5a15 15 0 0111.8 4"/><circle cx="12" cy="20" r="1"/></svg></span><div><b>يعمل أوفلاين</b><span>إذا انقطع الإنترنت يواصل الكاشير البيع دون توقف، وتُزامَن الفواتير تلقائيًا فور عودة الاتصال.</span></div></div>
         <div class="links"><small>يتكامل مع:</small><span>المبيعات</span><span>المخازن</span><span>الحسابات</span></div>
       </div>
       <div class="sc sc-pos">
@@ -1709,6 +1725,7 @@ html{scroll-padding-top:16px}
             <span style="--k:3">عصير برتقال</span><span style="--k:4">كعكة</span><span style="--k:5">شاي</span>
           </div>
           <div class="rcpt">
+            <div class="net"><span class="n-off"><i></i>أوفلاين · 3 فواتير بانتظار المزامنة</span><span class="n-on"><i></i>متصل · تمت المزامنة</span></div>
             <div class="rl" style="--k:0"><span>قهوة لاتيه × 2</span><span class="mono">30.00</span></div>
             <div class="rl" style="--k:1"><span>كرواسون × 1</span><span class="mono">12.00</span></div>
             <div class="rl" style="--k:2"><span>مياه معدنية × 1</span><span class="mono">5.00</span></div>
@@ -1716,7 +1733,7 @@ html{scroll-padding-top:16px}
             <span class="pay">دفع</span>
           </div>
         </div>
-      <ul class="phl"><li>جلسات الكاشير وعدّ النقد</li><li>الطلبات والفواتير والمرتجعات</li><li>الحجوزات والعربون</li><li>إعدادات المطاعم والتحضير</li><li>أجهزة الدفع المتصلة</li><li>شاشة العميل</li></ul>
+      <ul class="phl"><li>البيع أوفلاين بدون إنترنت</li><li>جلسات الكاشير وعدّ النقد</li><li>الطلبات والفواتير والمرتجعات</li><li>الحجوزات والعربون</li><li>إعدادات المطاعم والتحضير</li><li>أجهزة الدفع المتصلة</li></ul>
       <div class="pmore" aria-label="تفاصيل الموديول">
         <div class="pm-card"><b>أهم الشاشات</b><i></i><i></i><i class="s"></i></div>
         <div class="pm-card"><b>التقارير</b><i></i><i></i><i class="s"></i></div>
