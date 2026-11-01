@@ -1038,16 +1038,16 @@ html{scroll-padding-top:104px}
 @keyframes wytgKnob{to{transform:translateX(-11px)}}
 #why /* 2 screens */
 .wy-scr{display:grid;grid-template-columns:1fr 1.2fr;gap:12px}
-#why .wy-fl{display:grid;gap:6px}
+#why .wy-fl{display:grid;gap:var(--fg,6px);--fg:6px}
 #why .wy-fl div{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;font-weight:500}
 #why .wy-fl div i{width:14px;height:10px;border-radius:2px;background:var(--line2)}
 #why .wy-fl div .wy-eye{font-style:normal;font-size:10px;color:var(--ink3)}
 #why .wy-on .wy-fl .wy-off{animation:wyfOff .4s forwards;animation-delay:var(--d)}
 @keyframes wyfOff{to{opacity:.4;text-decoration:line-through;background:#F7F8FA}}
 #why .wy-on .wy-fl .wy-mv{animation:wyfMv 1s forwards;animation-delay:var(--d)}
-@keyframes wyfMv{40%{transform:translateY(-6px) scale(1.03);box-shadow:0 10px 20px -10px rgba(40,63,156,.5);border-color:var(--accent)}100%{transform:translateY(-37px);border-color:var(--accent)}}
+@keyframes wyfMv{40%{transform:translateY(-6px) scale(1.03);box-shadow:0 10px 20px -10px rgba(40,63,156,.5);border-color:var(--accent)}100%{transform:translateY(calc(-100% - var(--fg,6px)));border-color:var(--accent)}}
 #why .wy-on .wy-fl .wy-mv2{animation:wyfMv2 1s forwards;animation-delay:var(--d)}
-@keyframes wyfMv2{100%{transform:translateY(37px)}}
+@keyframes wyfMv2{100%{transform:translateY(calc(100% + var(--fg,6px)))}}
 #why .wy-pv{border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:7px;align-content:start;background:#FAFBFC}
 #why .wy-pv b{font-size:11px;color:var(--ink3);font-weight:600}
 #why .wy-pv span{height:24px;border-radius:6px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;padding:0 8px;color:var(--ink3);font-size:10.5px}
@@ -1185,7 +1185,7 @@ html{scroll-padding-top:104px}
 #why #wyCards .wy-sc .wy-av{width:26px;height:26px;font-size:11px}
 #why #wyCards .wy-sc .wy-tg2{width:30px;height:17px}
 #why #wyCards .wy-sc .wy-tg2::after{width:13px;height:13px}
-#why #wyCards .wy-sc .wy-fl{gap:8px}#why #wyCards .wy-sc .wy-fl div{padding:9px 11px}
+#why #wyCards .wy-sc .wy-fl{--fg:8px;gap:8px}#why #wyCards .wy-sc .wy-fl div{padding:9px 11px}
 #why #wyCards .wy-sc .wy-pv span{height:30px;font-size:12px}
 #why #wyCards .wy-sc .wy-stk{gap:16px}#why #wyCards .wy-sc .wy-stk .wy-tr{height:12px}
 #why #wyCards .wy-sc .wy-mv-feed{margin-top:18px}
