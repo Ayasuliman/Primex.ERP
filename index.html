@@ -194,7 +194,7 @@ section{padding-block:clamp(56px,8vw,104px)}
 .pitem[aria-selected="true"] .mi-icon{background:#FFFFFF;color:#283F9C}
 .pitem[aria-selected="true"] .pd{display:block}
 .pbar{position:absolute;inset:auto 0 0;height:2px;background:#99B5FF;transform-origin:right;transform:scaleX(0)}
-.pitem[aria-selected="true"] .pbar{animation:pprog var(--pdur,8s) linear forwards}
+.pitem[aria-selected="true"] .pbar{animation:pprog var(--pdur,5s) linear forwards}
 .pshow.paused .pitem[aria-selected="true"] .pbar{animation-play-state:paused}
 @keyframes pprog{to{transform:scaleX(1)}}
 .ppanels{min-width:0;touch-action:pan-y}
@@ -1516,6 +1516,29 @@ html{scroll-padding-top:16px}
 section.chain{overflow-x:clip}
 @media (max-width:520px){.k1-stamp{left:16px!important;font-size:18px!important}}
 @media (prefers-reduced-motion:reduce){[class*="k1-"]{animation:none!important}}
+
+/* products: tidier layout */
+#modules{padding-block:clamp(40px,5vw,64px)!important}
+#modules .sh .ab-name{font-size:clamp(2.2rem,3.6vw,2.9rem)}
+.pshow.pdock-mode{gap:20px!important}
+#modules .sh{display:grid!important;grid-template-columns:1fr!important;justify-items:center;text-align:center;max-width:760px;margin:0 auto 28px!important;gap:10px}
+#modules .sh>*{grid-column:auto!important;grid-row:auto!important}
+#modules .sh p{justify-self:center!important;margin:6px 0 0!important;max-width:60ch!important}
+.pdock .pitem .pbar{inset:auto 18% 0!important;height:3px}
+.pdock .pitem[aria-selected="true"] .pbar{animation-duration:5s!important}
+#modules.products .pdock-mode .module{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch!important;gap:0!important;padding:0!important;overflow:hidden}
+#modules.products .pdock-mode .mod-side{padding:clamp(22px,2.6vw,34px);display:flex!important;flex-direction:column;gap:12px;justify-content:center}
+#modules.products .pdock-mode .mod-side>*{margin:0!important}
+#modules.products .pdock-mode .mod-side h3{font-size:clamp(1.5rem,2.3vw,2rem)!important;line-height:1.3}
+#modules.products .pdock-mode .mod-side .pitch{font-size:1rem;font-weight:600}
+#modules.products .pdock-mode .mod-side .links{width:100%;margin-top:4px!important;padding-top:14px;border-top:1px solid var(--line);align-items:center;gap:6px}
+#modules.products .pdock-mode .module .sc{margin:0;border-radius:0;box-shadow:none!important;border-inline-start:1px solid var(--line);background:radial-gradient(60% 60% at 50% 45%,rgba(99,135,246,.08),transparent 70%),radial-gradient(rgba(40,63,156,.12) 1px,transparent 1.4px) 0 0/18px 18px,#F7F8FC;padding:clamp(20px,2.6vw,34px);align-content:center}
+#modules.products .pdock-mode .module .phl{grid-column:1/-1;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px 24px!important;margin:0;padding:18px clamp(24px,3vw,40px) 22px;border-top:1px solid var(--line);background:#FFFFFF}
+#modules.products .pdock-mode .module .phl li{background:none!important;border:0!important;padding:4px 0!important;font-size:.9rem;font-weight:500;gap:10px}
+#modules.products .pdock-mode .module .phl li::before{width:18px;height:18px;border-radius:6px;flex:none;background:#E3F8E9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.5l2.3 2.2L9.5 3.5' fill='none' stroke='%23005A31' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat!important}
+#modules.products .pdock-mode .pos-off{margin:2px 0!important}
+@media (max-width:1000px){#modules.products .pdock-mode .module{grid-template-columns:1fr!important}#modules.products .pdock-mode .module .sc{border-inline-start:0;border-top:1px solid var(--line)}#modules.products .pdock-mode .module .phl{grid-template-columns:1fr 1fr!important}}
+@media (max-width:520px){#modules.products .pdock-mode .module .phl{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
@@ -2092,7 +2115,7 @@ section.chain{overflow-x:clip}
   var plist=document.querySelector('.plist');
   if(plist){
     var pbtn=[].slice.call(plist.querySelectorAll('.pitem')),pp=[].slice.call(document.querySelectorAll('.ppanel')),pshow=document.querySelector('.pshow');
-    var pfoc=false,prot=0,hubEl=pshow.querySelector('.hub'),hubRot=document.getElementById('hubRot'),pcur=0,pt=0,PD=8000,pstill=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,phover=false,pvis=false;
+    var pfoc=false,prot=0,hubEl=pshow.querySelector('.hub'),hubRot=document.getElementById('hubRot'),pcur=0,pt=0,PD=5000,pstill=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,phover=false,pvis=false;
     function pgo(i,focus){
       pcur=(i+pp.length)%pp.length;
       pbtn.forEach(function(b,k){b.setAttribute('aria-selected',k===pcur?'true':'false');b.tabIndex=k===pcur?0:-1;var bar=b.querySelector('.pbar');bar.style.animation='none';void bar.offsetWidth;bar.style.animation=''});
@@ -2121,8 +2144,8 @@ section.chain{overflow-x:clip}
       b.addEventListener('keydown',function(e){var r=getComputedStyle(plist).direction==='rtl';var v=window.innerWidth<=1000;
         var nx=v?(r?'ArrowLeft':'ArrowRight'):'ArrowDown',pv=v?(r?'ArrowRight':'ArrowLeft'):'ArrowUp';
         if(e.key===nx){e.preventDefault();pgo(pcur+1,true)}else if(e.key===pv){e.preventDefault();pgo(pcur-1,true)}})});
-    pshow.addEventListener('mouseenter',function(){phover=true;pshow.classList.add('paused');clearTimeout(pt)});
-    pshow.addEventListener('mouseleave',function(){phover=false;pshow.classList.remove('paused');pgo(pcur)});
+    var ppEl=document.getElementById('ppanels');ppEl.addEventListener('mouseenter',function(){phover=true;pshow.classList.add('paused');clearTimeout(pt)});
+    ppEl.addEventListener('mouseleave',function(){phover=false;pshow.classList.remove('paused');arm()});
     var sx=null,sy=null,panels=document.getElementById('ppanels');
     panels.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
     panels.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;
