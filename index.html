@@ -1817,6 +1817,33 @@ html,body{overflow-x:clip}
   @keyframes abUp{to{opacity:1;transform:none}}
 }
 @media (max-width:640px) and (prefers-reduced-motion:reduce){#about .bx,#about .blocks i,#about .b-clients li{opacity:1!important;transform:none!important;animation:none!important}}
+
+/* ===== mobile: why cards as a swipeable carousel ===== */
+.wy-dots{display:none}
+@media (max-width:640px){
+  #why{padding-bottom:48px!important}
+  #why .wy-head{position:relative!important;top:auto!important;transform:none!important;padding:0!important;margin:0 0 14px!important;background:none!important}
+  #why .wy-head .ab-badge{display:inline-flex!important}
+  #why .wy-head.is-stuck .sh .ab-name,#why .wy-head .sh .ab-name{font-size:2.15rem!important}
+  #why .wy-head.is-stuck .ab-tag{display:block!important}
+  .wy-dots{display:flex;justify-content:center;gap:6px;margin:0 0 14px}
+  .wy-dots button{all:unset;cursor:pointer;height:5px;width:18px;border-radius:3px;background:#CFD1D3;position:relative;overflow:hidden;transition:width .3s}
+  .wy-dots button.on{width:38px;background:var(--accent-200,#DAE4FF)}
+  .wy-dots button.on::after{content:"";position:absolute;inset:0;background:var(--accent);transform-origin:right;animation:wyFill var(--wyDur,4.5s) linear forwards}
+  .wy-dots.hold button.on::after{animation:none;transform:none}
+  @keyframes wyFill{from{transform:scaleX(0)}}
+  #why #wyCards{display:flex!important;align-items:stretch;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;margin-inline:-20px;padding:4px 20px 14px!important;scrollbar-width:none;overscroll-behavior-x:contain}
+  #why #wyCards::-webkit-scrollbar{display:none}
+  #why #wyCards>.wy-card{position:relative!important;top:auto!important;flex:0 0 86%;scroll-snap-align:center;scroll-snap-stop:always;margin:0!important;height:auto!important;min-height:0!important;grid-template-rows:auto 1fr;box-shadow:0 0 0 1px var(--line),0 18px 36px -28px rgba(19,32,90,.45)!important}
+  #why #wyCards>.wy-card:last-child{margin:0!important}
+  #why #wyCards .wy-tx{padding:16px 16px 12px!important;gap:8px!important}
+  #why #wyCards h3{font-size:1.15rem!important}
+  #why #wyCards .wy-tx>p{font-size:.85rem!important;line-height:1.7}
+  #why #wyCards .wy-ic{width:34px!important;height:34px!important}
+  #why #wyCards .wy-mod{font-size:.72rem!important}
+  #why #wyCards .wy-stage{padding:12px!important;align-items:start!important}
+  #why #wyCards .wy-stage .wy-sc{font-size:11px!important;padding:12px!important}
+}
 </style>
 </head>
 <body>
@@ -1949,6 +1976,7 @@ html,body{overflow-x:clip}
         <h2 class="ab-title"><span class="ab-name">تحكّم كامل</span><span class="ab-tag">ورؤية لحظية لكل حركة في أعمالك</span></h2>
       </div>
     </div>
+    <div class="wy-dots" aria-label="المميزات"></div>
     <div class="wy-o2" id="wyCards"></div>
   </div>
 </section>
@@ -2675,6 +2703,19 @@ function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classLis
  var b=ab.querySelector('.ab-more');if(b)b.addEventListener('click',function(){var o=ab.classList.toggle('ab-open');b.setAttribute('aria-expanded',o);b.firstChild.nodeValue=o?'عرض أقل ':'اقرأ المزيد '});
  [].forEach.call(ab.querySelectorAll('.bento>.bx'),function(x,j){x.style.setProperty('--j',j)});
  new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();ab.classList.add('ab-in')}},{threshold:.2}).observe(ab.querySelector('.bento'));
+})();
+
+(function(){var mq=matchMedia('(max-width:640px)'),rail=document.getElementById('wyCards'),dots=document.querySelector('.wy-dots');if(!rail||!dots)return;
+ var cards=[].slice.call(rail.children),cur=0,t=null,DUR=4500,held=false,vis=false;
+ cards.forEach(function(_,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','الميزة '+(i+1));b.onclick=function(){go(i,true)};dots.appendChild(b)});
+ function mark(i){[].forEach.call(dots.children,function(d,k){d.classList.remove('on');if(k===i){void d.offsetWidth;d.classList.add('on')}})}
+ function arm(){clearTimeout(t);if(mq.matches&&!held&&vis)t=setTimeout(function(){go((cur+1)%cards.length)},DUR)}
+ function go(i,user){cur=i;var c=cards[i];rail.scrollTo({left:c.offsetLeft-rail.offsetLeft-(rail.clientWidth-c.offsetWidth)/2});mark(i);if(user)hold();arm()}
+ function hold(){held=true;dots.classList.add('hold');clearTimeout(t);clearTimeout(hold.r);hold.r=setTimeout(function(){held=false;dots.classList.remove('hold');mark(cur);arm()},7000)}
+ rail.addEventListener('touchstart',hold,{passive:true});rail.addEventListener('pointerdown',hold);
+ var st;rail.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){var mid=rail.getBoundingClientRect().left+rail.clientWidth/2,best=0,bd=1e9;cards.forEach(function(c,k){var r=c.getBoundingClientRect(),d=Math.abs(r.left+r.width/2-mid);if(d<bd){bd=d;best=k}});if(best!==cur){cur=best;mark(cur);if(!held)arm()}},120)},{passive:true});
+ new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis){mark(cur);arm()}else clearTimeout(t)},{threshold:.4}).observe(rail);
+ mq.addEventListener&&mq.addEventListener('change',function(){if(!mq.matches)clearTimeout(t);else arm()});
 })();
 </script>
 
