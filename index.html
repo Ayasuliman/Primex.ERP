@@ -1745,6 +1745,32 @@ html,body{overflow-x:clip}
   .k1-li5{animation:k1hl5 14s ease infinite}
   
 }
+
+/* ===== mobile hero & header: designed for the phone, not a shrunk laptop ===== */
+@media (max-width:640px){
+  .top{padding-top:8px!important;margin-bottom:-64px!important}
+  .top .wrap{height:56px!important;margin-inline:10px!important;padding-inline:10px 12px!important;border-radius:16px!important;box-shadow:0 10px 24px -18px rgba(15,28,78,.4)!important}
+  .top .plogo{height:28px!important}
+  .menu-btn{width:38px!important;height:38px!important;border-radius:10px}
+  html{scroll-padding-top:76px!important}
+  :root{--hdrH:72px}
+  .hero{padding-top:96px!important;padding-bottom:20px!important}
+  .hero .wrap{gap:22px!important;padding-inline:20px!important;box-sizing:border-box;width:100%}
+  .hero .hero-copy{width:100%;min-width:0}
+  .hero .hero-copy{gap:16px!important}
+  .hero h1{font-size:1.85rem!important;line-height:1.35!important}
+  .hero .hero-copy .btn{padding:13px 22px!important;font-size:1rem!important;border-radius:12px}
+  .hero .trust{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%;padding:0;margin:0}
+  .hero .trust li{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;border-radius:10px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--line);font-size:.76rem!important;line-height:1.4;text-align:center;white-space:normal;min-width:0;width:100%;box-sizing:border-box;min-height:46px;justify-self:stretch}
+  .hero .trust li svg,.hero .trust li::before{flex:none}
+  .hero .devices{width:100%!important;max-width:330px!important;padding:0 0 18px!important;margin-inline:auto}
+  .hero .tablet{-webkit-mask:linear-gradient(#000 72%,transparent);mask:linear-gradient(#000 72%,transparent)}
+  .hero .float.f1,.hero .float.f2{display:none!important}
+  .hero .chip{left:50%!important;right:auto!important;transform:translateX(-50%);bottom:4px!important;top:auto!important;font-size:.78rem}
+  .clients{margin-top:4px!important}
+  .cl-track{gap:34px!important}
+  .cl-track img{height:22px!important}.cl-track img.cl-hero{height:28px!important}.cl-track img.cl-fam{height:30px!important}
+}
 </style>
 </head>
 <body>
