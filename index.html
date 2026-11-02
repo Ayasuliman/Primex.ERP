@@ -1845,6 +1845,39 @@ html,body{overflow-x:clip}
   #why #wyCards .wy-stage .wy-sc{font-size:11px!important;padding:12px!important}
 }
 
+
+/* ===== process: mobile stepper ===== */
+.p4m{display:none}
+@media (max-width:640px){
+  #process{padding-block:48px!important}
+  #process .sh{margin-bottom:6px!important}
+  #process .p4-grid{display:flex!important;flex-direction:column;align-items:center;gap:16px!important;margin-top:0!important}
+  #process .p4-col{display:none!important}
+  #process .p4-logo{width:104px!important;height:140px!important;order:0!important;margin-top:10px}
+  #process .p4-logo .p4-p{animation:none!important;opacity:0;transform:none;transition:opacity .35s}
+  #process .p4-logo .p4-p.in{opacity:1}
+  #process .p4-logo .p4-p.now{animation:p4mIn .7s cubic-bezier(.3,1.4,.5,1) both!important}
+  @keyframes p4mIn{from{opacity:0;transform:translateY(-34px) scale(.5)}to{opacity:1;transform:none}}
+  .p4m{display:flex;flex-direction:column;gap:12px;width:100%}
+  .p4m-seg{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+  .p4m-seg button{all:unset;cursor:pointer;height:6px;border-radius:3px;background:#DDE1EA;position:relative;overflow:hidden}
+  .p4m-seg button i{position:absolute;inset:0;transform:scaleX(0);transform-origin:right}
+  .p4m-seg button.done i{transform:none}
+  .p4m-seg button.on i{animation:p4mSeg var(--p4d,3.2s) linear forwards}
+  .p4m.paused .p4m-seg button.on i{animation-play-state:paused}
+  @keyframes p4mSeg{to{transform:none}}
+  .p4m-card{background:#fff;border-radius:18px;padding:16px;box-shadow:0 0 0 1px var(--line),0 18px 34px -26px rgba(19,32,90,.45);min-height:112px;box-sizing:border-box}
+  .p4m-card .in{display:flex;flex-direction:column;gap:6px;animation:p4mFd .45s cubic-bezier(.2,.8,.2,1)}
+  @keyframes p4mFd{from{opacity:0;transform:translateY(8px)}}
+  .p4m-card .t{display:flex;align-items:center;gap:8px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .p4m-card .sw{flex:none;width:14px;height:14px;border-radius:4px}
+  .p4m-card .k{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);direction:ltr}
+  .p4m-card p{margin:0;font-size:.85rem;color:var(--ink-2);line-height:1.7}
+  .p4m-card .tags{font-size:.75rem;font-weight:600;color:var(--accent);line-height:1.6}
+  .p4m-nav{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:#6B6F72}
+  .p4m-nav button{all:unset;cursor:pointer;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px var(--line);color:var(--accent)}
+  .p4m-nav button:active{transform:scale(.94)}
+}
 /* ===== products: mobile icon sidebar ===== */
 @media (max-width:640px){
   #modules .sh{margin-bottom:18px!important}
@@ -2767,6 +2800,24 @@ function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classLis
  var st;rail.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){var mid=rail.getBoundingClientRect().left+rail.clientWidth/2,best=0,bd=1e9;cards.forEach(function(c,k){var r=c.getBoundingClientRect(),d=Math.abs(r.left+r.width/2-mid);if(d<bd){bd=d;best=k}});if(best!==cur){cur=best;mark(cur);if(!held)arm()}},120)},{passive:true});
  new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis){mark(cur);arm()}else clearTimeout(t)},{threshold:.4}).observe(rail);
  mq.addEventListener&&mq.addEventListener('change',function(){if(!mq.matches)clearTimeout(t);else arm()});
+})();
+</script>
+<script>
+(function(){var mq=matchMedia('(max-width:640px)'),sec=document.getElementById('process');if(!sec)return;var g=sec.querySelector('.p4-grid'),lg=sec.querySelector('.p4-logo');if(!g||!lg)return;
+ var P=[].slice.call(lg.querySelectorAll('.p4-p')),S=[];
+ for(var k=0;k<6;k++){var t=sec.querySelector('.p4-t'+k);if(!t)return;var sp=t.children[0],box=t.children[1],m=box.querySelector('[style*="Mono"]'),b=box.querySelector('b'),pp=box.querySelector('p'),tg=box.querySelector('p ~ span');S.push({c:sp.style.background,r:sp.style.borderRadius,n:m?m.textContent:'',t:b.textContent,p:pp?pp.textContent:'',g:tg?tg.textContent:''})}
+ var arrow=function(d){return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="'+d+'"/></svg>'};
+ var w=document.createElement('div');w.className='p4m';w.innerHTML='<div class="p4m-seg">'+S.map(function(x){return '<button type="button" aria-label="'+x.t+'"><i style="background:'+x.c+'"></i></button>'}).join('')+'</div><div class="p4m-card" aria-live="polite"></div><div class="p4m-nav"><button type="button" aria-label="السابق">'+arrow('M9 6l6 6-6 6')+'</button><span class="cnt"></span><button type="button" aria-label="التالي">'+arrow('M15 6l-6 6 6 6')+'</button></div>';
+ g.appendChild(w);var B=[].slice.call(w.querySelectorAll('.p4m-seg button')),card=w.querySelector('.p4m-card'),cnt=w.querySelector('.cnt'),N=w.querySelectorAll('.p4m-nav button'),cur=-1,t,vis=false,D=3200;
+ function go(i){var prev=cur;cur=(i+6)%6;
+  B.forEach(function(b,k){b.classList.toggle('on',k==cur);b.classList.toggle('done',k<cur);var e=b.firstChild;e.style.animation='none';void e.offsetWidth;e.style.animation=''});
+  P.forEach(function(p,k){p.classList.toggle('in',k<=cur);p.classList.remove('now');if(k==cur&&cur!==prev){void p.getBoundingClientRect();p.classList.add('now')}});
+  var x=S[cur];card.innerHTML='<div class="in"><span class="t"><span class="sw" style="background:'+x.c+';border-radius:'+x.r+'"></span>'+(x.n?'<span class="k">'+x.n+'</span>':'')+x.t+'</span><p>'+x.p+'</p>'+(x.g?'<span class="tags">'+x.g+'</span>':'')+'</div>';cnt.textContent=(cur+1)+' من 6';
+  sched()}
+ function sched(){clearTimeout(t);if(!vis||!mq.matches)return;t=setTimeout(function(){go(cur==5?0:cur+1)},cur==5?4200:D)}
+ B.forEach(function(b,k){b.onclick=function(){go(k)}});N[0].onclick=function(){go(cur-1)};N[1].onclick=function(){go(cur+1)};
+ go(0);clearTimeout(t);
+ new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;w.classList.toggle('paused',!vis);if(vis&&mq.matches){go(0)}else clearTimeout(t)})},{threshold:.35}).observe(w);
 })();
 </script>
 </body>
