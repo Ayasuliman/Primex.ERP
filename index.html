@@ -1771,6 +1771,52 @@ html,body{overflow-x:clip}
   .cl-track{gap:34px!important}
   .cl-track img{height:22px!important}.cl-track img.cl-hero{height:28px!important}.cl-track img.cl-fam{height:30px!important}
 }
+
+/* ===== mobile: about as a compact 2x2 bento with read-more ===== */
+.ab-more{display:none}
+@media (max-width:640px){
+  #about .about{gap:18px!important}
+  #about .about-copy{gap:12px!important}
+  #about .about-copy p{margin:0}
+  #about:not(.ab-open) .about-copy p:first-of-type{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  #about:not(.ab-open) .about-copy p+p{display:none}
+  .ab-more{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;justify-self:start;background:none;border:0;padding:2px 0;font:inherit;font-size:.92rem;font-weight:700;color:var(--accent);cursor:pointer}
+  .ab-more span{transition:transform .3s}
+  #about.ab-open .ab-more span{transform:rotate(180deg)}
+  #about.ab-open .about-copy p{animation:abIn .4s ease}
+  @keyframes abIn{from{opacity:0;transform:translateY(-6px)}}
+  #about .bento{grid-template-columns:1fr 1fr!important;grid-template-areas:"year seven" "clients clients" "zatca zatca"!important;gap:10px!important}
+  #about .bx{padding:14px!important;border-radius:16px!important;gap:6px!important;animation:none!important}
+  #about .bx>*{animation:none!important;opacity:1!important;translate:none!important;scale:none!important}
+  #about .b-year p,#about .b-year svg,#about .b-year .bx-mark{display:none!important}
+  #about .b-year{align-content:space-between!important;min-height:0}
+  #about .b-year .yr{font-size:2.2rem!important;text-align:start}
+  #about .b-seven{gap:10px!important}
+  #about .b-seven-top{gap:8px!important}
+  #about .b-seven-top b{font-size:2.2rem!important}
+  #about .b-seven-top span{font-size:.8rem;line-height:1.35}
+  #about .blocks{gap:4px!important}
+  #about .blocks i{height:10px!important;min-height:0!important;flex:1;border-radius:3px!important;aspect-ratio:auto!important}
+  #about .b-clients ul{gap:6px!important}
+  #about .b-clients li{font-size:.78rem!important;padding:3px 10px!important}
+  #about .b-zatca{display:flex!important;align-items:center;gap:10px!important}
+  #about .b-zatca .z-logo-img{flex:none;padding:6px 8px!important}
+  #about .b-zatca .z-logo-img img{height:22px!important;width:auto!important}
+  #about .b-zatca .z-txt{flex:1;min-width:0}
+  #about .b-zatca .z-txt b{font-size:.88rem}
+  #about .b-zatca .z-txt span{font-size:.75rem}
+  /* motion */
+  #about .bx{opacity:0;transform:scale(.88)}
+  #about.ab-in .bx{animation:abPop .55s cubic-bezier(.3,1.4,.5,1) forwards!important;animation-delay:calc(var(--j,0) * .12s)!important}
+  @keyframes abPop{to{opacity:1;transform:none}}
+  #about .blocks i{transform:scaleY(0);transform-origin:bottom}
+  #about.ab-in .blocks i{animation:abBlk .4s cubic-bezier(.3,1.6,.5,1) forwards!important;animation-delay:calc(.45s + var(--k,0) * .07s)!important}
+  @keyframes abBlk{to{transform:none}}
+  #about .b-clients li{opacity:0;transform:translateY(6px)}
+  #about.ab-in .b-clients li{animation:abUp .4s ease forwards!important;animation-delay:calc(.6s + var(--k,0) * .1s)!important}
+  @keyframes abUp{to{opacity:1;transform:none}}
+}
+@media (max-width:640px) and (prefers-reduced-motion:reduce){#about .bx,#about .blocks i,#about .b-clients li{opacity:1!important;transform:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -1866,6 +1912,7 @@ html,body{overflow-x:clip}
       <h2 class="ab-title"><span class="ab-name">برايمكس</span><span class="ab-tag">نظام صُمّم لينمو مع أعمالك</span></h2>
       <p>منذ عام 2024 تطوّر شركة مسبار الكون، المالكة لنظام برايمكس، هذا النظام لتخطيط موارد المؤسسات، ليجمع إدارة المبيعات والمشتريات والمخازن ونقاط البيع والحسابات في منصة واحدة مترابطة.</p>
       <p>يضم برايمكس اليوم 7 أنظمة متكاملة تخدم أنواعًا مختلفة من العملاء، من المتاجر والمطاعم إلى شركات التوزيع والمجموعات متعددة الفروع. نبني كل نظام بعد تحليل دقيق لاحتياجات العمل الفعلية، ونرتبط ارتباطًا مباشرًا بهيئة الزكاة والضريبة والجمارك ليبقى عملاؤنا ملتزمين بالمتطلبات الضريبية دون عناء.</p>
+      <button class="ab-more" type="button" aria-expanded="false">اقرأ المزيد <span aria-hidden="true">↓</span></button>
     </div>
     <div class="bento">
       <div class="bx b-year">
@@ -2622,6 +2669,12 @@ function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classLis
  function stop(){ps.classList.remove('p-hinting')}
  new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting&&!done){done=true;o.disconnect();setTimeout(function(){ps.classList.add('p-hinting');off=setTimeout(stop,5200)},350)}})},{threshold:.45}).observe(ps);
  ps.addEventListener('click',function(){clearTimeout(off);stop()});
+})();
+
+(function(){var ab=document.getElementById('about');if(!ab)return;
+ var b=ab.querySelector('.ab-more');if(b)b.addEventListener('click',function(){var o=ab.classList.toggle('ab-open');b.setAttribute('aria-expanded',o);b.firstChild.nodeValue=o?'عرض أقل ':'اقرأ المزيد '});
+ [].forEach.call(ab.querySelectorAll('.bento>.bx'),function(x,j){x.style.setProperty('--j',j)});
+ new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();ab.classList.add('ab-in')}},{threshold:.2}).observe(ab.querySelector('.bento'));
 })();
 </script>
 
