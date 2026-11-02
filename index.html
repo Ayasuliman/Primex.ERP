@@ -1846,6 +1846,31 @@ html,body{overflow-x:clip}
 }
 
 
+
+/* ===== chain: mobile tear-off pad ===== */
+@media (max-width:640px){
+  section.chain{padding-block:48px 44px!important}
+  section.chain .k1-grid{gap:14px!important}
+  section.chain .k1-grid>div:first-child{display:contents!important}
+  section.chain .k1-grid>div:first-child>div:first-child{order:0;align-items:center!important;text-align:center!important;gap:8px!important}
+  section.chain .k1-grid>div:first-child>div:first-child h2{align-items:center}
+  section.chain .k1-grid>div:first-child>div:first-child>p,section.chain .k1-grid>div:first-child>p{display:none!important}
+  section.chain .k1-grid>div:nth-child(2){order:1;margin:6px 6px 40px}
+  section.chain .k1-list{order:2;display:flex!important;flex-direction:row!important;flex-wrap:wrap;justify-content:center;gap:4px!important}
+  section.chain .k1-list .k1-li{flex:none;padding:4px 10px!important;border:0!important;border-radius:999px!important;background:transparent;font-size:.75rem}
+  section.chain .k1-list .k1-li b{font-size:.75rem!important;font-weight:600!important}
+  section.chain .k1-list .k1-li span{display:none!important}
+  section.chain .k1-zz>div{padding:20px 16px 24px!important;gap:10px!important}
+  section.chain .k1-zz b[style*="font-size: 26px"]{font-size:1.15rem!important}
+  section.chain .k1-zz b[style*="font-size: 22px"]{font-size:1rem!important}
+  section.chain .k1-zz [style*="grid-template-columns: minmax(0, 1fr) 50px 110px"]{padding:7px 0!important}
+  section.chain .k1-grid>div:nth-child(2)>div[style*="bottom: -54px"]{bottom:-34px!important;font-size:12px!important;z-index:3}
+  section.chain .k1-zz>div>div:has(>.k1-paid),section.chain .k1-zz>div>div:has(.k1-sign){display:none!important}
+  .k1-tear *{animation-delay:var(--td)!important;animation-play-state:paused!important}
+  .k1-tear>div{transform:var(--tt)}
+  .k1-tear{position:absolute;inset:0;z-index:5;pointer-events:none;transform-origin:85% 0;animation:k1Tear .85s cubic-bezier(.5,0,.75,.35) forwards}
+  @keyframes k1Tear{0%{transform:none}28%{transform:rotate(-3deg) translateY(-8px)}100%{transform:translate(-70%,-55%) rotate(-30deg);opacity:0}}
+}
 /* ===== process: mobile stepper ===== */
 .p4m{display:none}
 @media (max-width:640px){
@@ -2818,6 +2843,17 @@ function replay(el){el.classList.remove('wy-on');void el.offsetWidth;el.classLis
  B.forEach(function(b,k){b.onclick=function(){go(k)}});N[0].onclick=function(){go(cur-1)};N[1].onclick=function(){go(cur+1)};
  go(0);clearTimeout(t);
  new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;w.classList.toggle('paused',!vis);if(vis&&mq.matches){go(0)}else clearTimeout(t)})},{threshold:.35}).observe(w);
+})();
+</script>
+<script>
+(function(){var mq=matchMedia('(max-width:640px)'),paper=document.querySelector('section.chain .k1-paper');if(!paper||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ var host=paper.parentNode,anim=null,last=-1,STEP=14000/6,vis=false;
+ function getAnim(){if(!anim||anim.playState=='idle'){anim=(paper.getAnimations?paper.getAnimations():[])[0]||null}return anim}
+ function tear(){var c=paper.cloneNode(true),a=getAnim();if(!a)return;var t=(a.currentTime%14000)/1000;
+  var tr=getComputedStyle(paper).transform;c.classList.remove('k1-paper');var w=document.createElement('div');w.className='k1-tear';w.style.setProperty('--td','-'+t+'s');w.style.setProperty('--tt',tr);w.appendChild(c);host.appendChild(w);setTimeout(function(){w.remove()},900)}
+ function tick(){if(vis&&mq.matches){var a=getAnim();if(a&&a.currentTime!=null){var ph=Math.floor(((a.currentTime+260)%14000)/STEP);if(last>=0&&ph!==last)tear();last=ph}}requestAnimationFrame(tick)}
+ new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(!vis)last=-1},{threshold:.3}).observe(host);
+ requestAnimationFrame(tick);
 })();
 </script>
 </body>
